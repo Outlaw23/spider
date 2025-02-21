@@ -3,6 +3,7 @@ package spider.building_blocks.screens;
 import spider.building_blocks.masterbutton;
 import spider.building_blocks.masterlabel;
 import spider.building_blocks.masterscrollpane;
+import spider.building_blocks.mastertextarea;
 
 import javax.swing.*;
 import java.awt.*;
@@ -53,9 +54,17 @@ public class screen_hado {
 		// button screen video
 		masterbutton video = new masterbutton("video","screenVideo",gray);
 
+		masterscrollpane scrollPaneInput = new masterscrollpane();
+		mastertextarea input = scrollPaneInput.getMasterTextArea();
+
+		// text output
+		masterscrollpane scrollPaneOutput = new masterscrollpane();
+		mastertextarea output = scrollPaneOutput.getMasterTextArea();
+
 		// button translate
 		masterbutton translate = new masterbutton("translate","",gray);
-		translate.masterActionListener();
+		// transform input to output
+		translate.masterActionListener(input, output);
 
 		// textAreas
 
@@ -67,10 +76,6 @@ public class screen_hado {
 		// scollpans
 
 		//  text input
-		masterscrollpane scrollPaneInput = new masterscrollpane();
-
-		// text output
-		masterscrollpane scrollPaneOutput = new masterscrollpane();
 
 		// Add panels main screen
 		panelHado.add(panelHadoNorth, BorderLayout.NORTH);
@@ -83,9 +88,9 @@ public class screen_hado {
 		panelHadoNorth.add(video.getMasterbutton());
 
 		// add to panel center
-		panelHadoCenter.add(scrollPaneInput.masterscrollpane());
+		panelHadoCenter.add(scrollPaneInput.getScrollPane());
 		panelHadoCenter.add(translate.getMasterbutton());
-		panelHadoCenter.add(scrollPaneOutput.masterscrollpane());
+		panelHadoCenter.add(scrollPaneOutput.getScrollPane());
 
 		return panelHado;  // Return the panel to be added to the JFrame
 	}

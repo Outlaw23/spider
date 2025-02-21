@@ -1,19 +1,24 @@
 package spider.building_blocks.screenHadoBuild;
 
 import spider.building_blocks.mastertextarea;
-import spider.building_blocks.screenHadoBuild.textArea_hado.text_output;
 
 public class translate_hado {
-	public void transform() {
-		text_output textOutput = new text_output();
-		mastertextarea mastertextarea = new mastertextarea();
 
-		String text = mastertextarea.masterTextArea().getText();
-		System.out.println(text + "prima");
+	// When the button is pressed, transform...
+	// transform(TextFieldA a, TextFieldB b)
+		// get the text from a -> a.gettextinput()
+		// translate that  text
+		// put that text in b -> b.gettextoutput("blah blah" )
+
+	public void transform(mastertextarea input, mastertextarea output) {
+//		mastertextarea mastertextareainput = new mastertextarea();
+//		mastertextarea mastertextareaoutput = new mastertextarea();
+
+		String text = input.gettextinput().getText();
 		StringBuilder translater = new StringBuilder();
 		for (char c : text.toCharArray()) {
 			translater.append(HadoLanguage.hadoLanguagee(String.valueOf(c)));
-			mastertextarea.setTextOutput(translater.toString());
+			output.gettextoutput(translater.toString());
 		}
 	}
 }

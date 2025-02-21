@@ -54,8 +54,8 @@ public class masterbutton {
 		return masterbutton;
 	}
 
-	public void masterActionListener() {
-		masterbutton.addActionListener(e -> translatehado.transform() );
+	public void masterActionListener(mastertextarea input, mastertextarea output) {
+		masterbutton.addActionListener(e -> translatehado.transform(input, output) );
 	}
 	//functoins
 

@@ -6,19 +6,24 @@ import java.awt.*;
 
 public class mastertextarea {
 	private static JTextArea masterTextArea;
-	public JTextArea masterTextArea () {
-		Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
-		masterTextArea = new JTextArea();
-		masterTextArea.setFont(new Font("Arial", Font.PLAIN, 30));
-		masterTextArea.setBorder(bordertextarea);
+
+	public mastertextarea() {
+		if (masterTextArea == null) {  // Prevents reinitialization
+			Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
+			masterTextArea = new JTextArea();
+			masterTextArea.setFont(new Font("Arial", Font.PLAIN, 30));
+			masterTextArea.setBorder(bordertextarea);
+		}
+	}
+
+	public JTextArea masterTextArea() {
+		return masterTextArea;
+	}
+	public JTextArea gettextinput() {
 		return masterTextArea;
 	}
 
-	public JTextArea getTextInput () {
-		return masterTextArea;
-	}
-
-	public void setTextOutput (String text) {
+	public void gettextoutput(String text) {
 		masterTextArea.setText(text);
 	}
 }

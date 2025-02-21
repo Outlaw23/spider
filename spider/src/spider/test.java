@@ -2,57 +2,33 @@ package spider;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.datatransfer.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class test {
 	public static void main(String[] args) {
-		SwingUtilities.invokeLater(test::new);
-
-	}
-
-	public test() {
-		createGUI();
-	}
-
-	private void createGUI() {
-		JFrame frame = new JFrame("Master Button Example");
+		JFrame frame = new JFrame("Copy JLabel Text");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(500, 400);
-		frame.setLayout(new GridLayout(3, 4, 10, 10)); // Betere lay-out
+		frame.setSize(300, 200);
+		frame.setLayout(new FlowLayout());
 
-		// Array van knoppen
-		JButton[] buttons = new JButton[10];
-		String[] names = {"Hado", "Home", "Button 3", "Button 4", "Button 5", "Button 6", "Button 7", "Button 8", "Button 9", "Button 10"};
-		Color[] colors = {Color.RED, Color.BLUE, Color.GREEN, Color.ORANGE, Color.MAGENTA,
-				Color.PINK, Color.CYAN, Color.GRAY, Color.YELLOW, Color.LIGHT_GRAY};
+		JLabel label = new JLabel("Hello, World!");
+		JButton copyButton = new JButton("Copy Text");
 
-		for (int i = 0; i < buttons.length; i++) {
-			buttons[i] = new JButton(names[i]);
-			buttons[i].setBackground(colors[i]);
-			buttons[i].setOpaque(true);
-			buttons[i].setBorderPainted(false);
-
-			// Elke knop krijgt een unieke actie
-			int index = i;
-			buttons[i].addActionListener(e -> JOptionPane.showMessageDialog(frame, "Je klikte op: " + names[index]));
-
-			frame.add(buttons[i]);
-		}
-
-		// Master button
-		JButton masterButton = new JButton("Master Button");
-		masterButton.setFont(new Font("Arial", Font.BOLD, 16));
-		masterButton.setBackground(Color.BLACK);
-		masterButton.setForeground(Color.WHITE);
-		frame.add(masterButton);
-
-		// ActionListener voor de master button
-		masterButton.addActionListener(e -> {
-			for (int i = 0; i < buttons.length; i++) {
-				buttons[i].setText("Updated " + names[i]);
-				buttons[i].setBackground(colors[(i + 1) % colors.length]); // Wissel kleuren
+		copyButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String text = label.getText();
+				StringSelection selection = new StringSelection(text);
+				Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+				clipboard.setContents(selection, null);
+				JOptionPane.showMessageDialog(frame, "Text copied to clipboard!");
 			}
 		});
 
+		frame.add(label);
+		frame.add(copyButton);
 		frame.setVisible(true);
 	}
 }
