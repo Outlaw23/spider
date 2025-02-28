@@ -1,6 +1,6 @@
-package spider.building_blocks.screenHadoBuild;
+package Spider;
 
-import spider.building_blocks.mastertextarea;
+import Spider.Components.mastertextarea;
 
 public class translate_hado {
 

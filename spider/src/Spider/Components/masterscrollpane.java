@@ -1,4 +1,4 @@
-package spider.building_blocks;
+package Spider.Components;
 
 import javax.swing.*;
 

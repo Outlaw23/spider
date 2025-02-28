@@ -1,9 +1,9 @@
-package spider;
+package Spider;
 // MainClass.java
 
-import spider.building_blocks.screens.screen_hado;
-import spider.building_blocks.screens.screen_main;
-import spider.building_blocks.screens.screen_video;
+import Spider.Screens.screen_hado;
+import Spider.Screens.screen_main;
+import Spider.Screens.screen_video;
 
 import javax.swing.*;
 import java.awt.*;

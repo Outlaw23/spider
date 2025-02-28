@@ -1,4 +1,4 @@
-package spider;
+package Spider;
 
 import javax.swing.*;
 import java.awt.*;

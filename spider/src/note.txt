@@ -1,0 +1,25 @@
+---to-do-list---
+mvc
+diagram uml
+jscrollpane (Q)
+---to-do-list---
+
+goedmorgen mike
+hey
+hoe gaat het
+prima en met jou
+goed met mij
+-----
+moeksowmez siqe
+neg
+noe maax nex
+twisa ez sex pou
+moek sex sip
+//-----//
+	public void masterActionListener(mastertextarea input, mastertextarea output) {
+		masterbutton.addActionListener(e -> translatehado.transform(input, output) );
+	}
+//-----//
+		masterbutton.addActionListener(e -> Gui.showPanel(panelname));
+//-----//
+

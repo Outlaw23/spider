@@ -1,7 +1,7 @@
-package spider.building_blocks;
+package Spider.Components;
 
-import spider.Gui;
-import spider.building_blocks.screenHadoBuild.translate_hado;
+import Spider.Gui;
+import Spider.translate_hado;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -57,6 +57,4 @@ public class masterbutton {
 	public void masterActionListener(mastertextarea input, mastertextarea output) {
 		masterbutton.addActionListener(e -> translatehado.transform(input, output) );
 	}
-	//functoins
-
 }

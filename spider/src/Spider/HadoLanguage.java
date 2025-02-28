@@ -1,4 +1,4 @@
-package spider.building_blocks.screenHadoBuild;
+package Spider;
 
 public enum HadoLanguage {
 	// Rij 1

@@ -1,7 +1,7 @@
-package spider.building_blocks.screens;
+package Spider.Screens;
 
-import spider.building_blocks.masterbutton;
-import spider.building_blocks.masterlabel;
+import Spider.Components.masterbutton;
+import Spider.Components.masterlabel;
 
 import javax.swing.*;
 import java.awt.*;
