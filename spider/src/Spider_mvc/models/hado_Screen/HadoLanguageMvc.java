@@ -1,6 +1,6 @@
-package Spider;
+package Spider_mvc.models.hado_Screen;
 
-public enum HadoLanguage {
+public enum HadoLanguageMvc {
 	// Rij 1
 	B("B", "H"),
 	H("H", "N"),
@@ -12,7 +12,7 @@ public enum HadoLanguage {
 	J("J", "P"),
 	P("P", "T"),
 	T("T", "X"),
-	X("X", "C"),
+	X("X", "C"),	
 
 	// Rij 3
 	D("D", "K"),
@@ -35,7 +35,7 @@ public enum HadoLanguage {
 	private final String letter;
 	private final String letterHado;
 
-	HadoLanguage(String letter, String letterHado) {
+	HadoLanguageMvc(String letter, String letterHado) {
 		this.letter = letter;
 		this.letterHado = letterHado;
 	}
@@ -49,7 +49,7 @@ public enum HadoLanguage {
 	}
 
 	public static String hadoLanguagee(String letter) {
-		for (HadoLanguage code : HadoLanguage.values()) {
+		for (HadoLanguageMvc code : HadoLanguageMvc.values()) {
 			if (code.getLetter().equalsIgnoreCase(letter)) {
 				return Character.isUpperCase(letter.charAt(0)) ?
 						code.getLetterHado().toUpperCase() : code.getLetterHado().toLowerCase();

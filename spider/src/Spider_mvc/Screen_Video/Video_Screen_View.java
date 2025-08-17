@@ -1,14 +1,18 @@
-package Spider.Screens;
+package Spider_mvc.Screen_Video;
 
-import Spider.Components.masterbutton;
-import Spider.Components.masterlabel;
+
+import Spider_mvc.Controllers.Font_Resizer;
+import Spider_mvc.models.Models_Everywhere.masterbutton;
+import Spider_mvc.models.Models_Everywhere.masterlabel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Arrays;
+import java.util.List;
 
 import static java.awt.Color.*;
 
-public class screen_video {
+public class Video_Screen_View {
 
 	// Method to create and return a JPanel
 	public JPanel screenVideo() {
@@ -65,6 +69,15 @@ public class screen_video {
 
 
 		//
+		//
+		List<JComponent> resizableComponents = Arrays.asList(
+				titel.getMasterLabel(),
+				home.getMasterbutton(),
+				hado.getMasterbutton(),
+				video.getMasterbutton()
+
+		);
+		Font_Resizer.applyResizeLogic(panelVideo, resizableComponents);
 
 
 		return panelVideo;  // Return the panel to be added to the JFrame

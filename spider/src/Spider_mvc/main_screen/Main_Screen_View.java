@@ -1,15 +1,19 @@
-package Spider.Screens;
-// imports
+package Spider_mvc.main_screen;
 
-import Spider.Components.masterbutton;
-import Spider.Components.masterlabel;
+
+import Spider_mvc.Controllers.Font_Resizer;
+import Spider_mvc.models.Models_Everywhere.masterbutton;
+import Spider_mvc.models.Models_Everywhere.masterlabel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Arrays;
+import java.util.List;
 
 import static java.awt.Color.*;
 
-public class screen_main {
+public class Main_Screen_View {
+	// got everything exccept for the data
 	// Method to create and return a JPanel
 	public JPanel screenMain() {
 
@@ -68,7 +72,21 @@ public class screen_main {
 		// add to panel center
 		panelMainCenter.add(hadotext.getMasterLabel());
 
+		//
+		//
+		List<JComponent> resizableComponents = Arrays.asList(
+				titel.getMasterLabel(),
+				home.getMasterbutton(),
+				hado.getMasterbutton(),
+				video.getMasterbutton()
+
+		);
+		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
+
 		// Return the panel to be added to the JFrame
-		return panelMain;  
+		return panelMain;
+		// method that receives the data to build the view
+
+
 	}
 }

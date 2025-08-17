@@ -1,9 +1,6 @@
 ---to-do-list---
-mvc
 diagram uml
-jscrollpane (Q)
 ---to-do-list---
-
 goedmorgen mike
 hey
 hoe gaat het

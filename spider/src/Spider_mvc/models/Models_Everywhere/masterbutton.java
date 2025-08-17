@@ -1,7 +1,8 @@
-package Spider.Components;
+package Spider_mvc.models.Models_Everywhere;
 
-import Spider.Gui;
-import Spider.translate_hado;
+
+import Spider_mvc.Controllers.Screen_controller;
+import Spider_mvc.models.hado_Screen.Hado_Translater;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -10,7 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class masterbutton {
-	translate_hado translatehado = new translate_hado();
+	Hado_Translater hado = new Hado_Translater();
 
 	private JButton masterbutton = new JButton();
 
@@ -47,14 +48,14 @@ public class masterbutton {
 
 			}
 		});
-		masterbutton.addActionListener(e -> Gui.showPanel(panelname));
+		masterbutton.addActionListener(e -> Screen_controller.showPanel(panelname));
 	}
 
 	public JButton getMasterbutton() {
 		return masterbutton;
 	}
 
-	public void masterActionListener(mastertextarea input, mastertextarea output) {
-		masterbutton.addActionListener(e -> translatehado.transform(input, output) );
+	public void transletActionListener(mastertextarea input, mastertextarea output) {
+		masterbutton.addActionListener(e -> hado.transform(input, output));
 	}
 }
