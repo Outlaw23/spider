@@ -1,9 +1,9 @@
-package Spider_mvc.main_screen;
+package Spider.main_screen;
 
 
-import Spider_mvc.Controllers.Font_Resizer;
-import Spider_mvc.models.Models_Everywhere.masterbutton;
-import Spider_mvc.models.Models_Everywhere.masterlabel;
+import Spider.Controllers.Font_Resizer;
+import Spider.models.Models_Everywhere.masterbutton;
+import Spider.models.Models_Everywhere.masterlabel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,80 +13,84 @@ import java.util.List;
 import static java.awt.Color.*;
 
 public class Main_Screen_View {
-	// got everything exccept for the data
-	// Method to create and return a JPanel
+
+	// Method to create and return the main screen JPanel
 	public JPanel screenMain() {
 
-		// Create a new JPanel
+		// Create the main panel with BorderLayout
 		JPanel panelMain = new JPanel();
 		panelMain.setLayout(new BorderLayout());
 		panelMain.setPreferredSize(new Dimension(1920, 1080));
 		panelMain.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 20));
 		panelMain.setBackground(new Color(255, 255, 255));
 
-		// sub panels
-		// panel Center
+		// Create sub-panels for layout structure
+		// Center panel
 		JPanel panelMainCenter = new JPanel();
-		panelMainCenter.setLayout(new GridLayout(6,0,5,5));
+		panelMainCenter.setLayout(new GridLayout(6, 0, 5, 5));
 		panelMainCenter.setPreferredSize(new Dimension(1920, 500));
 		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(50, 100, 50, 100));
 		panelMainCenter.setBackground(new Color(95, 102, 107));
 
-		// panel North
+		// North panel (top area)
 		JPanel panelMainNorth = new JPanel();
-		panelMainNorth.setLayout(new GridLayout(0,10,5,0));
+		panelMainNorth.setLayout(new GridLayout(0, 10, 5, 0));
 		panelMainNorth.setPreferredSize(new Dimension(1920, 50));
 		panelMainNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
 		panelMainNorth.setBackground(new Color(38, 66, 87));
 
-		//labels
-
-		// label title
+		// Labels
+		// Title label
 		masterlabel titel = new masterlabel("home", white);
 
-		// hado text
-		masterlabel hadotext = new masterlabel( "<html><font size=30>Hado</font><br/>bij hado heb een translater die die jou text "
-				+"omzet naar hado text</html>", white);
+		// Hado description text
+		masterlabel hadoScreen = new masterlabel(
+				"<html><font size=30>Hado</font><br/>" +
+						"At Hado I have a translator that converts your text to Hado text</html>",
+				white
+		);
 
-		// buttons
+		masterlabel hadoRScreen = new masterlabel(
+				"<html><font size=30>HadoR</font><br/>" +
+						"at hadoR I have a translator who converts that hado text to your text</html>",
+				white
+		);
 
-		// button home
-		masterbutton home = new masterbutton("home","screenMain", darkGray);
+		// Buttons
+		// Home button
+		masterbutton home = new masterbutton("Home", "screenMain", darkGray);
 
-		// button hado
-		masterbutton hado = new masterbutton("hado","screenHado",gray);
+		// Hado button
+		masterbutton hado = new masterbutton("Hado", "screenHado", gray);
 
-		// button screen video
-		masterbutton video = new masterbutton("video","screenVideo",gray);
+		// HadoR (video) button
+		masterbutton video = new masterbutton("HadoR", "screenHadoR", gray);
 
-		// Add panels main screen
+		// Add subpanels to the main panel
 		panelMain.add(panelMainNorth, BorderLayout.NORTH);
 		panelMain.add(panelMainCenter, BorderLayout.CENTER);
 
-		// add  o the panel north
+		// Add components to the north panel
 		panelMainNorth.add(titel.getMasterLabel());
 		panelMainNorth.add(home.getMasterbutton());
 		panelMainNorth.add(hado.getMasterbutton());
 		panelMainNorth.add(video.getMasterbutton());
 
-		// add to panel center
-		panelMainCenter.add(hadotext.getMasterLabel());
+		// Add components to the center panel
+		panelMainCenter.add(hadoScreen.getMasterLabel());
+		panelMainCenter.add(hadoRScreen.getMasterLabel());
 
-		//
-		//
+		// Components that will resize when the window is resized
 		List<JComponent> resizableComponents = Arrays.asList(
 				titel.getMasterLabel(),
 				home.getMasterbutton(),
 				hado.getMasterbutton(),
 				video.getMasterbutton()
-
 		);
 		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
 
-		// Return the panel to be added to the JFrame
+		// Return the main panel
 		return panelMain;
-		// method that receives the data to build the view
-
-
 	}
 }
+
