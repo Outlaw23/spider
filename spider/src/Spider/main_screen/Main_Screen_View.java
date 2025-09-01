@@ -63,7 +63,7 @@ public class Main_Screen_View {
 		// Hado button
 		masterbutton hado = new masterbutton("Hado", "screenHado", gray);
 
-		// HadoR (video) button
+		// HadoR button
 		masterbutton video = new masterbutton("HadoR", "screenHadoR", gray);
 
 		// Add subpanels to the main panel
