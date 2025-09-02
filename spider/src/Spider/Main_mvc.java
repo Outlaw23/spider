@@ -1,7 +1,5 @@
 package Spider;
 
-import Spider.Working_On.Main_Login;
-
 public class Main_mvc {
 	public static void main(String[] args) {
 		// The Entry point of the application
