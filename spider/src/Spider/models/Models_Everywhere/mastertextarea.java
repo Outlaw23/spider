@@ -11,6 +11,9 @@ public class mastertextarea {
 	private static JTextArea output;
 	private static JTextArea inputR;
 	private static JTextArea outputR;
+	private static JTextArea ID;
+	private static JTextArea password;
+
 
 	// Constructor: initializes text areas if they haven't been created yet
 	public mastertextarea() {
@@ -50,6 +53,18 @@ public class mastertextarea {
 			outputR.setBorder(bordertextarea);
 			outputR.setEditable(false);
 		}
+		if (ID == null) {
+			Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
+			ID = new JTextArea();
+			ID.setFont(new Font("Arial", Font.PLAIN, 25));
+			ID.setBorder(bordertextarea);
+		}
+		if (password == null) {
+			Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
+			password = new JTextArea();
+			password.setFont(new Font("Arial", Font.PLAIN, 25));
+			password.setBorder(bordertextarea);
+		}
 	}
 
 	// Returns the main text area
@@ -75,5 +90,11 @@ public class mastertextarea {
 	// Returns the reverse output text area
 	public JTextArea gettextoutputR() {
 		return outputR;
+	}
+	public JTextArea getID() {
+		return ID;
+	}
+	public JTextArea getPassword() {
+		return password;
 	}
 }

@@ -2,6 +2,7 @@ package Spider.models.Models_Everywhere;
 
 
 import Spider.Controllers.Screen_controller;
+import Spider.models.Login.Login_Verification;
 import Spider.models.hado_language.Hado_Translater;
 
 import javax.swing.*;
@@ -13,6 +14,7 @@ import java.awt.event.MouseEvent;
 public class masterbutton {
 	// Hado translator instance used for translation actions
 	Hado_Translater hado = new Hado_Translater();
+	Login_Verification login = new Login_Verification();
 
 	// The actual JButton that will be styled and used
 	private final JButton masterbutton = new JButton();
@@ -73,4 +75,11 @@ public class masterbutton {
 	public void transletRActionListener(mastertextarea inputR, mastertextarea outputR) {
 		masterbutton.addActionListener(_ -> hado.transformR(inputR, outputR));
 	}
-}
+
+	public void loginButtonActionListener(mastertextarea ID, JPasswordField password, masterlabel messageLabel) {
+		masterbutton.addActionListener(_ -> login.loginVerification(ID,password,messageLabel));
+
+		}
+	}
+
+
