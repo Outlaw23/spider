@@ -76,8 +76,8 @@ public class masterbutton {
 		masterbutton.addActionListener(_ -> hado.transformR(inputR, outputR));
 	}
 
-	public void loginButtonActionListener(mastertextarea ID, JPasswordField password, masterlabel messageLabel) {
-		masterbutton.addActionListener(_ -> login.loginVerification(ID,password,messageLabel));
+	public void loginButtonActionListener(mastertextarea ID, masterpasswordfield password, masterlabel messageLabel) {
+		masterbutton.addActionListener(_ -> login.loginVerification(ID, password.getPasswordField(),messageLabel));
 
 		}
 	}

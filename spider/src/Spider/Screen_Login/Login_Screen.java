@@ -3,6 +3,7 @@ package Spider.Screen_Login;
 import Spider.Controllers.Font_Resizer;
 import Spider.models.Models_Everywhere.masterbutton;
 import Spider.models.Models_Everywhere.masterlabel;
+import Spider.models.Models_Everywhere.masterpasswordfield;
 import Spider.models.Models_Everywhere.mastertextarea;
 
 import javax.swing.*;
@@ -54,7 +55,7 @@ public class Login_Screen {
 
 		mastertextarea ID = new mastertextarea();
 
-		JPasswordField password = new JPasswordField();
+		masterpasswordfield password = new masterpasswordfield();
 
 		masterbutton login = new masterbutton("login","", gray);
 		login.loginButtonActionListener(ID,password,messageLabel);
@@ -69,7 +70,7 @@ public class Login_Screen {
 		panelMainCenter.add(login.getMasterbutton());
 		panelMainCenter.add(messageLabel.getMasterLabel());
 		panelMainCenter.add(ID.getID());
-		panelMainCenter.add(password);
+		panelMainCenter.add(password.getPasswordField());
 
 
 		List<JComponent> resizableComponents = Arrays.asList(
@@ -78,7 +79,7 @@ public class Login_Screen {
 				userPassword.getMasterLabel(),
 				messageLabel.getMasterLabel(),
 				ID.getID(),
-				password,
+				password.getPasswordField(),
 				login.getMasterbutton()
 		);
 		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
