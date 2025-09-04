@@ -5,15 +5,26 @@ import javax.swing.border.Border;
 import java.awt.*;
 
 public class masterpasswordfield {
-	JPasswordField passwordField  = new JPasswordField();
 
+	// JPasswordField instance for password input
+	JPasswordField passwordField = new JPasswordField();
+
+	// Constructor to initialize the password field with custom styling
 	public masterpasswordfield() {
-			Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
-			passwordField = new JPasswordField();
-			passwordField.setFont(new Font("Arial", Font.PLAIN, 30)); // set font
-			passwordField.setBorder(bordertextarea); // add border
+		// Create a dark gray border with thickness 3
+		Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
+
+		// Initialize the password field
+		passwordField = new JPasswordField();
+
+		// Set font style and size for the password field
+		passwordField.setFont(new Font("Arial", Font.PLAIN, 30));
+
+		// Apply the custom border to the password field
+		passwordField.setBorder(bordertextarea);
 	}
 
+	// Getter method to return the JPasswordField instance
 	public JPasswordField getPasswordField() {
 		return passwordField;
 	}

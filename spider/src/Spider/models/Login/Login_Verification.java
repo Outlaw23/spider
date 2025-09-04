@@ -8,28 +8,37 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Login_Verification {
+	// Create an instance of User_Data_Login to access stored user data
 	User_Data_Login LoginData = new User_Data_Login();
 
-		public void loginVerification(mastertextarea ID, JPasswordField Password, masterlabel messageLabel) {
+	// Method to verify login credentials
+	public void loginVerification(mastertextarea ID, JPasswordField Password, masterlabel messageLabel) {
 
-			String userID = ID.getID().getText();
-			String password = String.valueOf(Password.getPassword());
+		// Get the user ID from the text field
+		String userID = ID.getID().getText();
+		// Get the password entered by the user and convert it to a String
+		String password = String.valueOf(Password.getPassword());
 
-			if(LoginData.getUserData().containsKey(userID)) {
-				if(LoginData.getUserData().get(userID).equals(password)) {
-					messageLabel.getMasterLabel().setForeground(Color.green);
-					messageLabel.getMasterLabel().setText("Welcome " + userID );
-					Screen_controller.showPanel("screenMain");
-					return;
-				}
-				else {
-					messageLabel.getMasterLabel().setForeground(Color.red);
-					messageLabel.getMasterLabel().setText("wrong password");
-					return;
-				}
+		// Check if the entered user ID exists in the user data
+		if(LoginData.getUserData().containsKey(userID)) {
+			// If user ID exists, check if the password matches
+			if(LoginData.getUserData().get(userID).equals(password)) {
+				// If the password is correct, set success message in green and navigate to main screen
+				messageLabel.getMasterLabel().setForeground(Color.GREEN);
+				messageLabel.getMasterLabel().setText("Welcome " + userID );
+				Screen_controller.showPanel("screenMain");
+				return;
 			}
-
-			messageLabel.getMasterLabel().setForeground(Color.red);
-			messageLabel.getMasterLabel().setText("user does not exist");
+			else {
+				// If the password is incorrect, set error message in red
+				messageLabel.getMasterLabel().setForeground(Color.RED);
+				messageLabel.getMasterLabel().setText("wrong password");
+				return;
+			}
 		}
+
+		// If the user ID does not exist, set error message in red
+		messageLabel.getMasterLabel().setForeground(Color.red);
+		messageLabel.getMasterLabel().setText("user does not exist");
+	}
 }

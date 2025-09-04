@@ -76,7 +76,7 @@ public class HadoR_Screen_View {
 		mastertextarea outputR = new mastertextarea();
 
 		// Translate button for HadoR
-		masterbutton translateR = new masterbutton("translateR", "", gray);
+		masterbutton translateR = new masterbutton("Translate", "", gray);
 
 		// Add action listener to translate input text to output
 		translateR.transletRActionListener(inputR, outputR);

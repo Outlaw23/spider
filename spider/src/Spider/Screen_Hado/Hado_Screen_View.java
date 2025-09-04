@@ -74,7 +74,7 @@ public class Hado_Screen_View {
 		mastertextarea output = new mastertextarea();
 
 		// Translate button
-		masterbutton translate = new masterbutton("translate", "", gray);
+		masterbutton translate = new masterbutton("Translate", "", gray);
 
 		// Add action listener to translate input text to output
 		translate.transletActionListener(input, output);
