@@ -9,14 +9,14 @@ I'm still learning, so I'm tackling new topics that I haven't explored yet with 
 <img align="left" alt="Java" width="50px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"/>
 
 
-#
+
 
 ---
 ### Explanation per screen
 
 #### Login screen 
 In this screen you must log in to access the translator.
-![img.png](spider/Img/Login_Screen.png)
+![Login_Screen.png](spider/Img/Login_Screen.png)
 
 #### Home screen
 On the home screen there are sort of small 
@@ -31,13 +31,10 @@ it will be set to Hado language in the bottom field.
 #### HadoR translate screen
 On HadoR screen you can set Hado language back to your own language,
 it works the same as on the Hado Screen.
-![img.png](spider/Img/HadoR_Screen.png)
+![HadoR_Screen.png](spider/Img/HadoR_Screen.png)
 
 ---
 ### what I'm still working on
-
-
-- Login screen layout
 - User ID and password security 
 - Small bugs
 ---
