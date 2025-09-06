@@ -38,6 +38,10 @@ it works the same as on the Hado Screen.
 - User ID and password security 
 - Small bugs
 ---
+### ideas that are coming
+- work with a database
+- keep words that have all been translated in the database
+---
 
 
     
