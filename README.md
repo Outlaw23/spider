@@ -16,22 +16,22 @@ I'm still learning, so I'm tackling new topics that I haven't explored yet with 
 
 #### Login screen 
 In this screen you must log in to access the translator.
-![Login_Screen.png](spider/Img/Login_Screen.png)
+![Login_Screen.png](Img/Login_Screen.png)
 
 #### Home screen
 On the home screen there are sort of small 
 explanations of what each screen does (besides the home, login screens).
-![img.png](spider/Img/Home_Screen.png)
+![Home_Screen.png](Img/Home_Screen.png)
 
 #### Hado translate screen
 on the hado screen the top field is for your own language if you click on translate 
 it will be set to Hado language in the bottom field.
-![img.png](spider/Img/Hado_Screen.png)
+![Hado_Screen.png](Img/Hado_Screen.png)
 
 #### HadoR translate screen
 On HadoR screen you can set Hado language back to your own language,
 it works the same as on the Hado Screen.
-![HadoR_Screen.png](spider/Img/HadoR_Screen.png)
+![HadoR_Screen.png](Img/HadoR_Screen.png)
 
 ---
 ### what I'm still working on
