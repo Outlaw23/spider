@@ -1,4 +1,4 @@
-package org.example.Spider.main_screen;
+package org.example.Spider.Screen_Main;
 
 
 import org.example.Spider.Controllers.Font_Resizer;
@@ -41,7 +41,7 @@ public class Main_Screen_View {
 
 		// Labels
 		// Title label
-		masterlabel titel = new masterlabel("home", white);
+		masterlabel titel = new masterlabel("Home", white);
 
 		// Hado description text
 		masterlabel hadoScreen = new masterlabel(
@@ -64,7 +64,10 @@ public class Main_Screen_View {
 		masterbutton hado = new masterbutton("Hado", "screenHado", gray);
 
 		// HadoR button
-		masterbutton video = new masterbutton("HadoR", "screenHadoR", gray);
+		masterbutton hadoR = new masterbutton("HadoR", "screenHadoR", gray);
+
+		// Learn button
+		masterbutton Learn = new masterbutton("Learn", "screenLearn", gray);
 
 		// Add subpanels to the main panel
 		panelMain.add(panelMainNorth, BorderLayout.NORTH);
@@ -74,7 +77,8 @@ public class Main_Screen_View {
 		panelMainNorth.add(titel.getMasterLabel());
 		panelMainNorth.add(home.getMasterbutton());
 		panelMainNorth.add(hado.getMasterbutton());
-		panelMainNorth.add(video.getMasterbutton());
+		panelMainNorth.add(hadoR.getMasterbutton());
+		panelMainNorth.add(Learn.getMasterbutton());
 
 		// Add components to the center panel
 		panelMainCenter.add(hadoScreen.getMasterLabel());
@@ -85,7 +89,8 @@ public class Main_Screen_View {
 				titel.getMasterLabel(),
 				home.getMasterbutton(),
 				hado.getMasterbutton(),
-				video.getMasterbutton()
+				hadoR.getMasterbutton(),
+				Learn.getMasterbutton()
 		);
 		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
 

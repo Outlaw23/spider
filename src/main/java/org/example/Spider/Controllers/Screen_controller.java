@@ -3,9 +3,10 @@ package org.example.Spider.Controllers;
 
 import org.example.Spider.Screen_Hado.Hado_Screen_View;
 import org.example.Spider.Screen_HadoR.HadoR_Screen_View;
+import org.example.Spider.Screen_Learn_Hado.Learn_Hado_Screen;
 import org.example.Spider.Screen_Login.Login_Screen;
 import org.example.Spider.models.Login.User_Data_Login;
-import org.example.Spider.main_screen.Main_Screen_View;
+import org.example.Spider.Screen_Main.Main_Screen_View;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,12 +38,14 @@ public class Screen_controller {
 		Main_Screen_View view_main = new Main_Screen_View();
 		Hado_Screen_View hado_screen = new Hado_Screen_View();
 		HadoR_Screen_View video_screen = new HadoR_Screen_View();
+		Learn_Hado_Screen learn_screen = new Learn_Hado_Screen();
 
 		// Add the views to the main panel with unique identifiers
 		mainPanel.add(login_screen.Login_screen(user.getUserData()), "screenLogin");
 		mainPanel.add(view_main.screenMain(), "screenMain");
 		mainPanel.add(hado_screen.screenHado(), "screenHado");
 		mainPanel.add(video_screen.screenHadoR(), "screenHadoR");
+		mainPanel.add(learn_screen.Learn_Hado_screen(), "screenLearn");
 
 		// Show the initial screen
 		cardLayout.show(mainPanel, "screenLogin");

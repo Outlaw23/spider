@@ -56,7 +56,7 @@ public class HadoR_Screen_View {
 
 		// Labels
 		// Title label
-		masterlabel titel = new masterlabel("hado", white);
+		masterlabel titel = new masterlabel("HadoR", white);
 
 		// Buttons
 		// Home button
@@ -65,8 +65,11 @@ public class HadoR_Screen_View {
 		// Hado button
 		masterbutton hado = new masterbutton("Hado", "screenHado", gray);
 
-		// HadoR (video) button
-		masterbutton video = new masterbutton("HadoR", "screenVideo", darkGray);
+		// HadoR (hadoR) button
+		masterbutton hadoR = new masterbutton("HadoR", "screenVideo", darkGray);
+
+		// Learn button
+		masterbutton Learn = new masterbutton("Learn", "screenLearn", gray);
 
 		// Text areas
 		// Input text area
@@ -89,7 +92,8 @@ public class HadoR_Screen_View {
 		panelHadoNorth.add(titel.getMasterLabel());
 		panelHadoNorth.add(home.getMasterbutton());
 		panelHadoNorth.add(hado.getMasterbutton());
-		panelHadoNorth.add(video.getMasterbutton());
+		panelHadoNorth.add(hadoR.getMasterbutton());
+		panelHadoNorth.add(Learn.getMasterbutton());
 
 		// Add subpanels to the center panel
 		panelHadoCenter.add(panelHadoButtons, BorderLayout.NORTH);
@@ -107,7 +111,8 @@ public class HadoR_Screen_View {
 				titel.getMasterLabel(),
 				home.getMasterbutton(),
 				hado.getMasterbutton(),
-				video.getMasterbutton(),
+				hadoR.getMasterbutton(),
+				Learn.getMasterbutton(),
 				translateR.getMasterbutton(),
 				inputR.gettextinputR(),
 				outputR.gettextoutputR()

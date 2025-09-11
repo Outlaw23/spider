@@ -35,12 +35,14 @@ it works the same as on the Hado Screen.
 
 ---
 ### what I'm still working on
-- User ID and password security 
+- Learn screen
+- User ID and password security
 - Small bugs
 ---
 ### ideas that are coming
 - work with a database
-- keep words that have all been translated in the database
+- keep a catalog for translation words
+- working with hibernate
 ---
 
 
