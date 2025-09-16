@@ -6,38 +6,60 @@ import org.example.Spider.models.Models_Everywhere.mastertextarea;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class Login_Verification {
-	// Create an instance of User_Data_Login to access stored user data
-	User_Data_Login LoginData = new User_Data_Login();
 
-	// Method to verify login credentials
+	/**
+	 * Verifies the login of a user by comparing the entered ID and password
+	 * with the credentials stored in the database.
+	 */
 	public void loginVerification(mastertextarea ID, JPasswordField Password, masterlabel messageLabel) {
-
-		// Get the user ID from the text field
+		// Retrieve entered username and password
 		String userID = ID.getID().getText();
-		// Get the password entered by the user and convert it to a String
 		String password = String.valueOf(Password.getPassword());
 
-		// Check if the entered user ID exists in the user data
-		if(LoginData.getUserData().containsKey(userID)) {
-			// If user ID exists, check if the password matches
-			if(LoginData.getUserData().get(userID).equals(password)) {
-				// If the password is correct, set success message in green and navigate to main screen
-				messageLabel.getMasterLabel().setForeground(Color.GREEN);
-				messageLabel.getMasterLabel().setText("Welcome " + userID );
-				Screen_controller.showPanel("screenMain");
-			}
-			else {
-				// If the password is incorrect, set error message in red
-				messageLabel.getMasterLabel().setForeground(Color.RED);
-				messageLabel.getMasterLabel().setText("wrong password");
-			}
-			return;
-		}
+		// SQL query to fetch the user's password
+		String query = "SELECT password FROM users WHERE username = ?";
 
-		// If the user ID does not exist, set error message in red
-		messageLabel.getMasterLabel().setForeground(Color.red);
-		messageLabel.getMasterLabel().setText("user does not exist");
+		// Try connecting to the database and execute the query
+		try (Connection conn = Login_Connecter.getConnection();
+			 PreparedStatement stmt = conn.prepareStatement(query)) {
+
+			// Set the username parameter in the SQL query
+			stmt.setString(1, userID);
+			ResultSet rs = stmt.executeQuery();
+
+			// Check if the user exists
+			if (rs.next()) {
+				String dbPassword = rs.getString("password");
+
+				// Compare entered password with password from the database
+				if (dbPassword.equals(password)) { // later can be replaced with hash-check
+					// Successful login
+					messageLabel.getMasterLabel().setForeground(Color.GREEN);
+					messageLabel.getMasterLabel().setText("Welcome " + userID);
+
+					// Show the main screen
+					Screen_controller.showPanel("screenMain");
+				} else {
+					// Wrong password
+					messageLabel.getMasterLabel().setForeground(Color.RED);
+					messageLabel.getMasterLabel().setText("wrong password");
+				}
+			} else {
+				// User does not exist
+				messageLabel.getMasterLabel().setForeground(Color.RED);
+				messageLabel.getMasterLabel().setText("user does not exist");
+			}
+
+		} catch (Exception e) {
+			// Error during database connection or query execution
+			e.printStackTrace();
+			messageLabel.getMasterLabel().setForeground(Color.RED);
+			messageLabel.getMasterLabel().setText("Database error");
+		}
 	}
 }
