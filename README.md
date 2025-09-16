@@ -33,13 +33,17 @@ On HadoR screen you can set Hado language back to your own language,
 it works the same as on the Hado Screen.
 ![HadoR_Screen.png](Img/HadoR_Screen.png)
 
+### Hado Learning Screen
+Here are the buttons for the assignment to learn hado
+![Hado_Learn_Screen.png](Img/Hado_Learn_Screen.png)
 ---
 ### what I'm still working on
-- Learn screen
-- User ID and password security
+- learn screens
+- assignments to learn hado
 - Small bugs
 ---
 ### ideas that are coming
+- User ID and password security
 - work with a database
 - keep a catalog for translation words
 - working with hibernate

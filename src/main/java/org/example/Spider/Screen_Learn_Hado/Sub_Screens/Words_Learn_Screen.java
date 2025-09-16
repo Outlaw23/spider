@@ -1,4 +1,4 @@
-package org.example.Spider.Screen_Learn_Hado;
+package org.example.Spider.Screen_Learn_Hado.Sub_Screens;
 
 import org.example.Spider.Controllers.Font_Resizer;
 import org.example.Spider.models.Models_Everywhere.masterbutton;
@@ -12,10 +12,9 @@ import java.util.List;
 import static java.awt.Color.*;
 import static java.awt.Color.gray;
 
-public class Learn_Hado_Screen {
-
+public class Words_Learn_Screen {
 	// Method to create and return the main screen JPanel
-	public JPanel Learn_Hado_screen() {
+	public JPanel Words_Learn_screen () {
 
 		// Create the main panel with BorderLayout
 		JPanel panelMain = new JPanel();
@@ -27,7 +26,7 @@ public class Learn_Hado_Screen {
 		// Create sub-panels for layout structure
 		// Center panel
 		JPanel panelMainCenter = new JPanel();
-		panelMainCenter.setLayout(new GridLayout(6, 0, 5, 5));
+		panelMainCenter.setLayout(new GridLayout(2, 0, 5, 5));
 		panelMainCenter.setPreferredSize(new Dimension(1920, 500));
 		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(50, 100, 50, 100));
 		panelMainCenter.setBackground(new Color(95, 102, 107));
@@ -39,10 +38,18 @@ public class Learn_Hado_Screen {
 		panelMainNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
 		panelMainNorth.setBackground(new Color(38, 66, 87));
 
+		// panel buttons
+		JPanel panelButtons = new JPanel();
+		panelButtons.setLayout(new GridLayout(5, 5, 5, 5));
+		panelButtons.setPreferredSize(new Dimension(100, 50));
+		panelButtons.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+		panelButtons.setBackground(new Color(44, 55, 25));
+
+
 		// Labels
 		// Title label
-		masterlabel titel = new masterlabel("Learn", white);
-		
+		masterlabel titel = new masterlabel("Words", white);
+
 		// Buttons
 		// Home button
 		masterbutton home = new masterbutton("Home", "screenMain", gray);
@@ -54,7 +61,7 @@ public class Learn_Hado_Screen {
 		masterbutton hadoR = new masterbutton("HadoR", "screenHadoR", gray);
 
 		// Learn button
-		masterbutton Learn = new masterbutton("Learn", "screenLearn", darkGray);
+		masterbutton Learn = new masterbutton("Learn", "screenLearn", gray);
 
 		// Add subpanels to the main panel
 		panelMain.add(panelMainNorth, BorderLayout.NORTH);
@@ -68,7 +75,7 @@ public class Learn_Hado_Screen {
 		panelMainNorth.add(Learn.getMasterbutton());
 
 		// Add components to the center panel
-
+		panelMainCenter.add(panelButtons);
 
 		// Components that will resize when the window is resized
 		List<JComponent> resizableComponents = Arrays.asList(
@@ -83,5 +90,4 @@ public class Learn_Hado_Screen {
 		// Return the main panel
 		return panelMain;
 	}
-
 }

@@ -80,6 +80,23 @@ public class masterbutton {
 		masterbutton.addActionListener(e -> login.loginVerification(ID, password.getPasswordField(),messageLabel));
 
 		}
+
+	public void showPanelOpdrachten(String opdrachtPanelName) {
+		masterbutton.addActionListener(e -> Screen_controller.showPanel(opdrachtPanelName));
 	}
 
+	public masterbutton setName (String name){
+		masterbutton.setText(name);
+		return this;
+	}
+
+	public masterbutton setPanelname(String panelname){
+		masterbutton.setText(panelname);
+		return this;
+	}
+
+	public void setEnabled(boolean b) {
+		masterbutton.setEnabled(b);
+	}
+}
 

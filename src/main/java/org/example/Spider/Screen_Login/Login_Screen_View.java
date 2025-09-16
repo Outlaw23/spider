@@ -15,7 +15,7 @@ import java.util.List;
 import static java.awt.Color.gray;
 import static java.awt.Color.white;
 
-public class Login_Screen {
+public class Login_Screen_View {
 
 
 	// Method to create and return the Login Screen panel
