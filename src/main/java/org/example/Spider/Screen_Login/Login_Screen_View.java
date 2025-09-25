@@ -30,7 +30,7 @@ public class Login_Screen_View {
 
 		// Center panel for login content
 		JPanel panelMainCenter = new JPanel();
-		panelMainCenter.setLayout(new GridLayout(1, 30, 0, 0));
+		panelMainCenter.setLayout(new GridLayout(0, 4, 0, 0));
 		panelMainCenter.setPreferredSize(new Dimension(1920, 1080));
 		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(50, 100, 50, 100));
 		panelMainCenter.setBackground(new Color(95, 102, 107));

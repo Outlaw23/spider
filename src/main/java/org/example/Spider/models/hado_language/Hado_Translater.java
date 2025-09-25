@@ -1,7 +1,10 @@
 	package org.example.Spider.models.hado_language;
 
 
+	import org.example.Spider.models.Learn.List_Of_Words;
 	import org.example.Spider.models.Models_Everywhere.mastertextarea;
+
+	import java.util.List;
 
 	public class Hado_Translater {
 
@@ -34,5 +37,17 @@
 			// Set translated text in output
 			outputR.gettextoutputR().setText(translator.toString());
 		}
-	}
 
+		public void getWords() {
+			List<String> words = List_Of_Words.list_of_words_op1();
+			for (String word : words) {
+				StringBuilder translator = new StringBuilder();
+				for (char c : word.toCharArray()) {
+					translator.append(HadoLanguageMvc.hadoLanguagee(String.valueOf(c)));
+
+				}
+				System.out.println(translator);
+			}
+
+		}
+	}

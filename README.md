@@ -41,6 +41,7 @@ Here are the buttons for the assignment to learn hado
 - learn screens
 - assignments to learn hado
 - Small bugs
+- functions screen wordss
 ---
 ### ideas that are coming
 - User ID and password security

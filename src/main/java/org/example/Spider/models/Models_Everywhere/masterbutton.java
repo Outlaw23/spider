@@ -98,5 +98,11 @@ public class masterbutton {
 	public void setEnabled(boolean b) {
 		masterbutton.setEnabled(b);
 	}
+
+	public void showWords() {
+		masterbutton.addActionListener(e ->hado.getWords());
+	}
+
+
 }
 

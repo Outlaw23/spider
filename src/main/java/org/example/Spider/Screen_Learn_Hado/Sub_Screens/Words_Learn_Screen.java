@@ -1,18 +1,21 @@
 package org.example.Spider.Screen_Learn_Hado.Sub_Screens;
 
 import org.example.Spider.Controllers.Font_Resizer;
+import org.example.Spider.models.Learn.List_Of_Words;
+import org.example.Spider.models.Models_Everywhere.masterTextField;
 import org.example.Spider.models.Models_Everywhere.masterbutton;
 import org.example.Spider.models.Models_Everywhere.masterlabel;
+import org.example.Spider.models.hado_language.HadoLanguageMvc;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.awt.Color.*;
-import static java.awt.Color.gray;
 
 public class Words_Learn_Screen {
+
 	// Method to create and return the main screen JPanel
 	public JPanel Words_Learn_screen () {
 
@@ -26,7 +29,7 @@ public class Words_Learn_Screen {
 		// Create sub-panels for layout structure
 		// Center panel
 		JPanel panelMainCenter = new JPanel();
-		panelMainCenter.setLayout(new GridLayout(2, 0, 5, 5));
+		panelMainCenter.setLayout(new BorderLayout());
 		panelMainCenter.setPreferredSize(new Dimension(1920, 500));
 		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(50, 100, 50, 100));
 		panelMainCenter.setBackground(new Color(95, 102, 107));
@@ -38,17 +41,67 @@ public class Words_Learn_Screen {
 		panelMainNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
 		panelMainNorth.setBackground(new Color(38, 66, 87));
 
-		// panel buttons
-		JPanel panelButtons = new JPanel();
-		panelButtons.setLayout(new GridLayout(5, 5, 5, 5));
-		panelButtons.setPreferredSize(new Dimension(100, 50));
-		panelButtons.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		panelButtons.setBackground(new Color(44, 55, 25));
+		//panel top buttons
+		JPanel paneltop = new JPanel();
+		paneltop.setLayout(new  BorderLayout());
+		paneltop.setPreferredSize(new Dimension(1920, 75));
+		paneltop.setBorder(BorderFactory.createEmptyBorder(15, 30, 15, 30));
+		paneltop.setBackground(new Color(52, 62, 69));
+
+		//panel top label
+		JPanel panelTopLabel = new JPanel();
+		panelTopLabel.setLayout(new BorderLayout());
+		panelTopLabel.setPreferredSize(new Dimension(450, 50));
+		panelTopLabel.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 30));
+		panelTopLabel.setBackground(new Color(52, 62, 69));
+
+		//panel to buttons
+		JPanel panelTopButtons = new JPanel();
+		panelTopButtons.setLayout(new GridLayout(0, 3, 5, 5));
+		panelTopButtons.setPreferredSize(new Dimension(450, 50));
+		panelTopButtons.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 30));
+		panelTopButtons.setBackground(new Color(52, 62, 69));
+
+		// panel words
+		JPanel panelWords = new JPanel();
+		panelWords.setLayout(new GridLayout(10,0,5,5));
+		panelWords.setPreferredSize(new Dimension(200, 50));
+		panelWords.setBorder(BorderFactory.createEmptyBorder(5, 55, 5, 30));
+		panelWords.setBackground(new Color(75, 89, 74));
+
+		// panel invoer
+		JPanel panelInvoer = new JPanel();
+		panelInvoer.setLayout(new GridLayout(10,6,5,5));
+		panelInvoer.setPreferredSize(new Dimension(1920, 75));
+		panelInvoer.setBorder(BorderFactory.createEmptyBorder(15, 30, 15, 30));
+		panelInvoer.setBackground(new Color(75, 89, 74));
+
 
 
 		// Labels
 		// Title label
 		masterlabel titel = new masterlabel("Words", white);
+
+		//op1 label
+		masterlabel op1Titel = new masterlabel("  guess words", white);
+
+		// words label
+		// words in een lijst
+		List<String> wordsList = List_Of_Words.list_of_words_op1();
+		List<masterlabel> wordList = new ArrayList<>();
+		// for elke woord in het lijst:
+		for (String words : wordsList) {
+			masterlabel word = new masterlabel(words, white);
+			StringBuilder wordlist = new StringBuilder();
+			for (char c : words.toCharArray()) {
+				wordlist.append(HadoLanguageMvc.hadoLanguagee(String.valueOf(c)));
+				wordList.add(word);
+			}
+			word.getMasterLabel().setText(wordlist.toString());
+			panelWords.add(word.getMasterLabel());
+		}
+
+
 
 		// Buttons
 		// Home button
@@ -63,6 +116,24 @@ public class Words_Learn_Screen {
 		// Learn button
 		masterbutton Learn = new masterbutton("Learn", "screenLearn", gray);
 
+		// Back button
+		masterbutton Back = new masterbutton("Back", "screenLearn", gray);
+
+		// Reset button
+		masterbutton Reset = new masterbutton("reset", "", gray);
+		Reset.showWords();
+
+		// submit button
+		masterbutton Submit = new masterbutton("Submit", "", gray);
+
+		//textfield
+		//Quess field
+		List<masterTextField> GuessList = new ArrayList<>();
+		for (int i = 0; i  < 60; i++) {
+			masterTextField guess = new masterTextField("", black);
+			GuessList.add(guess);
+			panelInvoer.add(guess.getMasterTextFiedD());
+		}
 		// Add subpanels to the main panel
 		panelMain.add(panelMainNorth, BorderLayout.NORTH);
 		panelMain.add(panelMainCenter, BorderLayout.CENTER);
@@ -74,17 +145,45 @@ public class Words_Learn_Screen {
 		panelMainNorth.add(hadoR.getMasterbutton());
 		panelMainNorth.add(Learn.getMasterbutton());
 
-		// Add components to the center panel
-		panelMainCenter.add(panelButtons);
+		//Add components to the Center panel
+		panelMainCenter.add(paneltop, BorderLayout.NORTH);
+		panelMainCenter.add(panelWords, BorderLayout.WEST);
+		panelMainCenter.add(panelInvoer, BorderLayout.CENTER);
+
+		// Add components to the Top panel
+		paneltop.add(panelTopLabel, BorderLayout.CENTER);
+		paneltop.add(panelTopButtons, BorderLayout.WEST);
+
+		// Add components to the Top buttons panel
+		panelTopButtons.add(Back.getMasterbutton());
+		panelTopButtons.add(Reset.getMasterbutton());
+		panelTopButtons.add(Submit.getMasterbutton());
+
+		//Add components to the Top label panel
+		panelTopLabel.add(op1Titel.getMasterLabel(), BorderLayout.CENTER);
+		// Add components to the Words panel
+
+
 
 		// Components that will resize when the window is resized
-		List<JComponent> resizableComponents = Arrays.asList(
-				titel.getMasterLabel(),
-				home.getMasterbutton(),
-				hado.getMasterbutton(),
-				hadoR.getMasterbutton(),
-				Learn.getMasterbutton()
-		);
+		List<JComponent> resizableComponents = new ArrayList<>();
+
+		// vaste onderdelen
+		resizableComponents.add(titel.getMasterLabel());
+		resizableComponents.add(home.getMasterbutton());
+		resizableComponents.add(hado.getMasterbutton());
+		resizableComponents.add(hadoR.getMasterbutton());
+		resizableComponents.add(Learn.getMasterbutton());
+		resizableComponents.add(Back.getMasterbutton());
+		resizableComponents.add(Reset.getMasterbutton());
+		resizableComponents.add(op1Titel.getMasterLabel());
+		resizableComponents.add(Submit.getMasterbutton());
+		for (masterTextField tf : GuessList) {
+			resizableComponents.add(tf.getMasterTextFiedD());
+		}
+		for (masterlabel wo : wordList) {
+			resizableComponents.add(wo.getMasterLabel());
+		}
 		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
 
 		// Return the main panel

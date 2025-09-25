@@ -51,7 +51,7 @@ public class Screen_controller {
 		mainPanel.add(wordsLearnScreen.Words_Learn_screen(), "wordsLearn");
 
 		// Show the initial screen
-		cardLayout.show(mainPanel, "screenMain");
+		cardLayout.show(mainPanel, "screenLogin");
 
 		// Add the main panel to the frame
 		frame.add(mainPanel);
