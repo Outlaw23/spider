@@ -65,7 +65,7 @@ public class Words_Learn_Screen {
 		// panel words
 		JPanel panelWords = new JPanel();
 		panelWords.setLayout(new GridLayout(10,0,5,5));
-		panelWords.setPreferredSize(new Dimension(200, 50));
+		panelWords.setPreferredSize(new Dimension(220, 50));
 		panelWords.setBorder(BorderFactory.createEmptyBorder(5, 55, 5, 30));
 		panelWords.setBackground(new Color(75, 89, 74));
 
@@ -158,6 +158,7 @@ public class Words_Learn_Screen {
 		panelTopButtons.add(Back.getMasterbutton());
 		panelTopButtons.add(Reset.getMasterbutton());
 		panelTopButtons.add(Submit.getMasterbutton());
+
 
 		//Add components to the Top label panel
 		panelTopLabel.add(op1Titel.getMasterLabel(), BorderLayout.CENTER);
