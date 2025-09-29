@@ -12,11 +12,14 @@ public class masterTextField {
 		masterTextFiedD.setText(text);
 		masterTextFiedD.setFont(new Font("Arial", Font.PLAIN, 30));
 		masterTextFiedD.setForeground(coler);
+		masterTextFiedD.setOpaque(true);
 	};
 
 	public JTextField getMasterTextFiedD() {
 		return masterTextFiedD;
 	}
+
+
 
 
 }

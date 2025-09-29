@@ -78,7 +78,7 @@ public class Learn_Hado_Screen_View {
 		}
 
 //		opdrachten.get(0).setPanelname("OP_1");
-		opdrachten.get(0).showPanelOpdrachten("wordsLearn");
+		opdrachten.get(0).showPanelOpdrachten("wordsExplanation");
 
 		opdrachten.subList(1, 25).forEach(mb -> mb.setEnabled(false));
 

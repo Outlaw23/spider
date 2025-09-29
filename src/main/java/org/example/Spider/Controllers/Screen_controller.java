@@ -4,8 +4,9 @@ package org.example.Spider.Controllers;
 import org.example.Spider.Screen_Hado.Hado_Screen_View;
 import org.example.Spider.Screen_HadoR.HadoR_Screen_View;
 import org.example.Spider.Screen_Learn_Hado.Learn_Hado_Screen_View;
+import org.example.Spider.Screen_Learn_Hado.Sub_Screens.Explaining_The_Assignment.Words_Explanation;
 import org.example.Spider.Screen_Login.Login_Screen_View;
-import org.example.Spider.Screen_Learn_Hado.Sub_Screens.Words_Learn_Screen;
+import org.example.Spider.Screen_Learn_Hado.Sub_Screens.Assignments.Words_Learn_Screen;
 import org.example.Spider.Screen_Main.Main_Screen_View;
 import org.example.Spider.models.Login.User_Data_Login;
 
@@ -41,6 +42,7 @@ public class Screen_controller {
 		HadoR_Screen_View video_screen = new HadoR_Screen_View();
 		Learn_Hado_Screen_View learn_screen = new Learn_Hado_Screen_View();
 		Words_Learn_Screen wordsLearnScreen =  new Words_Learn_Screen();
+		Words_Explanation wordsExplanationScreen = new Words_Explanation();
 
 		// Add the views to the main panel with unique identifiers
 		mainPanel.add(login_screen.Login_screen(user.getUserData()), "screenLogin");
@@ -49,9 +51,10 @@ public class Screen_controller {
 		mainPanel.add(video_screen.screenHadoR(), "screenHadoR");
 		mainPanel.add(learn_screen.Learn_Hado_screen(), "screenLearn");
 		mainPanel.add(wordsLearnScreen.Words_Learn_screen(), "wordsLearn");
+		mainPanel.add(wordsExplanationScreen.screenWordsExplanation(), "wordsExplanation");
 
 		// Show the initial screen
-		cardLayout.show(mainPanel, "screenLogin");
+		cardLayout.show(mainPanel, "screenMain");
 
 		// Add the main panel to the frame
 		frame.add(mainPanel);

@@ -63,14 +63,11 @@ public class List_Of_Words {
 		Random rand = new Random();
 		while (Op1Ten.size() < 10) {
 			int random = rand.nextInt(49);
-			Op1Ten.add(Op1.get(random));;
+			String word = Op1.get(random).toLowerCase();
+			if (!Op1Ten.contains(word)) {
+				Op1Ten.add(word);;
+			}
 		}
 		return Op1Ten;
 	}
-
-
-
-
-
-
 }

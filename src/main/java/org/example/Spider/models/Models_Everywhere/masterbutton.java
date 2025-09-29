@@ -2,6 +2,7 @@ package org.example.Spider.models.Models_Everywhere;
 
 
 import org.example.Spider.Controllers.Screen_controller;
+import org.example.Spider.models.Learn.Check_Word;
 import org.example.Spider.models.Login.Login_Verification;
 import org.example.Spider.models.hado_language.Hado_Translater;
 
@@ -10,11 +11,13 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 public class masterbutton {
 	// Hado translator instance used for translation actions
 	Hado_Translater hado = new Hado_Translater();
 	Login_Verification login = new Login_Verification();
+	Check_Word check = new Check_Word();
 
 	// The actual JButton that will be styled and used
 	private final JButton masterbutton = new JButton();
@@ -101,6 +104,10 @@ public class masterbutton {
 
 	public void showWords() {
 		masterbutton.addActionListener(e ->hado.getWords());
+	}
+
+	public void checkWords(List<masterTextField> GuessList) {
+		masterbutton.addActionListener(e -> check.checkWord(GuessList));
 	}
 
 

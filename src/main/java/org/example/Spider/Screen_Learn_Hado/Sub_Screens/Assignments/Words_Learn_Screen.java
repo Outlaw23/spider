@@ -1,4 +1,4 @@
-package org.example.Spider.Screen_Learn_Hado.Sub_Screens;
+package org.example.Spider.Screen_Learn_Hado.Sub_Screens.Assignments;
 
 import org.example.Spider.Controllers.Font_Resizer;
 import org.example.Spider.models.Learn.List_Of_Words;
@@ -31,7 +31,7 @@ public class Words_Learn_Screen {
 		JPanel panelMainCenter = new JPanel();
 		panelMainCenter.setLayout(new BorderLayout());
 		panelMainCenter.setPreferredSize(new Dimension(1920, 500));
-		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(50, 100, 50, 100));
+		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 		panelMainCenter.setBackground(new Color(95, 102, 107));
 
 		// North panel (top area)
@@ -117,18 +117,19 @@ public class Words_Learn_Screen {
 		masterbutton Learn = new masterbutton("Learn", "screenLearn", gray);
 
 		// Back button
-		masterbutton Back = new masterbutton("Back", "screenLearn", gray);
+		masterbutton Back = new masterbutton("Back", "wordsExplanation", gray);
 
 		// Reset button
 		masterbutton Reset = new masterbutton("reset", "", gray);
-		Reset.showWords();
 
 		// submit button
 		masterbutton Submit = new masterbutton("Submit", "", gray);
+		List<masterTextField> GuessList = new ArrayList<>();
+		Submit.checkWords(GuessList);
 
 		//textfield
 		//Quess field
-		List<masterTextField> GuessList = new ArrayList<>();
+
 		for (int i = 0; i  < 60; i++) {
 			masterTextField guess = new masterTextField("", black);
 			GuessList.add(guess);
