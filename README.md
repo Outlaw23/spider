@@ -33,11 +33,21 @@ On HadoR screen you can set Hado language back to your own language,
 it works the same as on the Hado Screen.
 ![HadoR_Screen.png](Img/HadoR_Screen.png)
 
-### Hado Learning Screen
+#### Hado Learning Screen
 Here are the buttons for the assignment to learn hado
 ![Hado_Learn_Screen.png](Img/Hado_Learn_Screen.png)
+
+#### words assignment explanation
+here is the explanation of assignment 1
+![Words_Explanation.png](Img/Words_Explanation.png)
+
+#### assignment words (assignment 1)
+here is assignment words 
+![Assignment_Words.png](Img/Assignment_Words.png)
+
 ---
 ### what I'm still working on
+- better structure for my code
 - learn screens
 - assignments to learn hado
 - Small bugs
@@ -49,6 +59,7 @@ Here are the buttons for the assignment to learn hado
 - keep a catalog for translation words
 - working with hibernate
 ---
+
 
 
     
