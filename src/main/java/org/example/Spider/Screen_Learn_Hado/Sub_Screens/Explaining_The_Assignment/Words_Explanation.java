@@ -13,6 +13,7 @@ import static java.awt.Color.*;
 import static java.awt.Color.gray;
 
 public class Words_Explanation {
+	public masterbutton Start = null;
 
 	public JPanel screenWordsExplanation() {
 
@@ -86,6 +87,7 @@ public class Words_Explanation {
 
 		//start button
 		masterbutton Start = new masterbutton("Start", "wordsLearn", gray);
+		//Start.start(guess);
 
 		// Add subpanels to the main panel
 		panelMain.add(panelMainNorth, BorderLayout.NORTH);
@@ -104,6 +106,7 @@ public class Words_Explanation {
 
 		// Add components to the Start button panel
 		panelStartButton.add(Start.getMasterbutton());
+
 
 		// Components that will resize when the window is resized
 		List<JComponent> resizableComponents = Arrays.asList(

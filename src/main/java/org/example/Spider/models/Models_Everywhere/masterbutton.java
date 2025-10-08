@@ -3,6 +3,7 @@ package org.example.Spider.models.Models_Everywhere;
 
 import org.example.Spider.Controllers.Screen_controller;
 import org.example.Spider.models.Learn.Check_Word;
+import org.example.Spider.models.Learn.List_Maker;
 import org.example.Spider.models.Login.Login_Verification;
 import org.example.Spider.models.hado_language.Hado_Translater;
 
@@ -18,6 +19,7 @@ public class masterbutton {
 	Hado_Translater hado = new Hado_Translater();
 	Login_Verification login = new Login_Verification();
 	Check_Word check = new Check_Word();
+	List_Maker maker = new List_Maker();
 
 	// The actual JButton that will be styled and used
 	private final JButton masterbutton = new JButton();
@@ -80,20 +82,20 @@ public class masterbutton {
 	}
 
 	public void loginButtonActionListener(mastertextarea ID, masterpasswordfield password, masterlabel messageLabel) {
-		masterbutton.addActionListener(e -> login.loginVerification(ID, password.getPasswordField(),messageLabel));
+		masterbutton.addActionListener(e -> login.loginVerification(ID, password.getPasswordField(), messageLabel));
 
-		}
+	}
 
 	public void showPanelOpdrachten(String opdrachtPanelName) {
 		masterbutton.addActionListener(e -> Screen_controller.showPanel(opdrachtPanelName));
 	}
 
-	public masterbutton setName (String name){
+	public masterbutton setName(String name) {
 		masterbutton.setText(name);
 		return this;
 	}
 
-	public masterbutton setPanelname(String panelname){
+	public masterbutton setPanelname(String panelname) {
 		masterbutton.setText(panelname);
 		return this;
 	}
@@ -102,14 +104,16 @@ public class masterbutton {
 		masterbutton.setEnabled(b);
 	}
 
-	public void showWords() {
-		masterbutton.addActionListener(e ->hado.getWords());
+	public void getWords(JPanel panelWords) {
+		masterbutton.addActionListener(e -> hado.getWords(panelWords));
 	}
 
-	public void checkWords(List<masterTextField> GuessList) {
+	public void checkWords(List<masterTextPane> GuessList) {
 		masterbutton.addActionListener(e -> check.checkWord(GuessList));
 	}
 
-
+	public void start(masterTextPane guess) {
+		masterbutton.addActionListener(e -> {check.Rows(guess);});
+	}
 }
 

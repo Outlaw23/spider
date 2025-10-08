@@ -1,11 +1,14 @@
 package org.example.Spider.Screen_Learn_Hado.Sub_Screens.Assignments;
 
 import org.example.Spider.Controllers.Font_Resizer;
-import org.example.Spider.models.Learn.List_Of_Words;
-import org.example.Spider.models.Models_Everywhere.masterTextField;
+import org.example.Spider.models.Learn.List_Maker;
+import org.example.Spider.models.Models_Everywhere.masterTextPane;
 import org.example.Spider.models.Models_Everywhere.masterbutton;
 import org.example.Spider.models.Models_Everywhere.masterlabel;
 import org.example.Spider.models.hado_language.HadoLanguageMvc;
+import org.example.Spider.models.hado_language.Hado_Translater;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,6 +18,9 @@ import java.util.List;
 import static java.awt.Color.*;
 
 public class Words_Learn_Screen {
+	Hado_Translater hado = new Hado_Translater();
+
+	private static final Logger log = LoggerFactory.getLogger(Words_Learn_Screen.class);
 
 	// Method to create and return the main screen JPanel
 	public JPanel Words_Learn_screen () {
@@ -87,10 +93,11 @@ public class Words_Learn_Screen {
 
 		// words label
 		// words in een lijst
-		List<String> wordsList = List_Of_Words.list_of_words_op1();
+
+		List<String> woorden = List_Maker.getWoorden();
 		List<masterlabel> wordList = new ArrayList<>();
-		// for elke woord in het lijst:
-		for (String words : wordsList) {
+
+		for (String words : woorden) {
 			masterlabel word = new masterlabel(words, white);
 			StringBuilder wordlist = new StringBuilder();
 			for (char c : words.toCharArray()) {
@@ -121,20 +128,23 @@ public class Words_Learn_Screen {
 
 		// Reset button
 		masterbutton Reset = new masterbutton("reset", "", gray);
+		Reset.getWords(panelWords);
 
 		// submit button
 		masterbutton Submit = new masterbutton("Submit", "", gray);
-		List<masterTextField> GuessList = new ArrayList<>();
+		List<masterTextPane> GuessList = new ArrayList<>();
 		Submit.checkWords(GuessList);
 
 		//textfield
 		//Quess field
-
+		masterTextPane guess = null;
 		for (int i = 0; i  < 60; i++) {
-			masterTextField guess = new masterTextField("", black);
+			guess = new masterTextPane("", black);
 			GuessList.add(guess);
-			panelInvoer.add(guess.getMasterTextFiedD());
+			panelInvoer.add(guess.getMasterTextPane());
+			guess.getMasterTextPane().setEditable(true);
 		}
+
 		// Add subpanels to the main panel
 		panelMain.add(panelMainNorth, BorderLayout.NORTH);
 		panelMain.add(panelMainCenter, BorderLayout.CENTER);
@@ -180,8 +190,8 @@ public class Words_Learn_Screen {
 		resizableComponents.add(Reset.getMasterbutton());
 		resizableComponents.add(op1Titel.getMasterLabel());
 		resizableComponents.add(Submit.getMasterbutton());
-		for (masterTextField tf : GuessList) {
-			resizableComponents.add(tf.getMasterTextFiedD());
+		for (masterTextPane tf : GuessList) {
+			resizableComponents.add(tf.getMasterTextPane());
 		}
 		for (masterlabel wo : wordList) {
 			resizableComponents.add(wo.getMasterLabel());

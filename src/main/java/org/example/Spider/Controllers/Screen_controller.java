@@ -43,6 +43,7 @@ public class Screen_controller {
 		Learn_Hado_Screen_View learn_screen = new Learn_Hado_Screen_View();
 		Words_Learn_Screen wordsLearnScreen =  new Words_Learn_Screen();
 		Words_Explanation wordsExplanationScreen = new Words_Explanation();
+//		wordsExplanationScreen.Start.start(guess);
 
 		// Add the views to the main panel with unique identifiers
 		mainPanel.add(login_screen.Login_screen(user.getUserData()), "screenLogin");

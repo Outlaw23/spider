@@ -1,10 +1,15 @@
 	package org.example.Spider.models.hado_language;
 
 
-	import org.example.Spider.models.Learn.List_Of_Words;
+	import org.example.Spider.models.Learn.List_Maker;
+	import org.example.Spider.models.Models_Everywhere.masterlabel;
 	import org.example.Spider.models.Models_Everywhere.mastertextarea;
 
+	import javax.swing.*;
+	import java.util.ArrayList;
 	import java.util.List;
+
+	import static java.awt.Color.white;
 
 	public class Hado_Translater {
 
@@ -38,16 +43,24 @@
 			outputR.gettextoutputR().setText(translator.toString());
 		}
 
-		public void getWords() {
-			List<String> words = List_Of_Words.list_of_words_op1();
-			for (String word : words) {
-				StringBuilder translator = new StringBuilder();
-				for (char c : word.toCharArray()) {
-					translator.append(HadoLanguageMvc.hadoLanguagee(String.valueOf(c)));
-
+		public void getWords(JPanel panelWords) {
+			panelWords.removeAll();
+			List<String> woorden = List_Maker.newWoords();
+			List<masterlabel> wordList = new ArrayList<>();
+			masterlabel word = null;
+			System.out.println(woorden);
+			for (String words : woorden) {
+				word = new masterlabel(words, white);
+				StringBuilder wordlist = new StringBuilder();
+				for (char c : words.toCharArray()) {
+					wordlist.append(HadoLanguageMvc.hadoLanguagee(String.valueOf(c)));
+					wordList.add(word);
 				}
-				System.out.println(translator);
-			}
+				word.getMasterLabel().setText(wordlist.toString());
+				panelWords.add(word.getMasterLabel());
 
+			}
+			panelWords.revalidate();
+			panelWords.repaint();
 		}
 	}

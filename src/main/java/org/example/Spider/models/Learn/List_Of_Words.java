@@ -2,11 +2,10 @@ package org.example.Spider.models.Learn;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class List_Of_Words {
 
-	public static List<String> list_of_words_op1() {
+	public void list_of_words_op1() {
 		List<String> Op1 = new ArrayList<>();
 		Op1.add("Tree");
 		Op1.add("Water");
@@ -59,15 +58,6 @@ public class List_Of_Words {
 		Op1.add("pen");
 		Op1.add("map");
 
-		List<String> Op1Ten = new ArrayList<>();
-		Random rand = new Random();
-		while (Op1Ten.size() < 10) {
-			int random = rand.nextInt(49);
-			String word = Op1.get(random).toLowerCase();
-			if (!Op1Ten.contains(word)) {
-				Op1Ten.add(word);;
-			}
-		}
-		return Op1Ten;
 	}
+
 }
