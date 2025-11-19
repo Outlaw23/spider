@@ -1,10 +1,10 @@
 package org.example.Spider.Screen_Learn_Hado.Sub_Screens.Assignments;
 
 import org.example.Spider.Controllers.Font_Resizer;
+import org.example.Spider.models.Components.Components_Everywhere;
+import org.example.Spider.models.Components.Screens.Words_Learn_Screen_Components;
+import org.example.Spider.models.Learn.Check_Word;
 import org.example.Spider.models.Learn.List_Maker;
-import org.example.Spider.models.Models_Everywhere.masterTextPane;
-import org.example.Spider.models.Models_Everywhere.masterbutton;
-import org.example.Spider.models.Models_Everywhere.masterlabel;
 import org.example.Spider.models.hado_language.HadoLanguageMvc;
 import org.example.Spider.models.hado_language.Hado_Translater;
 import org.slf4j.Logger;
@@ -15,10 +15,13 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.awt.Color.*;
+import static java.awt.Color.gray;
+import static org.example.Spider.models.Components.Screens.Words_Explanation_Screen_Components.GuessList;
+
 
 public class Words_Learn_Screen {
-	Hado_Translater hado = new Hado_Translater();
+	Hado_Translater hadoWord = new Hado_Translater();
+	Check_Word check = new Check_Word();
 
 	private static final Logger log = LoggerFactory.getLogger(Words_Learn_Screen.class);
 
@@ -86,75 +89,78 @@ public class Words_Learn_Screen {
 
 		// Labels
 		// Title label
-		masterlabel titel = new masterlabel("Words", white);
+		JLabel title = Components_Everywhere.Title("Words");
 
 		//op1 label
-		masterlabel op1Titel = new masterlabel("  guess words", white);
+		JLabel op1Titel = Words_Learn_Screen_Components.op1Titel();
 
 		// words label
 		// words in een lijst
 
 		List<String> woorden = List_Maker.getWoorden();
-		List<masterlabel> wordList = new ArrayList<>();
+		List<JLabel> wordList = new ArrayList<>();
 
 		for (String words : woorden) {
-			masterlabel word = new masterlabel(words, white);
+			JLabel word = Words_Learn_Screen_Components.word(words);
 			StringBuilder wordlist = new StringBuilder();
 			for (char c : words.toCharArray()) {
 				wordlist.append(HadoLanguageMvc.hadoLanguagee(String.valueOf(c)));
 				wordList.add(word);
 			}
-			word.getMasterLabel().setText(wordlist.toString());
-			panelWords.add(word.getMasterLabel());
+			word.setText(wordlist.toString());
+			panelWords.add(word);
 		}
 
 
 
 		// Buttons
 		// Home button
-		masterbutton home = new masterbutton("Home", "screenMain", gray);
+		JButton home = Components_Everywhere.homeButton(gray);
 
 		// Hado button
-		masterbutton hado = new masterbutton("Hado", "screenHado", gray);
+		JButton hado = Components_Everywhere.hadoButton(gray);
 
 		// HadoR button
-		masterbutton hadoR = new masterbutton("HadoR", "screenHadoR", gray);
+		JButton hadoR = Components_Everywhere.hadoRButton(gray);
 
 		// Learn button
-		masterbutton Learn = new masterbutton("Learn", "screenLearn", gray);
+		JButton learn = Components_Everywhere.learnbutton(gray);
 
 		// Back button
-		masterbutton Back = new masterbutton("Back", "wordsExplanation", gray);
+		JButton back = Words_Learn_Screen_Components.back();
 
 		// Reset button
-		masterbutton Reset = new masterbutton("reset", "", gray);
-		Reset.getWords(panelWords);
+		JButton reset = Words_Learn_Screen_Components.reset();
+		reset.addActionListener(e -> hadoWord.getWords(panelWords));
 
 		// submit button
-		masterbutton Submit = new masterbutton("Submit", "", gray);
-		List<masterTextPane> GuessList = new ArrayList<>();
-		Submit.checkWords(GuessList);
+		JButton submit = Words_Learn_Screen_Components.submit();
+		submit.addActionListener(e -> check.checkWord(GuessList));
+
 
 		//textfield
 		//Quess field
-		masterTextPane guess = null;
 		for (int i = 0; i  < 60; i++) {
-			guess = new masterTextPane("", black);
+			JTextPane guess = Words_Learn_Screen_Components.textPane();
 			GuessList.add(guess);
-			panelInvoer.add(guess.getMasterTextPane());
-			guess.getMasterTextPane().setEditable(true);
+			panelInvoer.add(guess);
+			guess.setEditable(false);
+			guess.setBackground(new Color(55, 64, 54));
 		}
+
+
+
 
 		// Add subpanels to the main panel
 		panelMain.add(panelMainNorth, BorderLayout.NORTH);
 		panelMain.add(panelMainCenter, BorderLayout.CENTER);
 
 		// Add components to the north panel
-		panelMainNorth.add(titel.getMasterLabel());
-		panelMainNorth.add(home.getMasterbutton());
-		panelMainNorth.add(hado.getMasterbutton());
-		panelMainNorth.add(hadoR.getMasterbutton());
-		panelMainNorth.add(Learn.getMasterbutton());
+		panelMainNorth.add(title);
+		panelMainNorth.add(home);
+		panelMainNorth.add(hado);
+		panelMainNorth.add(hadoR);
+		panelMainNorth.add(learn);
 
 		//Add components to the Center panel
 		panelMainCenter.add(paneltop, BorderLayout.NORTH);
@@ -166,35 +172,35 @@ public class Words_Learn_Screen {
 		paneltop.add(panelTopButtons, BorderLayout.WEST);
 
 		// Add components to the Top buttons panel
-		panelTopButtons.add(Back.getMasterbutton());
-		panelTopButtons.add(Reset.getMasterbutton());
-		panelTopButtons.add(Submit.getMasterbutton());
+		panelTopButtons.add(back);
+		panelTopButtons.add(reset);
+		panelTopButtons.add(submit);
+		panelTopButtons.add(submit);
 
 
 		//Add components to the Top label panel
-		panelTopLabel.add(op1Titel.getMasterLabel(), BorderLayout.CENTER);
+		panelTopLabel.add(op1Titel, BorderLayout.CENTER);
 		// Add components to the Words panel
-
 
 
 		// Components that will resize when the window is resized
 		List<JComponent> resizableComponents = new ArrayList<>();
 
 		// vaste onderdelen
-		resizableComponents.add(titel.getMasterLabel());
-		resizableComponents.add(home.getMasterbutton());
-		resizableComponents.add(hado.getMasterbutton());
-		resizableComponents.add(hadoR.getMasterbutton());
-		resizableComponents.add(Learn.getMasterbutton());
-		resizableComponents.add(Back.getMasterbutton());
-		resizableComponents.add(Reset.getMasterbutton());
-		resizableComponents.add(op1Titel.getMasterLabel());
-		resizableComponents.add(Submit.getMasterbutton());
-		for (masterTextPane tf : GuessList) {
-			resizableComponents.add(tf.getMasterTextPane());
+		resizableComponents.add(title);
+		resizableComponents.add(home);
+		resizableComponents.add(hado);
+		resizableComponents.add(hadoR);
+		resizableComponents.add(learn);
+		resizableComponents.add(back);
+		resizableComponents.add(reset);
+		resizableComponents.add(op1Titel);
+		resizableComponents.add(submit);
+		for (JTextPane tf : GuessList) {
+			resizableComponents.add(tf);
 		}
-		for (masterlabel wo : wordList) {
-			resizableComponents.add(wo.getMasterLabel());
+		for (JLabel wo : wordList) {
+			resizableComponents.add(wo);
 		}
 		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
 

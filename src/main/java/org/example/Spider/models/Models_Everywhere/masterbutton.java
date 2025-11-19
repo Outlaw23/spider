@@ -72,17 +72,19 @@ public class masterbutton {
 	}
 
 	// Attach translation action: transforms input to output when button is clicked
-	public void transletActionListener(mastertextarea input, mastertextarea output) {
+	public void transletActionListener(JTextArea input, JTextArea output) {
 		masterbutton.addActionListener(e -> hado.transform(input, output));
 	}
 
 	// Attach reverse translation action
-	public void transletRActionListener(mastertextarea inputR, mastertextarea outputR) {
+	public void transletRActionListener(JTextArea inputR, JTextArea outputR) {
 		masterbutton.addActionListener(e -> hado.transformR(inputR, outputR));
 	}
 
-	public void loginButtonActionListener(mastertextarea ID, masterpasswordfield password, masterlabel messageLabel) {
-		masterbutton.addActionListener(e -> login.loginVerification(ID, password.getPasswordField(), messageLabel));
+	public void loginButtonActionListener(JTextArea ID, JPasswordField password, JLabel messageLabel) {
+		masterbutton.addActionListener(e -> login.loginVerification(ID,password,messageLabel));
+
+
 
 	}
 
@@ -97,7 +99,7 @@ public class masterbutton {
 
 	public masterbutton setPanelname(String panelname) {
 		masterbutton.setText(panelname);
-		return this;
+		return this;	
 	}
 
 	public void setEnabled(boolean b) {
@@ -108,12 +110,14 @@ public class masterbutton {
 		masterbutton.addActionListener(e -> hado.getWords(panelWords));
 	}
 
-	public void checkWords(List<masterTextPane> GuessList) {
+	public void checkWords(List<JTextPane> GuessList) {
 		masterbutton.addActionListener(e -> check.checkWord(GuessList));
 	}
 
-	public void start(masterTextPane guess) {
-		masterbutton.addActionListener(e -> {check.Rows(guess);});
+	public void start(List<JTextPane> guess) {
+		masterbutton.addActionListener(e -> {check.RowsTrue(guess);});
 	}
+
+
 }
 

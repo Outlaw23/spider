@@ -1,15 +1,19 @@
 package org.example.Spider.Screen_Learn_Hado;
 
 import org.example.Spider.Controllers.Font_Resizer;
-import org.example.Spider.models.Models_Everywhere.masterbutton;
-import org.example.Spider.models.Models_Everywhere.masterlabel;
+import org.example.Spider.Controllers.Screen_controller;
+import org.example.Spider.models.Components.Components_Everywhere;
+import org.example.Spider.models.Components.Screens.Learn_Screen_Components;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.awt.Color.*;
+import static java.awt.Color.darkGray;
+import static java.awt.Color.gray;
+import static org.example.Spider.models.Components.Screens.Learn_Screen_Components.numberOpdracht;
+import static org.example.Spider.models.Components.Screens.Learn_Screen_Components.opdrachten;
 
 public class Learn_Hado_Screen_View {
 
@@ -48,37 +52,36 @@ public class Learn_Hado_Screen_View {
 
 		// Labels
 		// Title label
-		masterlabel titel = new masterlabel("Learn", white);
+		JLabel title = Components_Everywhere.Title("Learn");
 		
 		// Buttons
 		// Home button
-		masterbutton home = new masterbutton("Home", "screenMain", gray);
+		JButton home = Components_Everywhere.homeButton(gray);
 
 		// Hado button
-		masterbutton hado = new masterbutton("Hado", "screenHado", gray);
+		JButton hado = Components_Everywhere.hadoButton(gray);
 
 		// HadoR button
-		masterbutton hadoR = new masterbutton("HadoR", "screenHadoR", gray);
+		JButton hadoR = Components_Everywhere.hadoRButton(gray);
 
 		// Learn button
-		masterbutton Learn = new masterbutton("Learn", "screenLearn", darkGray);
+		JButton learn = Components_Everywhere.learnbutton(darkGray);
 
 		//
-		int numberOpdracht = 0;
+
 		int panelNumberOpdracht = 0;
-		List<masterbutton> opdrachten = new ArrayList<>();
+
 
 		for (int i = 0; i < 25; i++) {
 			numberOpdracht ++;
 			panelNumberOpdracht ++;
-			masterbutton opdracht  = new masterbutton("Opdracht " + numberOpdracht,
-					"" , gray);
+			JButton opdracht = Learn_Screen_Components.opdrachten();
 			opdrachten.add(opdracht);
-			panelButtons.add(opdracht.getMasterbutton());
+			panelButtons.add(opdracht);
 		}
 
-//		opdrachten.get(0).setPanelname("OP_1");
-		opdrachten.get(0).showPanelOpdrachten("wordsExplanation");
+		opdrachten.get(0).addActionListener(e -> Screen_controller.showPanel("wordsExplanation"));
+
 
 		opdrachten.subList(1, 25).forEach(mb -> mb.setEnabled(false));
 
@@ -87,11 +90,11 @@ public class Learn_Hado_Screen_View {
 		panelMain.add(panelMainCenter, BorderLayout.CENTER);
 
 		// Add components to the north panel
-		panelMainNorth.add(titel.getMasterLabel());
-		panelMainNorth.add(home.getMasterbutton());
-		panelMainNorth.add(hado.getMasterbutton());
-		panelMainNorth.add(hadoR.getMasterbutton());
-		panelMainNorth.add(Learn.getMasterbutton());
+		panelMainNorth.add(title);
+		panelMainNorth.add(home);
+		panelMainNorth.add(hado);
+		panelMainNorth.add(hadoR);
+		panelMainNorth.add(learn);
 
 		// Add components to the center panel
 		panelMainCenter.add(panelButtons);
@@ -100,13 +103,13 @@ public class Learn_Hado_Screen_View {
 		List<JComponent> resizableComponents = new ArrayList<>();
 
 		// vaste onderdelen
-		resizableComponents.add(titel.getMasterLabel());
-		resizableComponents.add(home.getMasterbutton());
-		resizableComponents.add(hado.getMasterbutton());
-		resizableComponents.add(hadoR.getMasterbutton());
-		resizableComponents.add(Learn.getMasterbutton());
-		for (masterbutton mb : opdrachten) {
-			resizableComponents.add(mb.getMasterbutton());
+		resizableComponents.add(title);
+		resizableComponents.add(home);
+		resizableComponents.add(hado);
+		resizableComponents.add(hadoR);
+		resizableComponents.add(learn);
+		for (JButton mb : opdrachten) {
+			resizableComponents.add(mb);
 		}
 		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
 

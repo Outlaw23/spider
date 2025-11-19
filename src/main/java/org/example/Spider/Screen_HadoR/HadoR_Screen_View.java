@@ -2,16 +2,16 @@ package org.example.Spider.Screen_HadoR;
 
 
 import org.example.Spider.Controllers.Font_Resizer;
-import org.example.Spider.models.Models_Everywhere.masterbutton;
-import org.example.Spider.models.Models_Everywhere.masterlabel;
-import org.example.Spider.models.Models_Everywhere.mastertextarea;
+import org.example.Spider.models.Components.Components_Everywhere;
+import org.example.Spider.models.Components.Screens.HadoR_Screen_Components;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
-import static java.awt.Color.*;
+import static java.awt.Color.darkGray;
+import static java.awt.Color.gray;
 
 public class HadoR_Screen_View {
 
@@ -56,66 +56,63 @@ public class HadoR_Screen_View {
 
 		// Labels
 		// Title label
-		masterlabel titel = new masterlabel("HadoR", white);
+		JLabel title = Components_Everywhere.Title("HadoR");
 
 		// Buttons
 		// Home button
-		masterbutton home = new masterbutton("Home", "screenMain", gray);
+		JButton home = Components_Everywhere.homeButton(gray);
 
 		// Hado button
-		masterbutton hado = new masterbutton("Hado", "screenHado", gray);
+		JButton hado = Components_Everywhere.hadoButton(gray);
 
 		// HadoR (hadoR) button
-		masterbutton hadoR = new masterbutton("HadoR", "screenVideo", darkGray);
+		JButton hadoR = Components_Everywhere.hadoRButton(darkGray);
 
 		// Learn button
-		masterbutton Learn = new masterbutton("Learn", "screenLearn", gray);
+		JButton learn = Components_Everywhere.learnbutton(gray);
 
 		// Text areas
 		// Input text area
-		mastertextarea inputR = new mastertextarea();
+		JTextArea inputR = HadoR_Screen_Components.intputR();
 
 		// Output text area
-		mastertextarea outputR = new mastertextarea();
+		JTextArea outputR = HadoR_Screen_Components.outputR();
 
 		// Translate button for HadoR
-		masterbutton translateR = new masterbutton("Translate", "", gray);
-
-		// Add action listener to translate input text to output
-		translateR.transletRActionListener(inputR, outputR);
+		JButton translateR = HadoR_Screen_Components.translateR();
 
 		// Add panels to the main HadoR panel
 		panelHado.add(panelHadoNorth, BorderLayout.NORTH);
 		panelHado.add(panelHadoCenter, BorderLayout.CENTER);
 
 		// Add components to the north panel (navigation bar)
-		panelHadoNorth.add(titel.getMasterLabel());
-		panelHadoNorth.add(home.getMasterbutton());
-		panelHadoNorth.add(hado.getMasterbutton());
-		panelHadoNorth.add(hadoR.getMasterbutton());
-		panelHadoNorth.add(Learn.getMasterbutton());
+		panelHadoNorth.add(title);
+		panelHadoNorth.add(home);
+		panelHadoNorth.add(hado);
+		panelHadoNorth.add(hadoR);
+		panelHadoNorth.add(learn);
 
 		// Add subpanels to the center panel
 		panelHadoCenter.add(panelHadoButtons, BorderLayout.NORTH);
 		panelHadoCenter.add(panelHadoText, BorderLayout.CENTER);
 
 		// Add button to the buttons panel
-		panelHadoButtons.add(translateR.getMasterbutton());
+		panelHadoButtons.add(translateR);
 
 		// Add text areas inside scroll panes to the text panel
-		panelHadoText.add(new JScrollPane(inputR.gettextinputR()));
-		panelHadoText.add(new JScrollPane(outputR.gettextoutputR()));
+		panelHadoText.add(new JScrollPane(inputR));
+		panelHadoText.add(new JScrollPane(outputR));
 
 		// Add components for dynamic font resizing
 		List<JComponent> resizableComponents = Arrays.asList(
-				titel.getMasterLabel(),
-				home.getMasterbutton(),
-				hado.getMasterbutton(),
-				hadoR.getMasterbutton(),
-				Learn.getMasterbutton(),
-				translateR.getMasterbutton(),
-				inputR.gettextinputR(),
-				outputR.gettextoutputR()
+				title,
+				home,
+				hado,
+				hadoR,
+				learn,
+				translateR,
+				inputR,
+				outputR
 		);
 		Font_Resizer.applyResizeLogic(panelHado, resizableComponents);
 

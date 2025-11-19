@@ -1,7 +1,5 @@
 package org.example.Spider.models.Learn;
 
-import org.example.Spider.models.Models_Everywhere.masterTextPane;
-
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
@@ -15,7 +13,7 @@ import java.util.Map;
 public class Check_Word {
 	int rowIndex = 0;
 	int rowEndindex = 54;
-	public void checkWord(List<masterTextPane> GuessList) {
+	public void checkWord(List<JTextPane> GuessList) {
 		int wordIndex = -1;
 
 		for (int index = rowIndex; index <= rowEndindex; index += 6) {
@@ -24,8 +22,8 @@ public class Check_Word {
 			if (wordIndex >= woorden.size()) break; // veiligheidscheck
 			String woord = woorden.get(wordIndex);
 
-			masterTextPane mtf = GuessList.get(index);
-			JTextPane pane = mtf.getMasterTextPane(); // JTextPane
+			JTextPane mtf = GuessList.get(index);
+			JTextPane pane = mtf; // JTextPane
 			String gok = pane.getText();
 
 			String[] kleuren = new String[gok.length()];
@@ -78,38 +76,23 @@ public class Check_Word {
 				System.out.println(gok.charAt(i) + " -> " + kleuren[i]);
 			}
 			System.out.println("-------");
+			GuessList.get(index).setEditable(false);
+			GuessList.get(index).setBackground(new Color(189, 189, 189));
+
 		}
 		rowIndex++;
 		rowEndindex++;
 		System.out.println(rowIndex);
 		System.out.println(rowEndindex);
+		RowsTrue(GuessList);
 	}
 
-	public void Rows (masterTextPane guess) {
-		for (int index = rowIndex; index <= rowEndindex; index += 6){
-			guess.getMasterTextPane().setEditable(true);
+	public void RowsTrue (List<JTextPane> guessList) {
+		for  (int index = rowIndex; index <= rowEndindex; index += 6) {
+			guessList.get(index).setBackground(Color.white);
+			guessList.get(index).setEditable(true);
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		
 
 	}
 }
