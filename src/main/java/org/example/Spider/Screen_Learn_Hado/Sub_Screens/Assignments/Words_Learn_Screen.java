@@ -1,10 +1,12 @@
 package org.example.Spider.Screen_Learn_Hado.Sub_Screens.Assignments;
 
 import org.example.Spider.Controllers.Font_Resizer;
+import org.example.Spider.Controllers.Screen_controller;
 import org.example.Spider.models.Components.Components_Everywhere;
 import org.example.Spider.models.Components.Screens.Words_Learn_Screen_Components;
 import org.example.Spider.models.Learn.Check_Word;
 import org.example.Spider.models.Learn.List_Maker;
+import org.example.Spider.models.Models_Everywhere.MasterPanel;
 import org.example.Spider.models.hado_language.HadoLanguageMvc;
 import org.example.Spider.models.hado_language.Hado_Translater;
 import org.slf4j.Logger;
@@ -37,14 +39,16 @@ public class Words_Learn_Screen {
 
 		// Create sub-panels for layout structure
 		// Center panel
-		JPanel panelMainCenter = new JPanel();
+		MasterPanel panelMainCenter = new MasterPanel
+				("src/main/java/org/example/Spider/img/background_hado.jpeg");
 		panelMainCenter.setLayout(new BorderLayout());
 		panelMainCenter.setPreferredSize(new Dimension(1920, 500));
 		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 		panelMainCenter.setBackground(new Color(95, 102, 107));
 
 		// North panel (top area)
-		JPanel panelMainNorth = new JPanel();
+		MasterPanel panelMainNorth = new MasterPanel
+				("src/main/java/org/example/Spider/img/strip_background.jpeg");
 		panelMainNorth.setLayout(new GridLayout(0, 10, 5, 0));
 		panelMainNorth.setPreferredSize(new Dimension(1920, 50));
 		panelMainNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
@@ -55,35 +59,37 @@ public class Words_Learn_Screen {
 		paneltop.setLayout(new  BorderLayout());
 		paneltop.setPreferredSize(new Dimension(1920, 75));
 		paneltop.setBorder(BorderFactory.createEmptyBorder(15, 30, 15, 30));
-		paneltop.setBackground(new Color(52, 62, 69));
+		paneltop.setBackground(new Color(52, 62, 69, 0));
 
 		//panel top label
 		JPanel panelTopLabel = new JPanel();
 		panelTopLabel.setLayout(new BorderLayout());
 		panelTopLabel.setPreferredSize(new Dimension(450, 50));
 		panelTopLabel.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 30));
-		panelTopLabel.setBackground(new Color(52, 62, 69));
+		panelTopLabel.setBackground(new Color(52, 62, 69, 0));
 
 		//panel to buttons
 		JPanel panelTopButtons = new JPanel();
-		panelTopButtons.setLayout(new GridLayout(0, 3, 5, 5));
-		panelTopButtons.setPreferredSize(new Dimension(450, 50));
+		panelTopButtons.setLayout(new GridLayout(0, 4, 5, 5));
+		panelTopButtons.setPreferredSize(new Dimension(550, 50));
 		panelTopButtons.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 30));
-		panelTopButtons.setBackground(new Color(52, 62, 69));
+		panelTopButtons.setBackground(new Color(52, 62, 69, 0));
 
 		// panel words
 		JPanel panelWords = new JPanel();
 		panelWords.setLayout(new GridLayout(10,0,5,5));
 		panelWords.setPreferredSize(new Dimension(220, 50));
 		panelWords.setBorder(BorderFactory.createEmptyBorder(5, 55, 5, 30));
-		panelWords.setBackground(new Color(75, 89, 74));
+		panelWords.setBackground(new Color(75, 89, 74, 0)); // niet transparant
+		panelWords.setOpaque(false); // belangrijk!
+
 
 		// panel invoer
 		JPanel panelInvoer = new JPanel();
 		panelInvoer.setLayout(new GridLayout(10,6,5,5));
 		panelInvoer.setPreferredSize(new Dimension(1920, 75));
 		panelInvoer.setBorder(BorderFactory.createEmptyBorder(15, 30, 15, 30));
-		panelInvoer.setBackground(new Color(75, 89, 74));
+		panelInvoer.setBackground(new Color(75, 89, 74, 0));
 
 
 
@@ -102,6 +108,7 @@ public class Words_Learn_Screen {
 
 		for (String words : woorden) {
 			JLabel word = Words_Learn_Screen_Components.word(words);
+
 			StringBuilder wordlist = new StringBuilder();
 			for (char c : words.toCharArray()) {
 				wordlist.append(HadoLanguageMvc.hadoLanguagee(String.valueOf(c)));
@@ -116,18 +123,27 @@ public class Words_Learn_Screen {
 		// Buttons
 		// Home button
 		JButton home = Components_Everywhere.homeButton(gray);
+		home.setEnabled(false);
 
 		// Hado button
 		JButton hado = Components_Everywhere.hadoButton(gray);
+		hado.setEnabled(false);
 
 		// HadoR button
 		JButton hadoR = Components_Everywhere.hadoRButton(gray);
+		hadoR.setEnabled(false);
 
 		// Learn button
 		JButton learn = Components_Everywhere.learnbutton(gray);
+		learn.setEnabled(false);
 
 		// Back button
 		JButton back = Words_Learn_Screen_Components.back();
+
+		//done button
+		JButton done = Words_Learn_Screen_Components.done();
+		done.addActionListener(e -> Screen_controller.showPanel("screenLearn"));
+		done.setEnabled(false);
 
 		// Reset button
 		JButton reset = Words_Learn_Screen_Components.reset();
@@ -168,14 +184,14 @@ public class Words_Learn_Screen {
 		panelMainCenter.add(panelInvoer, BorderLayout.CENTER);
 
 		// Add components to the Top panel
-		paneltop.add(panelTopLabel, BorderLayout.CENTER);
+		paneltop.add(panelTopLabel, BorderLayout.EAST);
 		paneltop.add(panelTopButtons, BorderLayout.WEST);
 
 		// Add components to the Top buttons panel
 		panelTopButtons.add(back);
 		panelTopButtons.add(reset);
 		panelTopButtons.add(submit);
-		panelTopButtons.add(submit);
+		panelTopButtons.add(done);
 
 
 		//Add components to the Top label panel
@@ -196,6 +212,7 @@ public class Words_Learn_Screen {
 		resizableComponents.add(reset);
 		resizableComponents.add(op1Titel);
 		resizableComponents.add(submit);
+		resizableComponents.add(done);
 		for (JTextPane tf : GuessList) {
 			resizableComponents.add(tf);
 		}

@@ -8,7 +8,13 @@ import javax.swing.*;
 import static java.awt.Color.gray;
 import static java.awt.Color.white;
 
+
+
 public class Words_Learn_Screen_Components {
+	public static JButton backButton;
+	public static JButton resetButton;
+	public static JButton doneButton;
+	public static JButton submitbutton;
 
 	public static JLabel  op1Titel() {
 		masterlabel op1Titel = new masterlabel("  guess words", white);
@@ -21,18 +27,38 @@ public class Words_Learn_Screen_Components {
 	}
 
 	public static JButton back() {
-		masterbutton Back = new masterbutton("Back", "wordsExplanation", gray);
-		return   Back.getMasterbutton();
+		if (backButton == null) {
+			masterbutton Back = new masterbutton("Back", "wordsExplanation", gray);
+			backButton = Back.getMasterbutton();
+		}
+		return backButton;
 	}
 
 	public static JButton reset() {
-		masterbutton Reset = new masterbutton("reset", "", gray);
-		return   Reset.getMasterbutton();
+		if (resetButton == null) {
+			masterbutton Reset = new masterbutton("reset", "", gray);
+			resetButton = Reset.getMasterbutton();
+		}
+		return resetButton;
 	}
 
+	public static JButton done() {
+		if (doneButton == null) {
+			masterbutton Done = new masterbutton("Done", "", gray);
+			doneButton = Done.getMasterbutton();
+		}
+		return doneButton;
+	}
+
+
+
 	public static JButton submit() {
-		masterbutton Submit = new masterbutton("Submit", "", gray);
-		return   Submit.getMasterbutton();
+		if (submitbutton == null) {
+			masterbutton Submit = new masterbutton("Submit", "", gray);
+			submitbutton = Submit.getMasterbutton();
+		}
+
+		return submitbutton;
 	}
 
 	public static JTextPane textPane () {

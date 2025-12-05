@@ -4,6 +4,7 @@ import org.example.Spider.Controllers.Font_Resizer;
 import org.example.Spider.Controllers.Screen_controller;
 import org.example.Spider.models.Components.Components_Everywhere;
 import org.example.Spider.models.Components.Screens.Learn_Screen_Components;
+import org.example.Spider.models.Models_Everywhere.MasterPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,14 +30,14 @@ public class Learn_Hado_Screen_View {
 
 		// Create sub-panels for layout structure
 		// Center panel
-		JPanel panelMainCenter = new JPanel();
+		MasterPanel panelMainCenter = new MasterPanel("src/main/java/org/example/Spider/img/background_spider.jpeg");
 		panelMainCenter.setLayout(new GridLayout(2, 0, 5, 5));
 		panelMainCenter.setPreferredSize(new Dimension(1920, 500));
 		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(50, 100, 50, 100));
 		panelMainCenter.setBackground(new Color(95, 102, 107));
 
 		// North panel (top area)
-		JPanel panelMainNorth = new JPanel();
+		MasterPanel panelMainNorth = new MasterPanel("src/main/java/org/example/Spider/img/strip_background.jpeg");
 		panelMainNorth.setLayout(new GridLayout(0, 10, 5, 0));
 		panelMainNorth.setPreferredSize(new Dimension(1920, 50));
 		panelMainNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
@@ -47,7 +48,7 @@ public class Learn_Hado_Screen_View {
 		panelButtons.setLayout(new GridLayout(5, 5, 5, 5));
 		panelButtons.setPreferredSize(new Dimension(100, 50));
 		panelButtons.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		panelButtons.setBackground(new Color(44, 55, 25));
+		panelButtons.setBackground(new Color(44, 55, 25, 89));
 
 
 		// Labels

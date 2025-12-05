@@ -19,7 +19,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // Start UI
-        Screen_controller.screenContoller();
+		Screen_controller.screenContoller();
 
         // Quick dev output: print fetched words
         List<String> words = List_Maker.getWoorden();

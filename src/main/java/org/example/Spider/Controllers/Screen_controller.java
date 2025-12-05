@@ -61,7 +61,7 @@ public class Screen_controller {
 		frame.add(mainPanel);
 
 		// Allow the window to be resizable and make it visible
-		frame.setResizable(true);	
+		frame.setResizable(true);
 		frame.setVisible(true);
 	}
 
@@ -70,4 +70,3 @@ public class Screen_controller {
 		cardLayout.show(mainPanel, panelName);
 	}
 }
-

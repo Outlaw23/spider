@@ -3,6 +3,7 @@ package org.example.Spider.Screen_Hado;
 import org.example.Spider.Controllers.Font_Resizer;
 import org.example.Spider.models.Components.Components_Everywhere;
 import org.example.Spider.models.Components.Screens.Hado_Screen_Components;
+import org.example.Spider.models.Models_Everywhere.MasterPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,14 +26,16 @@ public class Hado_Screen_View {
 
 		// Sub-panels
 		// Center panel
-		JPanel panelHadoCenter = new JPanel();
+		MasterPanel panelHadoCenter = new MasterPanel
+				("src/main/java/org/example/Spider/img/background_hado.jpeg");
 		panelHadoCenter.setLayout(new BorderLayout());
 		panelHadoCenter.setPreferredSize(new Dimension(1920, 500));
 		panelHadoCenter.setBorder(BorderFactory.createEmptyBorder(5, 50, 50, 50));
 		panelHadoCenter.setBackground(new Color(95, 102, 107));
 
 		// North panel (top bar)
-		JPanel panelHadoNorth = new JPanel();
+		MasterPanel panelHadoNorth = new MasterPanel
+				("src/main/java/org/example/Spider/img/strip_background.jpeg");
 		panelHadoNorth.setLayout(new GridLayout(0, 10, 5, 0));
 		panelHadoNorth.setPreferredSize(new Dimension(1920, 50));
 		panelHadoNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
@@ -43,14 +46,14 @@ public class Hado_Screen_View {
 		panelHadoButtons.setLayout(new GridLayout(0, 9, 5, 0));
 		panelHadoButtons.setPreferredSize(new Dimension(1920, 50));
 		panelHadoButtons.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		panelHadoButtons.setBackground(new Color(95, 102, 107));
+		panelHadoButtons.setBackground(new Color(95, 102, 107, 0));
 
 		// Text area panel (inside center)
 		JPanel panelHadoText = new JPanel();
 		panelHadoText.setLayout(new GridLayout(2, 0, 15, 15));
 		panelHadoText.setPreferredSize(new Dimension(1920, 50));
 		panelHadoText.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		panelHadoText.setBackground(new Color(95, 102, 107));
+		panelHadoText.setBackground(new Color(95, 102, 107, 0));
 
 		// Labels
 		// Title label

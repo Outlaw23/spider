@@ -9,8 +9,8 @@ import java.awt.*;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-
-public class Login_Screen_View {
+    
+public class Login_Screen_View extends javax.swing.JPanel {
 
 
 	// Method to create and return the Login Screen panel

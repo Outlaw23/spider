@@ -4,6 +4,7 @@ package org.example.Spider.Screen_Main;
 import org.example.Spider.Controllers.Font_Resizer;
 import org.example.Spider.models.Components.Components_Everywhere;
 import org.example.Spider.models.Components.Screens.Main_Screen_Components;
+import org.example.Spider.models.Models_Everywhere.MasterPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,14 +40,14 @@ public class Main_Screen_View {
 
   // Sub-panels for layout structure
   // Center area with two rows for short descriptions
-  JPanel panelMainCenter = new JPanel();
+  MasterPanel panelMainCenter = new MasterPanel("src/main/java/org/example/Spider/img/background_spider.jpeg");
   panelMainCenter.setLayout(new GridLayout(6, 0, 5, 5));
   panelMainCenter.setPreferredSize(new Dimension(1920, 500));
   panelMainCenter.setBorder(BorderFactory.createEmptyBorder(50, 100, 50, 100));
   panelMainCenter.setBackground(new Color(95, 102, 107));
 
   // North/top navigation area
-  JPanel panelMainNorth = new JPanel();
+  MasterPanel panelMainNorth = new MasterPanel("src/main/java/org/example/Spider/img/strip_background.jpeg");
   panelMainNorth.setLayout(new GridLayout(0, 10, 5, 0));
   panelMainNorth.setPreferredSize(new Dimension(1920, 50));
   panelMainNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
