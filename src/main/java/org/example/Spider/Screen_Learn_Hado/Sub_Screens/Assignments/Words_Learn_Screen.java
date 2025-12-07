@@ -6,11 +6,10 @@ import org.example.Spider.models.Components.Components_Everywhere;
 import org.example.Spider.models.Components.Screens.Words_Learn_Screen_Components;
 import org.example.Spider.models.Learn.Check_Word;
 import org.example.Spider.models.Learn.List_Maker;
+import org.example.Spider.models.Learn.Screen_Reset_Worlds;
 import org.example.Spider.models.Models_Everywhere.MasterPanel;
 import org.example.Spider.models.hado_language.HadoLanguageMvc;
 import org.example.Spider.models.hado_language.Hado_Translater;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,7 +24,7 @@ public class Words_Learn_Screen {
 	Hado_Translater hadoWord = new Hado_Translater();
 	Check_Word check = new Check_Word();
 
-	private static final Logger log = LoggerFactory.getLogger(Words_Learn_Screen.class);
+// instance
 
 	// Method to create and return the main screen JPanel
 	public JPanel Words_Learn_screen () {
@@ -60,6 +59,7 @@ public class Words_Learn_Screen {
 		paneltop.setPreferredSize(new Dimension(1920, 75));
 		paneltop.setBorder(BorderFactory.createEmptyBorder(15, 30, 15, 30));
 		paneltop.setBackground(new Color(52, 62, 69, 0));
+		paneltop.setOpaque(false);
 
 		//panel top label
 		JPanel panelTopLabel = new JPanel();
@@ -67,6 +67,7 @@ public class Words_Learn_Screen {
 		panelTopLabel.setPreferredSize(new Dimension(450, 50));
 		panelTopLabel.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 30));
 		panelTopLabel.setBackground(new Color(52, 62, 69, 0));
+		panelTopLabel.setOpaque(false);
 
 		//panel to buttons
 		JPanel panelTopButtons = new JPanel();
@@ -80,8 +81,8 @@ public class Words_Learn_Screen {
 		panelWords.setLayout(new GridLayout(10,0,5,5));
 		panelWords.setPreferredSize(new Dimension(220, 50));
 		panelWords.setBorder(BorderFactory.createEmptyBorder(5, 55, 5, 30));
-		panelWords.setBackground(new Color(75, 89, 74, 0)); // niet transparant
-		panelWords.setOpaque(false); // belangrijk!
+		panelWords.setBackground(new Color(75, 89, 74, 0));
+		panelWords.setOpaque(false);
 
 
 		// panel invoer
@@ -140,11 +141,6 @@ public class Words_Learn_Screen {
 		// Back button
 		JButton back = Words_Learn_Screen_Components.back();
 
-		//done button
-		JButton done = Words_Learn_Screen_Components.done();
-		done.addActionListener(e -> Screen_controller.showPanel("screenLearn"));
-		done.setEnabled(false);
-
 		// Reset button
 		JButton reset = Words_Learn_Screen_Components.reset();
 		reset.addActionListener(e -> hadoWord.getWords(panelWords));
@@ -153,6 +149,24 @@ public class Words_Learn_Screen {
 		JButton submit = Words_Learn_Screen_Components.submit();
 		submit.addActionListener(e -> check.checkWord(GuessList));
 
+		//done button
+		JButton done = Words_Learn_Screen_Components.done();
+		done.addActionListener(e ->
+				Screen_Reset_Worlds.resetScreen(
+						panelWords,
+						woorden,
+						GuessList,
+						title,
+						op1Titel,
+						reset,
+						submit,
+						back,
+						done,
+						check
+				)
+		);
+		done.addActionListener(e -> Screen_controller.showPanel("screenLearn"));
+		done.setEnabled(false);
 
 		//textfield
 		//Quess field
@@ -224,4 +238,5 @@ public class Words_Learn_Screen {
 		// Return the main panel
 		return panelMain;
 	}
+
 }

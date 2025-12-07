@@ -75,6 +75,7 @@ public class Words_Explanation {
 		JButton Start = Words_Explanation_Screen_Components.startButton();
 
 
+
 		// Add subpanels to the main panel
 		panelMain.add(panelMainNorth, BorderLayout.NORTH);
 		panelMain.add(panelMainCenter, BorderLayout.CENTER);

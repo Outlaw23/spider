@@ -94,7 +94,7 @@ public class Check_Word {
 				Words_Learn_Screen_Components.submit().setEnabled(false);
 				Words_Learn_Screen_Components.done().setEnabled(true);
 				checkindex++;
-
+				Words_Learn_Screen_Components.op1Titel().setText("---Well done---");
 			}
 		}
 		System.out.println(rowIndex);
@@ -116,5 +116,11 @@ public class Check_Word {
 			}
 
 		}
+	}
+
+	public void fullResetState() {
+		rowIndex = 0;
+		rowEndindex = 54;
+		checkindex = 0;
 	}
 }
