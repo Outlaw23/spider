@@ -32,8 +32,14 @@ public class Components_Everywhere {
 		return hadoR.getMasterbutton();
 	}
 
-	public static JButton learnbutton(Color color) {
+	public static JButton learnButton(Color color) {
 		masterbutton learn = new masterbutton("Learn", "screenLearn", color);
 		return learn.getMasterbutton();
 	}
+
+	public static JButton infoButton(Color color) {
+		masterbutton info = new masterbutton("Info", "screenInfo", color);
+		return info.getMasterbutton();
+	}
+
 }

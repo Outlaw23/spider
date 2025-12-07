@@ -1,14 +1,15 @@
 	package org.example.Spider.Controllers;
 	// MainClass.java
 
-	import org.example.Spider.Screen_Hado.Hado_Screen_View;
-	import org.example.Spider.Screen_HadoR.HadoR_Screen_View;
-	import org.example.Spider.Screen_Learn_Hado.Learn_Hado_Screen_View;
-	import org.example.Spider.Screen_Learn_Hado.Sub_Screens.Assignments.Words_Learn_Screen;
-	import org.example.Spider.Screen_Learn_Hado.Sub_Screens.Explaining_The_Assignment.Words_Explanation;
-	import org.example.Spider.Screen_Login.Login_Screen_View;
-	import org.example.Spider.Screen_Main.Main_Screen_View;
 	import org.example.Spider.models.Login.User_Data_Login;
+	import org.example.Spider.view.Screen_Hado.Hado_Screen_View;
+	import org.example.Spider.view.Screen_HadoR.HadoR_Screen_View;
+	import org.example.Spider.view.Screen_Info.Info_Screen_View;
+	import org.example.Spider.view.Screen_Learn_Hado.Learn_Hado_Screen_View;
+	import org.example.Spider.view.Screen_Learn_Hado.Sub_Screens.Assignments.Words_Learn_Screen_View;
+	import org.example.Spider.view.Screen_Learn_Hado.Sub_Screens.Explaining_The_Assignment.Words_Explanation_View;
+	import org.example.Spider.view.Screen_Login.Login_Screen_View;
+	import org.example.Spider.view.Screen_Main.Main_Screen_View;
 
 	import javax.swing.*;
 	import java.awt.*;
@@ -41,9 +42,9 @@
 			Hado_Screen_View hado_screen = new Hado_Screen_View();
 			HadoR_Screen_View video_screen = new HadoR_Screen_View();
 			Learn_Hado_Screen_View learn_screen = new Learn_Hado_Screen_View();
-			Words_Learn_Screen wordsLearnScreen =  new Words_Learn_Screen();
-			Words_Explanation wordsExplanationScreen = new Words_Explanation();
-	//		wordsExplanationScreen.Start.start(guess);
+			Words_Learn_Screen_View wordsLearnScreen =  new Words_Learn_Screen_View();
+			Words_Explanation_View wordsExplanationScreen = new Words_Explanation_View();
+			Info_Screen_View info_screen = new Info_Screen_View();
 
 			// Add the views to the main panel with unique identifiers
 			mainPanel.add(login_screen.Login_screen(user.getUserData()), "screenLogin");
@@ -51,8 +52,9 @@
 			mainPanel.add(hado_screen.screenHado(), "screenHado");
 			mainPanel.add(video_screen.screenHadoR(), "screenHadoR");
 			mainPanel.add(learn_screen.Learn_Hado_screen(), "screenLearn");
-			mainPanel.add(wordsLearnScreen.Words_Learn_screen(), "wordsLearn");
-			mainPanel.add(wordsExplanationScreen.screenWordsExplanation(), "wordsExplanation");
+			mainPanel.add(wordsLearnScreen.Words_Learn_screen(), "screenWordsLearn");
+			mainPanel.add(wordsExplanationScreen.screenWordsExplanation(), "screenWordsExplanation");
+			mainPanel.add(info_screen.screenInfo(), "screenInfo");
 
 			// Show the initial screen
 			cardLayout.show(mainPanel, "screenMain");

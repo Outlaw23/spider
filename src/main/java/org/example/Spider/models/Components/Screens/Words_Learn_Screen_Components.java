@@ -33,7 +33,7 @@ public class Words_Learn_Screen_Components {
 
 	public static JButton back() {
 		if (backButton == null) {
-			masterbutton Back = new masterbutton("Back", "wordsExplanation", gray);
+			masterbutton Back = new masterbutton("Back", "screenWordsExplanation", gray);
 			backButton = Back.getMasterbutton();
 		}
 		return backButton;

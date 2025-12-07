@@ -1,4 +1,4 @@
-package org.example.Spider.Screen_HadoR;
+package org.example.Spider.view.Screen_HadoR;
 
 
 import org.example.Spider.Controllers.Font_Resizer;
@@ -72,7 +72,10 @@ public class HadoR_Screen_View {
 		JButton hadoR = Components_Everywhere.hadoRButton(darkGray);
 
 		// Learn button
-		JButton learn = Components_Everywhere.learnbutton(gray);
+		JButton learn = Components_Everywhere.learnButton(gray);
+
+		// Info button
+		JButton info =  Components_Everywhere.infoButton(gray);
 
 		// Text areas
 		// Input text area
@@ -94,6 +97,7 @@ public class HadoR_Screen_View {
 		panelHadoNorth.add(hado);
 		panelHadoNorth.add(hadoR);
 		panelHadoNorth.add(learn);
+		panelHadoNorth.add(info);
 
 		// Add subpanels to the center panel
 		panelHadoCenter.add(panelHadoButtons, BorderLayout.NORTH);
@@ -115,7 +119,8 @@ public class HadoR_Screen_View {
 				learn,
 				translateR,
 				inputR,
-				outputR
+				outputR,
+				info
 		);
 		Font_Resizer.applyResizeLogic(panelHado, resizableComponents);
 

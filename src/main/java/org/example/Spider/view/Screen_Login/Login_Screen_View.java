@@ -1,4 +1,4 @@
-package org.example.Spider.Screen_Login;
+package org.example.Spider.view.Screen_Login;
 
 import org.example.Spider.Controllers.Font_Resizer;
 import org.example.Spider.models.Components.Components_Everywhere;

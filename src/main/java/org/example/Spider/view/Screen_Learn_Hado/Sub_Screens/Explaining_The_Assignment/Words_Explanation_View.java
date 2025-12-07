@@ -1,4 +1,4 @@
-package org.example.Spider.Screen_Learn_Hado.Sub_Screens.Explaining_The_Assignment;
+package org.example.Spider.view.Screen_Learn_Hado.Sub_Screens.Explaining_The_Assignment;
 
 import org.example.Spider.Controllers.Font_Resizer;
 import org.example.Spider.models.Components.Components_Everywhere;
@@ -12,7 +12,7 @@ import java.util.List;
 
 import static java.awt.Color.gray;
 
-public class Words_Explanation {
+public class Words_Explanation_View {
 
 
 	public JPanel screenWordsExplanation() {
@@ -69,7 +69,10 @@ public class Words_Explanation {
 		JButton hadoR =  Components_Everywhere.hadoRButton(gray);
 
 		// Learn button
-		JButton learn = Components_Everywhere.learnbutton(gray);
+		JButton learn = Components_Everywhere.learnButton(gray);
+
+		// info button
+		JButton info = Components_Everywhere.infoButton(gray);
 
 		//start button
 		JButton Start = Words_Explanation_Screen_Components.startButton();
@@ -86,6 +89,7 @@ public class Words_Explanation {
 		panelMainNorth.add(hado);
 		panelMainNorth.add(hadoR);
 		panelMainNorth.add(learn);
+		panelMainNorth.add(info);
 
 		// Add components to the center panel
 		panelMainCenter.add(panelStartButton, BorderLayout.SOUTH);
@@ -102,7 +106,8 @@ public class Words_Explanation {
 				hado,
 				hadoR,
 				learn,
-				Start
+				Start,
+				info
 		);
 		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
 

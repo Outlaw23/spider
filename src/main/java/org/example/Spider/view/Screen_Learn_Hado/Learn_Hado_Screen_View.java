@@ -1,4 +1,4 @@
-package org.example.Spider.Screen_Learn_Hado;
+package org.example.Spider.view.Screen_Learn_Hado;
 
 import org.example.Spider.Controllers.Font_Resizer;
 import org.example.Spider.Controllers.Screen_controller;
@@ -66,7 +66,10 @@ public class Learn_Hado_Screen_View {
 		JButton hadoR = Components_Everywhere.hadoRButton(gray);
 
 		// Learn button
-		JButton learn = Components_Everywhere.learnbutton(darkGray);
+		JButton learn = Components_Everywhere.learnButton(darkGray);
+
+		// Info button
+		JButton info = Components_Everywhere.infoButton(gray);
 
 		//
 
@@ -81,7 +84,7 @@ public class Learn_Hado_Screen_View {
 			panelButtons.add(opdracht);
 		}
 
-		opdrachten.get(0).addActionListener(e -> Screen_controller.showPanel("wordsExplanation"));
+		opdrachten.get(0).addActionListener(e -> Screen_controller.showPanel("screenWordsExplanation"));
 
 
 		opdrachten.subList(1, 25).forEach(mb -> mb.setEnabled(false));
@@ -96,6 +99,8 @@ public class Learn_Hado_Screen_View {
 		panelMainNorth.add(hado);
 		panelMainNorth.add(hadoR);
 		panelMainNorth.add(learn);
+		panelMainNorth.add(info);
+
 
 		// Add components to the center panel
 		panelMainCenter.add(panelButtons);
@@ -109,6 +114,7 @@ public class Learn_Hado_Screen_View {
 		resizableComponents.add(hado);
 		resizableComponents.add(hadoR);
 		resizableComponents.add(learn);
+		resizableComponents.add(info);
 		for (JButton mb : opdrachten) {
 			resizableComponents.add(mb);
 		}

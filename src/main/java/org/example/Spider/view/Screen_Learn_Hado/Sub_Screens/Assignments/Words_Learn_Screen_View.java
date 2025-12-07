@@ -1,4 +1,4 @@
-package org.example.Spider.Screen_Learn_Hado.Sub_Screens.Assignments;
+package org.example.Spider.view.Screen_Learn_Hado.Sub_Screens.Assignments;
 
 import org.example.Spider.Controllers.Font_Resizer;
 import org.example.Spider.Controllers.Screen_controller;
@@ -20,7 +20,7 @@ import static java.awt.Color.gray;
 import static org.example.Spider.models.Components.Screens.Words_Explanation_Screen_Components.GuessList;
 
 
-public class Words_Learn_Screen {
+public class Words_Learn_Screen_View {
 	Hado_Translater hadoWord = new Hado_Translater();
 	Check_Word check = new Check_Word();
 
@@ -135,8 +135,12 @@ public class Words_Learn_Screen {
 		hadoR.setEnabled(false);
 
 		// Learn button
-		JButton learn = Components_Everywhere.learnbutton(gray);
+		JButton learn = Components_Everywhere.learnButton(gray);
 		learn.setEnabled(false);
+
+		// info button
+		JButton info = Components_Everywhere.infoButton(gray);
+		info.setEnabled(false);
 
 		// Back button
 		JButton back = Words_Learn_Screen_Components.back();
@@ -191,6 +195,7 @@ public class Words_Learn_Screen {
 		panelMainNorth.add(hado);
 		panelMainNorth.add(hadoR);
 		panelMainNorth.add(learn);
+		panelMainNorth.add(info);
 
 		//Add components to the Center panel
 		panelMainCenter.add(paneltop, BorderLayout.NORTH);
@@ -227,6 +232,7 @@ public class Words_Learn_Screen {
 		resizableComponents.add(op1Titel);
 		resizableComponents.add(submit);
 		resizableComponents.add(done);
+		resizableComponents.add(info);
 		for (JTextPane tf : GuessList) {
 			resizableComponents.add(tf);
 		}

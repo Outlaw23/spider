@@ -39,19 +39,20 @@ Here are the buttons for the assignment to learn hado
 
 #### words assignment explanation
 here is the explanation of assignment 1
-![Words_Explanation.png](Img/Words_Explanation.png)
+![Words_Explanation.png](Img/Words_Explanation_Screen.png)
 
 #### assignment words (assignment 1)
 here is assignment words 
-![Assignment_Words.png](Img/Assignment_Words.png)
+![Assignment_Words.png](Img/Assignment_Words_Screen.png)
+
+### info Screen
+here is the information about my language (hado)
+![Info_Screen.png](Img/Info_Screen.png)
 
 ---
 ### what I'm still working on
-- better structure for my code
-- learn screens
-- assignments to learn hado
+- assignments to learn hado 
 - Small bugs
-- functions screen wordss
 ---
 ### ideas that are coming
 - User ID and password security

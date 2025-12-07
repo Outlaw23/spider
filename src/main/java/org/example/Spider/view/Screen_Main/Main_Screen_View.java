@@ -1,4 +1,4 @@
-package org.example.Spider.Screen_Main;
+package org.example.Spider.view.Screen_Main;
 
 
 import org.example.Spider.Controllers.Font_Resizer;
@@ -70,7 +70,9 @@ public class Main_Screen_View {
   // HadoR button
   JButton hadoR = Components_Everywhere.hadoRButton(gray);
   //Learn button
-  JButton learn = Components_Everywhere.learnbutton(gray);
+  JButton learn = Components_Everywhere.learnButton(gray);
+  //Info button
+  JButton info = Components_Everywhere.infoButton(gray);
 
 		// Hado button
 
@@ -85,6 +87,7 @@ public class Main_Screen_View {
   panelMainNorth.add(hado);
   panelMainNorth.add(hadoR);
   panelMainNorth.add(learn);
+  panelMainNorth.add(info);
 
   // Center content (short descriptions)
   panelMainCenter.add(hadoScreen);
@@ -98,7 +101,8 @@ public class Main_Screen_View {
           home,
           hado,
           hadoR,
-          learn
+          learn,
+		  info
   );
   Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
 

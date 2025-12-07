@@ -37,7 +37,7 @@ public class Words_Explanation_Screen_Components {
 	}
 
 	public static JButton startButton() {
-		masterbutton Start = new masterbutton("Start", "wordsLearn", gray);
+		masterbutton Start = new masterbutton("Start", "screenWordsLearn", gray);
 		Start.start(GuessList);
 
 
