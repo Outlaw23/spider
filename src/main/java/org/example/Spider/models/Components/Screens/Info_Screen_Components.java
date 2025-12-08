@@ -9,19 +9,22 @@ import static java.awt.Color.white;
 public class Info_Screen_Components {
 
 	public static JLabel infoLabel() {
-		masterlabel hadoScreen = new masterlabel(
-				"<html><font size=30>Hado</font><br/>" +
-						"Welcome to Hado! This language replaces letters using a fixed system.<br/><br/>" +
-						"<b>Letter mappings:</b><br/>" +
-						"B → H, H → N, N → Z, Z → B<br/>" +
-						"C → J, J → P, P → T, T → X, X → C<br/>" +
-						"D → K, K → Q, Q → V, V → D<br/>" +
-						"F → L, L → R, R → W, W → F<br/>" +
-						"G → M, M → S, S → Y, Y → G<br/><br/>" +
-						"There are no grammar rules — Hado is a playful and experimental language.<br/>" +
-						"Use it to explore patterns, translate words, and learn in a creative way.<br/>" +
-						"Every task in this program gives you the chance to practice Hado!<br/>" +
-						"</html>",
+		masterlabel hadoScreen = new masterlabel("<html><font size=30>Hado</font><br/><br/>" +
+				"Welcome to Hado! This language replaces letters using a fixed system.<br/>" +
+				"There are no grammar rules — Hado is playful and experimental.<br/>" +
+				"Use it to explore patterns, translate words, and learn creatively.<br/><br/>" +
+
+				"<b>Letter mappings:</b><br/><br/>" +
+
+				"B → H &nbsp; | &nbsp; C → J &nbsp; | &nbsp; D → K<br/>" +
+				"H → N &nbsp; | &nbsp; J → P &nbsp; | &nbsp; K → Q<br/>" +
+				"N → Z &nbsp; | &nbsp; P → T &nbsp; | &nbsp; Q → V<br/>" +
+				"Z → B &nbsp; | &nbsp; T → X &nbsp; | &nbsp; V → D<br/>" +
+				"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp; X → C &nbsp; |<br/><br/>" +
+
+				"Every task in this program gives you the chance to practice Hado!<br/>" +
+				"Try translating words and see how the letters shift.<br/>" +
+				"</html>",
 				white
 		);
 		return hadoScreen.getMasterLabel();

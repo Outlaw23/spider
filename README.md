@@ -16,38 +16,38 @@ I'm still learning, so I'm tackling new topics that I haven't explored yet with 
 
 #### Login screen 
 In this screen you must log in to access the translator.
-![Login_Screen.png](Img/Login_Screen.png)
+![Login_Screen.png](Img_README/Login_Screen.png)
 
 #### Home screen
 On the home screen there are sort of small 
 explanations of what each screen does (besides the home, login screens).
-![Home_Screen.png](Img/Home_Screen.png)
+![Home_Screen.png](Img_README/Home_Screen.png)
 
 #### Hado translate screen
 on the hado screen the top field is for your own language if you click on translate 
 it will be set to Hado language in the bottom field.
-![Hado_Screen.png](Img/Hado_Screen.png)
+![Hado_Screen.png](Img_README/Hado_Screen.png)
 
 #### HadoR translate screen
 On HadoR screen you can set Hado language back to your own language,
 it works the same as on the Hado Screen.
-![HadoR_Screen.png](Img/HadoR_Screen.png)
+![HadoR_Screen.png](Img_README/HadoR_Screen.png)
 
 #### Hado Learning Screen
 Here are the buttons for the assignment to learn hado
-![Hado_Learn_Screen.png](Img/Hado_Learn_Screen.png)
+![Hado_Learn_Screen.png](Img_README/Hado_Learn_Screen.png)
 
 #### words assignment explanation
 here is the explanation of assignment 1
-![Words_Explanation.png](Img/Words_Explanation_Screen.png)
+![Words_Explanation.png](Img_README/Words_Explanation_Screen.png)
 
 #### assignment words (assignment 1)
 here is assignment words 
-![Assignment_Words.png](Img/Assignment_Words_Screen.png)
+![Assignment_Words.png](Img_README/Assignment_Words_Screen.png)
 
 ### info Screen
 here is the information about my language (hado)
-![Info_Screen.png](Img/Info_Screen.png)
+![Info_Screen.png](Img_README/Info_Screen.png)
 
 ---
 ### what I'm still working on
