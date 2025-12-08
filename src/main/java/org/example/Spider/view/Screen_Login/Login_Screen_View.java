@@ -1,21 +1,16 @@
-package org.example.Spider.Screen_Login;
+package org.example.Spider.view.Screen_Login;
 
 import org.example.Spider.Controllers.Font_Resizer;
-import org.example.Spider.models.Models_Everywhere.masterbutton;
-import org.example.Spider.models.Models_Everywhere.masterlabel;
-import org.example.Spider.models.Models_Everywhere.masterpasswordfield;
-import org.example.Spider.models.Models_Everywhere.mastertextarea;
+import org.example.Spider.models.Components.Components_Everywhere;
+import org.example.Spider.models.Components.Screens.Login_Screen_Components;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-
-import static java.awt.Color.gray;
-import static java.awt.Color.white;
-
-public class Login_Screen {
+    
+public class Login_Screen_View extends javax.swing.JPanel {
 
 
 	// Method to create and return the Login Screen panel
@@ -30,7 +25,7 @@ public class Login_Screen {
 
 		// Center panel for login content
 		JPanel panelMainCenter = new JPanel();
-		panelMainCenter.setLayout(new GridLayout(1, 30, 0, 0));
+		panelMainCenter.setLayout(new GridLayout(0, 4, 0, 0));
 		panelMainCenter.setPreferredSize(new Dimension(1920, 1080));
 		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(50, 100, 50, 100));
 		panelMainCenter.setBackground(new Color(95, 102, 107));
@@ -57,53 +52,52 @@ public class Login_Screen {
 		panelFields.setBackground(new Color(95, 102, 107));
 
 		// Title label
-		masterlabel titel = new masterlabel("Login", white);
+		JLabel title =  Components_Everywhere.Title("Login");
 
 		// Labels for username and password
-		masterlabel userID = new masterlabel("User ID:", white);
-		masterlabel userPassword = new masterlabel("User password:", white);
+		JLabel userID = Login_Screen_Components.userID();
+		JLabel userPassword = Login_Screen_Components.userPassword();
 
 		// Label for messages (e.g., login status)
-		masterlabel messageLabel = new masterlabel("Login please", white);
+		JLabel messageLabel = Login_Screen_Components.messageLabel();
 
 		// Input fields for username and password
-		mastertextarea ID = new mastertextarea();
-		masterpasswordfield password = new masterpasswordfield();
+		JTextArea ID = Login_Screen_Components.ID();
+		JPasswordField password = Login_Screen_Components.password();
 
-		// Login button and its action listener
-		masterbutton login = new masterbutton("login", "", gray);
-		login.loginButtonActionListener(ID, password, messageLabel);
+  // Login button en action listener: geef dezelfde instanties door
+  JButton login = Login_Screen_Components.loginButton(ID, password, messageLabel);
 
 		// Adding panels to main layout
 		panelMain.add(panelMainNorth, BorderLayout.NORTH);
 		panelMain.add(panelMainCenter, BorderLayout.CENTER);
 
 		// Adding title to top panel
-		panelMainNorth.add(titel.getMasterLabel());
+		panelMainNorth.add(title);
 
 		// Adding left and right panels to center
 		panelMainCenter.add(panelText);
 		panelMainCenter.add(panelFields);
 
 		// Adding labels to text panel
-		panelText.add(userID.getMasterLabel());
-		panelText.add(userPassword.getMasterLabel());
-		panelText.add(messageLabel.getMasterLabel());
+		panelText.add(userID);
+		panelText.add(userPassword);
+		panelText.add(messageLabel);
 
 		// Adding input fields and button to fields panel
-		panelFields.add(ID.getID());
-		panelFields.add(password.getPasswordField());
-		panelFields.add(login.getMasterbutton());
+		panelFields.add(ID);
+		panelFields.add(password);
+		panelFields.add(login);
 
 		// Make components resizable using Font_Resizer
 		List<JComponent> resizableComponents = Arrays.asList(
-				titel.getMasterLabel(),
-				userID.getMasterLabel(),
-				userPassword.getMasterLabel(),
-				messageLabel.getMasterLabel(),
-				ID.getID(),
-				password.getPasswordField(),
-				login.getMasterbutton()
+				title,
+				userID,
+				userPassword,
+				messageLabel,
+				ID,
+				password,
+				login
 		);
 		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
 

@@ -2,6 +2,8 @@ package org.example.Spider.models.Models_Everywhere;
 
 
 import org.example.Spider.Controllers.Screen_controller;
+import org.example.Spider.models.Learn.Check_Word;
+import org.example.Spider.models.Learn.List_Maker;
 import org.example.Spider.models.Login.Login_Verification;
 import org.example.Spider.models.hado_language.Hado_Translater;
 
@@ -10,11 +12,14 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 public class masterbutton {
 	// Hado translator instance used for translation actions
 	Hado_Translater hado = new Hado_Translater();
 	Login_Verification login = new Login_Verification();
+	Check_Word check = new Check_Word();
+	List_Maker maker = new List_Maker();
 
 	// The actual JButton that will be styled and used
 	private final JButton masterbutton = new JButton();
@@ -67,19 +72,52 @@ public class masterbutton {
 	}
 
 	// Attach translation action: transforms input to output when button is clicked
-	public void transletActionListener(mastertextarea input, mastertextarea output) {
+	public void transletActionListener(JTextArea input, JTextArea output) {
 		masterbutton.addActionListener(e -> hado.transform(input, output));
 	}
 
 	// Attach reverse translation action
-	public void transletRActionListener(mastertextarea inputR, mastertextarea outputR) {
+	public void transletRActionListener(JTextArea inputR, JTextArea outputR) {
 		masterbutton.addActionListener(e -> hado.transformR(inputR, outputR));
 	}
 
-	public void loginButtonActionListener(mastertextarea ID, masterpasswordfield password, masterlabel messageLabel) {
-		masterbutton.addActionListener(e -> login.loginVerification(ID, password.getPasswordField(),messageLabel));
+	public void loginButtonActionListener(JTextArea ID, JPasswordField password, JLabel messageLabel) {
+		masterbutton.addActionListener(e -> login.loginVerification(ID,password,messageLabel));
 
-		}
+
+
 	}
 
+	public void showPanelOpdrachten(String opdrachtPanelName) {
+		masterbutton.addActionListener(e -> Screen_controller.showPanel(opdrachtPanelName));
+	}
+
+	public masterbutton setName(String name) {
+		masterbutton.setText(name);
+		return this;
+	}
+
+	public masterbutton setPanelname(String panelname) {
+		masterbutton.setText(panelname);
+		return this;	
+	}
+
+	public void setEnabled(boolean b) {
+		masterbutton.setEnabled(b);
+	}
+
+	public void getWords(JPanel panelWords) {
+		masterbutton.addActionListener(e -> hado.getWords(panelWords));
+	}
+
+	public void checkWords(List<JTextPane> GuessList) {
+		masterbutton.addActionListener(e -> check.checkWord(GuessList));
+	}
+
+	public void start(List<JTextPane> guess) {
+		masterbutton.addActionListener(e -> {check.RowsTrue(guess);});
+	}
+
+
+}
 

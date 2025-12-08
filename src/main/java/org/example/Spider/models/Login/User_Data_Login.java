@@ -15,7 +15,7 @@ public class User_Data_Login {
 	}
 
 	// Method to return the user data HashMap
-	public HashMap getUserData() {
+	public HashMap<String, String> getUserData() {
 		return userData;
 	}
 }

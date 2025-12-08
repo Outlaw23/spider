@@ -1,16 +1,17 @@
-package org.example.Spider.Screen_Hado;
+package org.example.Spider.view.Screen_Hado;
 
 import org.example.Spider.Controllers.Font_Resizer;
-import org.example.Spider.models.Models_Everywhere.masterbutton;
-import org.example.Spider.models.Models_Everywhere.masterlabel;
-import org.example.Spider.models.Models_Everywhere.mastertextarea;
+import org.example.Spider.models.Components.Components_Everywhere;
+import org.example.Spider.models.Components.Screens.Hado_Screen_Components;
+import org.example.Spider.models.Models_Everywhere.MasterPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
-import static java.awt.Color.*;
+import static java.awt.Color.darkGray;
+import static java.awt.Color.gray;
 
 public class Hado_Screen_View {
 
@@ -25,14 +26,16 @@ public class Hado_Screen_View {
 
 		// Sub-panels
 		// Center panel
-		JPanel panelHadoCenter = new JPanel();
+		MasterPanel panelHadoCenter = new MasterPanel
+				("src/main/java/org/example/Spider/img/background_hado.jpeg");
 		panelHadoCenter.setLayout(new BorderLayout());
 		panelHadoCenter.setPreferredSize(new Dimension(1920, 500));
 		panelHadoCenter.setBorder(BorderFactory.createEmptyBorder(5, 50, 50, 50));
 		panelHadoCenter.setBackground(new Color(95, 102, 107));
 
 		// North panel (top bar)
-		JPanel panelHadoNorth = new JPanel();
+		MasterPanel panelHadoNorth = new MasterPanel
+				("src/main/java/org/example/Spider/img/strip_background.jpeg");
 		panelHadoNorth.setLayout(new GridLayout(0, 10, 5, 0));
 		panelHadoNorth.setPreferredSize(new Dimension(1920, 50));
 		panelHadoNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
@@ -43,72 +46,82 @@ public class Hado_Screen_View {
 		panelHadoButtons.setLayout(new GridLayout(0, 9, 5, 0));
 		panelHadoButtons.setPreferredSize(new Dimension(1920, 50));
 		panelHadoButtons.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		panelHadoButtons.setBackground(new Color(95, 102, 107));
+		panelHadoButtons.setBackground(new Color(95, 102, 107, 0));
 
 		// Text area panel (inside center)
 		JPanel panelHadoText = new JPanel();
 		panelHadoText.setLayout(new GridLayout(2, 0, 15, 15));
 		panelHadoText.setPreferredSize(new Dimension(1920, 50));
 		panelHadoText.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		panelHadoText.setBackground(new Color(95, 102, 107));
+		panelHadoText.setBackground(new Color(95, 102, 107, 0));
 
 		// Labels
 		// Title label
-		masterlabel titel = new masterlabel("hado", white);
+		JLabel title = Components_Everywhere.Title("Hado");
 
 		// Buttons
 		// Home button
-		masterbutton home = new masterbutton("Home", "screenMain", gray);
-
+		// Buttons
+		// Home button
+		JButton home = Components_Everywhere.homeButton(gray);
 		// Hado button
-		masterbutton hado = new masterbutton("Hado", "screenHado", darkGray);
-
-		// HadoR (video) button
-		masterbutton video = new masterbutton("HadoR", "screenHadoR", gray);
+		JButton hado = Components_Everywhere.hadoButton(darkGray);
+		// HadoR button
+		JButton hadoR = Components_Everywhere.hadoRButton(gray);
+		//Learn button
+		JButton learn = Components_Everywhere.learnButton(gray);
+		// Info button
+		JButton info = Components_Everywhere.infoButton(gray);
 
 		// Text areas
 		// Input text area
-		mastertextarea input = new mastertextarea();
+		JTextArea input = Hado_Screen_Components.input();
 
 		// Output text area
-		mastertextarea output = new mastertextarea();
+		JTextArea output = Hado_Screen_Components.output();
 
 		// Translate button
-		masterbutton translate = new masterbutton("Translate", "", gray);
+		JButton translate = Hado_Screen_Components.translate();
+
+
 
 		// Add action listener to translate input text to output
-		translate.transletActionListener(input, output);
+
 
 		// Add panels to main Hado panel
 		panelHado.add(panelHadoNorth, BorderLayout.NORTH);
 		panelHado.add(panelHadoCenter, BorderLayout.CENTER);
 
 		// Add components to the north panel (top navigation)
-		panelHadoNorth.add(titel.getMasterLabel());
-		panelHadoNorth.add(home.getMasterbutton());
-		panelHadoNorth.add(hado.getMasterbutton());
-		panelHadoNorth.add(video.getMasterbutton());
+		panelHadoNorth.add(title);
+		panelHadoNorth.add(home);
+		panelHadoNorth.add(hado);
+		panelHadoNorth.add(hadoR);
+		panelHadoNorth.add(learn);
+		panelHadoNorth.add(info);
 
 		// Add subpanels to the center panel
 		panelHadoCenter.add(panelHadoButtons, BorderLayout.NORTH);
 		panelHadoCenter.add(panelHadoText, BorderLayout.CENTER);
 
 		// Add button to the buttons panel
-		panelHadoButtons.add(translate.getMasterbutton());
+		panelHadoButtons.add(translate);
 
 		// Add text areas inside scroll panes to the text panel
-		panelHadoText.add(new JScrollPane(input.gettextinput()));
-		panelHadoText.add(new JScrollPane(output.gettextoutput()));
+		panelHadoText.add(new JScrollPane(input));
+		panelHadoText.add(new JScrollPane(output));
 
 		// Add components for dynamic font resizing
 		List<JComponent> resizableComponents = Arrays.asList(
-				titel.getMasterLabel(),
-				home.getMasterbutton(),
-				hado.getMasterbutton(),
-				video.getMasterbutton(),
-				translate.getMasterbutton(),
-				input.gettextinput(),
-				output.gettextoutput()
+				title,
+				home,
+				hado,
+				hadoR,
+				learn,
+				translate,
+				input,
+				output,
+				info
 		);
 		Font_Resizer.applyResizeLogic(panelHado, resizableComponents);
 
