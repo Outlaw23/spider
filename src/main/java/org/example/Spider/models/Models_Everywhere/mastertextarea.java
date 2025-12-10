@@ -88,7 +88,4 @@ public class mastertextarea {
 	public JTextArea gettextoutputR() {
 		return outputR;
 	}
-	public JTextArea getID() {
-		return ID;
-	}
 }

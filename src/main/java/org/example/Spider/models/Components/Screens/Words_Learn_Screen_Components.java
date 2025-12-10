@@ -1,13 +1,15 @@
 package org.example.Spider.models.Components.Screens;
 
+import org.example.Spider.models.Components.Components_Everywhere;
+import org.example.Spider.models.Models_Everywhere.masterTextPane;
 import org.example.Spider.models.Models_Everywhere.masterbutton;
 import org.example.Spider.models.Models_Everywhere.masterlabel;
 
 import javax.swing.*;
 import java.awt.*;
 
+import static java.awt.Color.black;
 import static java.awt.Color.gray;
-import static java.awt.Color.white;
 
 
 
@@ -27,8 +29,7 @@ public class Words_Learn_Screen_Components {
 	}
 
 	public static JLabel  word(String words) {
-		masterlabel word = new masterlabel(words, white);
-		return  word.getMasterLabel();
+		return Components_Everywhere.Title(words);
 	}
 
 	public static JButton back() {
@@ -67,7 +68,7 @@ public class Words_Learn_Screen_Components {
 	}
 
 	public static JTextPane textPane () {
-		JTextPane textPane = new JTextPane();
-		return textPane;
+		masterTextPane pane = new masterTextPane("", black);
+		return pane.getMasterTextPane();
 	}
 }

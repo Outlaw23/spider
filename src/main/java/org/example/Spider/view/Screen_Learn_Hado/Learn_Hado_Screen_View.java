@@ -73,18 +73,17 @@ public class Learn_Hado_Screen_View {
 
 		//
 
-		int panelNumberOpdracht = 0;
+
 
 
 		for (int i = 0; i < 25; i++) {
 			numberOpdracht ++;
-			panelNumberOpdracht ++;
 			JButton opdracht = Learn_Screen_Components.opdrachten();
 			opdrachten.add(opdracht);
 			panelButtons.add(opdracht);
 		}
 
-		opdrachten.get(0).addActionListener(e -> Screen_controller.showPanel("screenWordsExplanation"));
+		opdrachten.getFirst().addActionListener(_ -> Screen_controller.showPanel("screenWordsExplanation"));
 
 
 		opdrachten.subList(1, 25).forEach(mb -> mb.setEnabled(false));
@@ -115,9 +114,7 @@ public class Learn_Hado_Screen_View {
 		resizableComponents.add(hadoR);
 		resizableComponents.add(learn);
 		resizableComponents.add(info);
-		for (JButton mb : opdrachten) {
-			resizableComponents.add(mb);
-		}
+		resizableComponents.addAll(opdrachten);
 		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
 
 		// Return the main panel

@@ -1,6 +1,8 @@
 package org.example.Spider.models.Learn;
 
 import org.example.Spider.models.Components.Screens.Words_Learn_Screen_Components;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
@@ -16,11 +18,11 @@ public class Check_Word {
 	int rowIndex = 0;
 	int rowEndindex = 54;
 	int checkindex = 0;
+	private static final Logger log = LoggerFactory.getLogger(Check_Word.class);
 	public void checkWord(List<JTextPane> GuessList) {
 		int wordIndex = -1;
 		Words_Learn_Screen_Components.reset().setEnabled(false);
 		Words_Learn_Screen_Components.back().setEnabled(false);
-
 
 		for (int index = rowIndex; index <= rowEndindex; index += 6) {
 			System.out.println(index + "ind");
@@ -29,8 +31,7 @@ public class Check_Word {
 			if (wordIndex >= woorden.size()) break; // veiligheidscheck
 			String woord = woorden.get(wordIndex);
 
-			JTextPane mtf = GuessList.get(index);
-			JTextPane pane = mtf; // JTextPane
+			JTextPane pane = GuessList.get(index); // JTextPane
 			String gok = pane.getText();
 
 			String[] kleuren = new String[gok.length()];
@@ -74,8 +75,9 @@ public class Check_Word {
 				try {
 					doc.insertString(doc.getLength(), String.valueOf(gok.charAt(i)), attr);
 				} catch (BadLocationException e) {
-					e.printStackTrace();
+					log.error("Fout bij invoegen van tekst in JTextPane", e);
 				}
+
 			}
 
 			// Optioneel: console output voor debug

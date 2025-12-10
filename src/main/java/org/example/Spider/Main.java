@@ -17,12 +17,11 @@ public class Main {
      *
      * @param args not used
      */
-    public static void main(String[] args) {
+    static void main(@SuppressWarnings("unused") String[] args) {
         // Start UI
 		Screen_controller.screenContoller();
-
         // Quick dev output: print fetched words
         List<String> words = List_Maker.getWoorden();
-        System.out.println(words);
+        IO.println(words);
     }
 }

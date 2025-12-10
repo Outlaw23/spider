@@ -1,5 +1,8 @@
 package org.example.Spider.models.Learn;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,6 +13,8 @@ import java.util.List;
 
 public class List_Maker {
 	private static List<String> woorden;
+	private static final Logger log = LoggerFactory.getLogger(List_Maker.class);
+
 
 	public static List<String> getRandomWords(int count) {
 		List<String> words = new ArrayList<>();
@@ -24,8 +29,9 @@ public class List_Maker {
 			}
 
 		} catch (SQLException | IOException e) {
-			e.printStackTrace();
+			log.error("Er trad een fout op tijdens database- of IO-operaties", e);
 		}
+
 
 		return words;
 	}

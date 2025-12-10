@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MasterPanel extends JPanel {
-	private Image image;
+	private final Image image;
 
 	public MasterPanel(String imagePath) {
 		this.image = new ImageIcon(imagePath).getImage();

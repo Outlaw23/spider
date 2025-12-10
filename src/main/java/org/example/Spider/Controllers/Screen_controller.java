@@ -1,74 +1,75 @@
-	package org.example.Spider.Controllers;
-	// MainClass.java
 
-	import org.example.Spider.models.Login.User_Data_Login;
-	import org.example.Spider.view.Screen_Hado.Hado_Screen_View;
-	import org.example.Spider.view.Screen_HadoR.HadoR_Screen_View;
-	import org.example.Spider.view.Screen_Info.Info_Screen_View;
-	import org.example.Spider.view.Screen_Learn_Hado.Learn_Hado_Screen_View;
-	import org.example.Spider.view.Screen_Learn_Hado.Sub_Screens.Assignments.Words_Learn_Screen_View;
-	import org.example.Spider.view.Screen_Learn_Hado.Sub_Screens.Explaining_The_Assignment.Words_Explanation_View;
-	import org.example.Spider.view.Screen_Login.Login_Screen_View;
-	import org.example.Spider.view.Screen_Main.Main_Screen_View;
+package org.example.Spider.Controllers;
+// MainClass.java
 
-	import javax.swing.*;
-	import java.awt.*;
+import org.example.Spider.models.Login.User_Data_Login;
+import org.example.Spider.view.Screen_Hado.Hado_Screen_View;
+import org.example.Spider.view.Screen_HadoR.HadoR_Screen_View;
+import org.example.Spider.view.Screen_Info.Info_Screen_View;
+import org.example.Spider.view.Screen_Learn_Hado.Learn_Hado_Screen_View;
+import org.example.Spider.view.Screen_Learn_Hado.Sub_Screens.Assignments.Words_Learn_Screen_View;
+import org.example.Spider.view.Screen_Learn_Hado.Sub_Screens.Explaining_The_Assignment.Words_Explanation_View;
+import org.example.Spider.view.Screen_Login.Login_Screen_View;
+import org.example.Spider.view.Screen_Main.Main_Screen_View;
 
-	public class Screen_controller {
+import javax.swing.*;
+import java.awt.*;
 
-		private static CardLayout cardLayout;
-		private static JPanel mainPanel;
+public class Screen_controller {
 
-		public static void screenContoller() {
-			User_Data_Login user = new User_Data_Login();
+	private static CardLayout cardLayout;
+	private static JPanel mainPanel;
 
-			// Create the main application window (JFrame)
-			JFrame frame = new JFrame("Main Window");
+	public static void screenContoller() {
+		User_Data_Login user = new User_Data_Login();
 
-			// Set the initial size and maximize the window
-			frame.setSize(800, 400);
-			frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+		// Create the main application window (JFrame)
+		JFrame frame = new JFrame("Main Window");
 
-			// Close the application when the window is closed
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// Set the initial size and maximize the window
+		frame.setSize(800, 400);
+		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 
-			// Initialize CardLayout and the main panel
-			cardLayout = new CardLayout();
-			mainPanel = new JPanel(cardLayout);
+		// Close the application when the window is closed
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-			// Create instances of different views (screens)
-			Login_Screen_View login_screen = new Login_Screen_View();
-			Main_Screen_View view_main = new Main_Screen_View();
-			Hado_Screen_View hado_screen = new Hado_Screen_View();
-			HadoR_Screen_View video_screen = new HadoR_Screen_View();
-			Learn_Hado_Screen_View learn_screen = new Learn_Hado_Screen_View();
-			Words_Learn_Screen_View wordsLearnScreen =  new Words_Learn_Screen_View();
-			Words_Explanation_View wordsExplanationScreen = new Words_Explanation_View();
-			Info_Screen_View info_screen = new Info_Screen_View();
+		// Initialize CardLayout and the main panel
+		cardLayout = new CardLayout();
+		mainPanel = new JPanel(cardLayout);
 
-			// Add the views to the main panel with unique identifiers
-			mainPanel.add(login_screen.Login_screen(user.getUserData()), "screenLogin");
-			mainPanel.add(view_main.screenMain(), "screenMain");
-			mainPanel.add(hado_screen.screenHado(), "screenHado");
-			mainPanel.add(video_screen.screenHadoR(), "screenHadoR");
-			mainPanel.add(learn_screen.Learn_Hado_screen(), "screenLearn");
-			mainPanel.add(wordsLearnScreen.Words_Learn_screen(), "screenWordsLearn");
-			mainPanel.add(wordsExplanationScreen.screenWordsExplanation(), "screenWordsExplanation");
-			mainPanel.add(info_screen.screenInfo(), "screenInfo");
+		// Create instances of different views (screens)
+		Login_Screen_View login_screen = new Login_Screen_View();
+		Main_Screen_View view_main = new Main_Screen_View();
+		Hado_Screen_View hado_screen = new Hado_Screen_View();
+		HadoR_Screen_View video_screen = new HadoR_Screen_View();
+		Learn_Hado_Screen_View learn_screen = new Learn_Hado_Screen_View();
+		Words_Learn_Screen_View wordsLearnScreen =  new Words_Learn_Screen_View();
+		Words_Explanation_View wordsExplanationScreen = new Words_Explanation_View();
+		Info_Screen_View info_screen = new Info_Screen_View();
 
-			// Show the initial screen
-			cardLayout.show(mainPanel, "screenMain");
+		// Add the views to the main panel with unique identifiers
+		mainPanel.add(login_screen.Login_screen(user.getUserData()), "screenLogin");
+		mainPanel.add(view_main.screenMain(), "screenMain");
+		mainPanel.add(hado_screen.screenHado(), "screenHado");
+		mainPanel.add(video_screen.screenHadoR(), "screenHadoR");
+		mainPanel.add(learn_screen.Learn_Hado_screen(), "screenLearn");
+		mainPanel.add(wordsLearnScreen.Words_Learn_screen(), "screenWordsLearn");
+		mainPanel.add(wordsExplanationScreen.screenWordsExplanation(), "screenWordsExplanation");
+		mainPanel.add(info_screen.screenInfo(), "screenInfo");
 
-			// Add the main panel to the frame
-			frame.add(mainPanel);
+		// Show the initial screen
+		cardLayout.show(mainPanel, "screenLogin");
 
-			// Allow the window to be resizable and make it visible
-			frame.setResizable(true);
-			frame.setVisible(true);
-		}
+		// Add the main panel to the frame
+		frame.add(mainPanel);
 
-		public static void showPanel(String panelName) {
-			// Switch to the specified panel using CardLayout
-			cardLayout.show(mainPanel, panelName);
-		}
+		// Allow the window to be resizable and make it visible
+		frame.setResizable(true);
+		frame.setVisible(true);
 	}
+
+	public static void showPanel(String panelName) {
+		// Switch to the specified panel using CardLayout
+		cardLayout.show(mainPanel, panelName);
+	}
+}

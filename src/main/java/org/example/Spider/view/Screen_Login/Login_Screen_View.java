@@ -3,6 +3,7 @@ package org.example.Spider.view.Screen_Login;
 import org.example.Spider.Controllers.Font_Resizer;
 import org.example.Spider.models.Components.Components_Everywhere;
 import org.example.Spider.models.Components.Screens.Login_Screen_Components;
+import org.example.Spider.models.Models_Everywhere.MasterPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +15,7 @@ public class Login_Screen_View extends javax.swing.JPanel {
 
 
 	// Method to create and return the Login Screen panel
-	public JPanel Login_screen(HashMap<String, String> userdata) {
+	public JPanel Login_screen(@SuppressWarnings("unused")HashMap<String, String> userdata) {
 
 		// Main panel setup
 		JPanel panelMain = new JPanel();
@@ -24,14 +25,14 @@ public class Login_Screen_View extends javax.swing.JPanel {
 		panelMain.setBackground(new Color(255, 255, 255));
 
 		// Center panel for login content
-		JPanel panelMainCenter = new JPanel();
+		MasterPanel panelMainCenter = new MasterPanel("src/main/java/org/example/Spider/img/background_spider.jpeg");
 		panelMainCenter.setLayout(new GridLayout(0, 4, 0, 0));
 		panelMainCenter.setPreferredSize(new Dimension(1920, 1080));
 		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(50, 100, 50, 100));
 		panelMainCenter.setBackground(new Color(95, 102, 107));
 
 		// Top panel for title or navigation
-		JPanel panelMainNorth = new JPanel();
+		MasterPanel panelMainNorth = new MasterPanel("src/main/java/org/example/Spider/img/strip_background.jpeg");
 		panelMainNorth.setLayout(new GridLayout(0, 10, 5, 0));
 		panelMainNorth.setPreferredSize(new Dimension(1920, 50));
 		panelMainNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
@@ -42,14 +43,14 @@ public class Login_Screen_View extends javax.swing.JPanel {
 		panelText.setLayout(new GridLayout(8, 0, 10, 10));
 		panelText.setPreferredSize(new Dimension(1920, 500));
 		panelText.setBorder(BorderFactory.createEmptyBorder(5, 5, 10, 5));
-		panelText.setBackground(new Color(95, 102, 107));
+		panelText.setBackground(new Color(95, 102, 107,0));
 
 		// Right panel for input fields
 		JPanel panelFields = new JPanel();
 		panelFields.setLayout(new GridLayout(8, 0, 5, 45));
 		panelFields.setPreferredSize(new Dimension(1920, 500));
 		panelFields.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		panelFields.setBackground(new Color(95, 102, 107));
+		panelFields.setBackground(new Color(95, 102, 107,0));
 
 		// Title label
 		JLabel title =  Components_Everywhere.Title("Login");
@@ -62,7 +63,7 @@ public class Login_Screen_View extends javax.swing.JPanel {
 		JLabel messageLabel = Login_Screen_Components.messageLabel();
 
 		// Input fields for username and password
-		JTextArea ID = Login_Screen_Components.ID();
+		JTextField ID = Login_Screen_Components.ID();
 		JPasswordField password = Login_Screen_Components.password();
 
   // Login button en action listener: geef dezelfde instanties door

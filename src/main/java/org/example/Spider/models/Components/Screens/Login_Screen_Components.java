@@ -1,14 +1,13 @@
 package org.example.Spider.models.Components.Screens;
 
+import org.example.Spider.models.Models_Everywhere.masterTextField;
 import org.example.Spider.models.Models_Everywhere.masterbutton;
 import org.example.Spider.models.Models_Everywhere.masterlabel;
 import org.example.Spider.models.Models_Everywhere.masterpasswordfield;
-import org.example.Spider.models.Models_Everywhere.mastertextarea;
 
 import javax.swing.*;
 
-import static java.awt.Color.gray;
-import static java.awt.Color.white;
+import static java.awt.Color.*;
 
 public class Login_Screen_Components {
 
@@ -27,9 +26,9 @@ public class Login_Screen_Components {
 		return messageLabel.getMasterLabel();
 	}
 
-	public static JTextArea ID() {
-		mastertextarea ID = new mastertextarea();
-		return ID.getID();
+	public static JTextField ID() {
+		masterTextField ID = new masterTextField("", black);
+		return ID.getMasterTextFied();
 	}
 
 	public static JPasswordField password() {
@@ -37,7 +36,7 @@ public class Login_Screen_Components {
 		return password.getPasswordField();
 	}
 
-    public static JButton loginButton(JTextArea ID, JPasswordField password, JLabel messageLabel) {
+    public static JButton loginButton(JTextField ID, JPasswordField password, JLabel messageLabel) {
         masterbutton login = new masterbutton("login", "", gray);
         // Belangrijk: gebruik dezelfde instanties die op het scherm staan
         login.loginButtonActionListener(ID, password, messageLabel);

@@ -6,12 +6,12 @@
 In my spider project, I'm creating translate for my own language called Hado (not a coding language). 
 I'm still learning, so I'm tackling new topics that I haven't explored yet with Java.
 
-<img align="left" alt="Java" width="50px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"/>
+### Technologies Used
 
+| Java                                                                               | Maven                                                                                 | MariaDB                                                                                     |
+|------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| ![Java](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg) | ![Maven](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/maven/maven-original.svg) | ![MariaDB](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mariadb/mariadb-original.svg) |
 
-
-
----
 ### Explanation per screen
 
 #### Login screen 

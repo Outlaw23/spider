@@ -7,7 +7,7 @@ import java.awt.*;
 public class masterpasswordfield {
 
 	// JPasswordField instance for password input
-	JPasswordField passwordField = new JPasswordField();
+	private final JPasswordField passwordField;
 
 	// Constructor to initialize the password field with custom styling
 	public masterpasswordfield() {

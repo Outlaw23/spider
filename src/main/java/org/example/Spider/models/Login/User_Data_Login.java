@@ -5,7 +5,8 @@ import java.util.HashMap;
 public class User_Data_Login {
 
 	// HashMap to store user credentials (username -> password)
-	HashMap<String, String> userData = new HashMap<String, String>();
+	HashMap<String, String> userData = new HashMap<>();
+
 
 	// Constructor to initialize user data with predefined usernames and passwords
 	public User_Data_Login() {

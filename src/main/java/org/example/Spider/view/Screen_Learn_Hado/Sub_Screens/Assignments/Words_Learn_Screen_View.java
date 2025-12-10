@@ -147,15 +147,15 @@ public class Words_Learn_Screen_View {
 
 		// Reset button
 		JButton reset = Words_Learn_Screen_Components.reset();
-		reset.addActionListener(e -> hadoWord.getWords(panelWords));
+		reset.addActionListener(_ -> hadoWord.getWords(panelWords));
 
 		// submit button
 		JButton submit = Words_Learn_Screen_Components.submit();
-		submit.addActionListener(e -> check.checkWord(GuessList));
+		submit.addActionListener(_ -> check.checkWord(GuessList));
 
 		//done button
 		JButton done = Words_Learn_Screen_Components.done();
-		done.addActionListener(e ->
+		done.addActionListener(_ ->
 				Screen_Reset_Worlds.resetScreen(
 						panelWords,
 						woorden,
@@ -169,7 +169,7 @@ public class Words_Learn_Screen_View {
 						check
 				)
 		);
-		done.addActionListener(e -> Screen_controller.showPanel("screenLearn"));
+		done.addActionListener(_ -> Screen_controller.showPanel("screenLearn"));
 		done.setEnabled(false);
 
 		//textfield
@@ -233,12 +233,8 @@ public class Words_Learn_Screen_View {
 		resizableComponents.add(submit);
 		resizableComponents.add(done);
 		resizableComponents.add(info);
-		for (JTextPane tf : GuessList) {
-			resizableComponents.add(tf);
-		}
-		for (JLabel wo : wordList) {
-			resizableComponents.add(wo);
-		}
+		resizableComponents.addAll(GuessList);
+		resizableComponents.addAll(wordList);
 		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
 
 		// Return the main panel
