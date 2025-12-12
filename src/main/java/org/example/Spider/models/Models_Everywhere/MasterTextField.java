@@ -4,10 +4,10 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
-public class masterTextField {
+public class MasterTextField {
 	JTextField masterTextFiedD;
 
-	public masterTextField(String text, Color coler) {
+	public MasterTextField(String text, Color coler) {
 		Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
 		masterTextFiedD = new JTextField();
 		masterTextFiedD.setEditable(true);

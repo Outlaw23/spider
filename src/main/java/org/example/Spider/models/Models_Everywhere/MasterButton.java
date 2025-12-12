@@ -13,7 +13,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
-public class masterbutton {
+public class MasterButton {
 	// Hado translator instance used for translation actions
 	Hado_Translater hado = new Hado_Translater();
 	Login_Verification login = new Login_Verification();
@@ -26,7 +26,7 @@ public class masterbutton {
 	Border borderbutton = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
 
 	// Constructor: creates a button with a name, panel name (for switching screens), and background color
-	public masterbutton(String name, String panelname, Color coler) {
+	public MasterButton(String name, String panelname, Color coler) {
 		masterbutton.setText(name); // set button text
 		masterbutton.setFocusPainted(false); // remove focus border
 		masterbutton.setFont(new Font("Arial", Font.PLAIN, 25)); // set font

@@ -2,7 +2,7 @@ package org.example.Spider.models.hado_language;
 
 
 import org.example.Spider.models.Learn.List_Maker;
-import org.example.Spider.models.Models_Everywhere.masterlabel;
+import org.example.Spider.models.Models_Everywhere.MasterLabel;
 
 import javax.swing.*;
 import java.util.List;
@@ -46,7 +46,7 @@ public class Hado_Translater {
 		List<String> woorden = List_Maker.newWoords();
 
 		for (String words : woorden) {
-			masterlabel word = new masterlabel(words, white);
+			MasterLabel word = new MasterLabel(words, white);
 
 			StringBuilder wordlist = new StringBuilder();
 			for (char c : words.toCharArray()) {

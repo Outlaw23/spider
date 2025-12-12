@@ -4,13 +4,13 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
-public class masterpasswordfield {
+public class MasterPasswordField {
 
 	// JPasswordField instance for password input
 	private final JPasswordField passwordField;
 
 	// Constructor to initialize the password field with custom styling
-	public masterpasswordfield() {
+	public MasterPasswordField() {
 		// Create a dark gray border with thickness 3
 		Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
 

@@ -1,26 +1,25 @@
 package org.example.Spider.models.Components.Screens;
 
-import org.example.Spider.models.Models_Everywhere.masterbutton;
-import org.example.Spider.models.Models_Everywhere.mastertextarea;
+import org.example.Spider.models.Models_Everywhere.MasterButton;
+import org.example.Spider.models.Models_Everywhere.MasterTextArea;
 
 import javax.swing.*;
-import java.awt.*;
 
 import static java.awt.Color.gray;
 
 public class Hado_Screen_Components {
 	public static JTextArea input() {
-		mastertextarea input = new mastertextarea();
+		MasterTextArea input = new MasterTextArea();
 		return input.gettextinput();
 	}
 
 	public static JTextArea output() {
-		mastertextarea output = new mastertextarea();
+		MasterTextArea output = new MasterTextArea();
 		return output.gettextoutput();
 	}
 
 	public  static JButton translate() {
-		masterbutton translate = new masterbutton("Translate", "", gray);
+		MasterButton translate = new MasterButton("Translate", "", gray);
 		translate.transletActionListener(input(),output());
 		return translate.getMasterbutton();
 	}

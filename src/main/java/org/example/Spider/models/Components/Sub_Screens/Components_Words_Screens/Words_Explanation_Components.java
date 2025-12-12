@@ -1,7 +1,7 @@
-package org.example.Spider.models.Components.Screens;
+package org.example.Spider.models.Components.Sub_Screens.Components_Words_Screens;
 
-import org.example.Spider.models.Models_Everywhere.masterbutton;
-import org.example.Spider.models.Models_Everywhere.masterlabel;
+import org.example.Spider.models.Models_Everywhere.MasterButton;
+import org.example.Spider.models.Models_Everywhere.MasterLabel;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -10,13 +10,13 @@ import java.util.List;
 import static java.awt.Color.gray;
 import static java.awt.Color.white;
 
-public class Words_Explanation_Screen_Components {
+public class Words_Explanation_Components {
 
 	public static List<JTextPane> GuessList = new ArrayList<>();
 
 
-	public  static JLabel Explanation() {
-		masterlabel explanation  = new masterlabel(
+	public  static JLabel ExplanationWords() {
+		MasterLabel explanation  = new MasterLabel(
 				"<html><font size=30>Words explanation</font><br/>" +
 						"<html><font size=6>" +
 						"In this game, the player tries to guess words in the Hado language.<br/><br/>" +
@@ -36,8 +36,8 @@ public class Words_Explanation_Screen_Components {
 		return explanation.getMasterLabel();
 	}
 
-	public static JButton startButton() {
-		masterbutton Start = new masterbutton("Start", "screenWordsLearn", gray);
+	public static JButton startButtonWords() {
+		MasterButton Start = new MasterButton("Start", "screenWordsLearn", gray);
 		Start.start(GuessList);
 
 

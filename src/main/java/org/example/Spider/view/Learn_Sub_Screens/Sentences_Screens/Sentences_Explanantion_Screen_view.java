@@ -1,9 +1,10 @@
-package org.example.Spider.view.Screen_Learn_Hado.Sub_Screens.Explaining_The_Assignment;
+package org.example.Spider.view.Learn_Sub_Screens.Sentences_Screens;
 
 import org.example.Spider.Controllers.Font_Resizer;
+import org.example.Spider.Img.Img_Paths;
 import org.example.Spider.models.Components.Components_Everywhere;
-import org.example.Spider.models.Components.Screens.Words_Explanation_Screen_Components;
-import org.example.Spider.models.Models_Everywhere.MasterPanel;
+import org.example.Spider.models.Components.Sub_Screens.Components_Sentences_Screens.Sentences_Explanation_Component;
+import org.example.Spider.models.Models_Everywhere.masterpanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,10 +13,9 @@ import java.util.List;
 
 import static java.awt.Color.gray;
 
-public class Words_Explanation_View {
+public class Sentences_Explanantion_Screen_view {
 
-
-	public JPanel screenWordsExplanation() {
+	public JPanel screenSentencesExplanation() {
 
 		// Create the main panel with BorderLayout
 		JPanel panelMain = new JPanel();
@@ -26,16 +26,14 @@ public class Words_Explanation_View {
 
 		// Create sub-panels for layout structure
 		// Center panel
-		MasterPanel panelMainCenter = new MasterPanel
-				("src/main/java/org/example/Spider/img/background_spider.jpeg");
+		masterpanel panelMainCenter = new masterpanel(Img_Paths.Background_Spider);
 		panelMainCenter.setLayout(new BorderLayout());
 		panelMainCenter.setPreferredSize(new Dimension(1920, 500));
 		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(50, 100, 50, 100));
 		panelMainCenter.setBackground(new Color(95, 102, 107));
 
 		// North panel (top area)
-		MasterPanel panelMainNorth = new MasterPanel
-				("src/main/java/org/example/Spider/img/strip_background.jpeg");
+		masterpanel panelMainNorth = new masterpanel(Img_Paths.Background_Strip);
 		panelMainNorth.setLayout(new GridLayout(0, 10, 5, 0));
 		panelMainNorth.setPreferredSize(new Dimension(1920, 50));
 		panelMainNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
@@ -56,7 +54,7 @@ public class Words_Explanation_View {
 		JLabel title = Components_Everywhere.Title("Words");
 
 		// Hado description text
-		JLabel explanation = Words_Explanation_Screen_Components.Explanation();
+		JLabel explanation = Sentences_Explanation_Component.ExplanationSentences();
 
 		// Buttons
 		// Home button
@@ -75,7 +73,7 @@ public class Words_Explanation_View {
 		JButton info = Components_Everywhere.infoButton(gray);
 
 		//start button
-		JButton Start = Words_Explanation_Screen_Components.startButton();
+		JButton Start = Sentences_Explanation_Component.startButtonSentences();
 
 
 
@@ -107,12 +105,12 @@ public class Words_Explanation_View {
 				hadoR,
 				learn,
 				Start,
-				info
+				info,
+				explanation
 		);
 		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
 
 		// Return the main panel
 		return panelMain;
 	}
-
 }

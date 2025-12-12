@@ -1,9 +1,10 @@
 package org.example.Spider.view.Screen_Hado;
 
 import org.example.Spider.Controllers.Font_Resizer;
+import org.example.Spider.Img.Img_Paths;
 import org.example.Spider.models.Components.Components_Everywhere;
 import org.example.Spider.models.Components.Screens.Hado_Screen_Components;
-import org.example.Spider.models.Models_Everywhere.MasterPanel;
+import org.example.Spider.models.Models_Everywhere.masterpanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,16 +27,14 @@ public class Hado_Screen_View {
 
 		// Sub-panels
 		// Center panel
-		MasterPanel panelHadoCenter = new MasterPanel
-				("src/main/java/org/example/Spider/img/background_hado.jpeg");
+		masterpanel panelHadoCenter = new masterpanel(Img_Paths.background_Spider_2);
 		panelHadoCenter.setLayout(new BorderLayout());
 		panelHadoCenter.setPreferredSize(new Dimension(1920, 500));
 		panelHadoCenter.setBorder(BorderFactory.createEmptyBorder(5, 50, 50, 50));
 		panelHadoCenter.setBackground(new Color(95, 102, 107));
 
 		// North panel (top bar)
-		MasterPanel panelHadoNorth = new MasterPanel
-				("src/main/java/org/example/Spider/img/strip_background.jpeg");
+		masterpanel panelHadoNorth = new masterpanel(Img_Paths.Background_Strip);
 		panelHadoNorth.setLayout(new GridLayout(0, 10, 5, 0));
 		panelHadoNorth.setPreferredSize(new Dimension(1920, 50));
 		panelHadoNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));

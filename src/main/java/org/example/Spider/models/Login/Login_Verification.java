@@ -17,7 +17,7 @@ public class Login_Verification {
 		String userID = ID.getText();
 		// Get the password entered by the user and convert it to a String
 		String password = String.valueOf(Password.getPassword());
-		System.out.println(String.valueOf(Password.getPassword()));
+		IO.println(String.valueOf(Password.getPassword()));
 
 
 

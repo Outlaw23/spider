@@ -1,9 +1,10 @@
 package org.example.Spider.view.Screen_Login;
 
 import org.example.Spider.Controllers.Font_Resizer;
+import org.example.Spider.Img.Img_Paths;
 import org.example.Spider.models.Components.Components_Everywhere;
 import org.example.Spider.models.Components.Screens.Login_Screen_Components;
-import org.example.Spider.models.Models_Everywhere.MasterPanel;
+import org.example.Spider.models.Models_Everywhere.masterpanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,14 +26,14 @@ public class Login_Screen_View extends javax.swing.JPanel {
 		panelMain.setBackground(new Color(255, 255, 255));
 
 		// Center panel for login content
-		MasterPanel panelMainCenter = new MasterPanel("src/main/java/org/example/Spider/img/background_spider.jpeg");
+		masterpanel panelMainCenter = new masterpanel(Img_Paths.Background_Spider);
 		panelMainCenter.setLayout(new GridLayout(0, 4, 0, 0));
 		panelMainCenter.setPreferredSize(new Dimension(1920, 1080));
 		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(50, 100, 50, 100));
 		panelMainCenter.setBackground(new Color(95, 102, 107));
 
 		// Top panel for title or navigation
-		MasterPanel panelMainNorth = new MasterPanel("src/main/java/org/example/Spider/img/strip_background.jpeg");
+		masterpanel panelMainNorth = new masterpanel(Img_Paths.Background_Strip);
 		panelMainNorth.setLayout(new GridLayout(0, 10, 5, 0));
 		panelMainNorth.setPreferredSize(new Dimension(1920, 50));
 		panelMainNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
@@ -44,6 +45,7 @@ public class Login_Screen_View extends javax.swing.JPanel {
 		panelText.setPreferredSize(new Dimension(1920, 500));
 		panelText.setBorder(BorderFactory.createEmptyBorder(5, 5, 10, 5));
 		panelText.setBackground(new Color(95, 102, 107,0));
+		panelText.setOpaque(false);
 
 		// Right panel for input fields
 		JPanel panelFields = new JPanel();
@@ -51,6 +53,7 @@ public class Login_Screen_View extends javax.swing.JPanel {
 		panelFields.setPreferredSize(new Dimension(1920, 500));
 		panelFields.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		panelFields.setBackground(new Color(95, 102, 107,0));
+		panelFields.setOpaque(false);
 
 		// Title label
 		JLabel title =  Components_Everywhere.Title("Login");

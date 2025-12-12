@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
-public class mastertextarea {
+public class MasterTextArea {
 	// Static JTextArea instances to avoid multiple initializations
 	private static JTextArea masterTextArea;
 	private static JTextArea input;
@@ -13,10 +13,11 @@ public class mastertextarea {
 	private static JTextArea outputR;
 	private static JTextArea ID;
 	private static JTextArea password;
+	private static JTextArea briefExplanation;
 
 
 	// Constructor: initializes text areas if they haven't been created yet
-	public mastertextarea() {
+	public MasterTextArea() {
 		if (masterTextArea == null) {  // Prevents reinitialization
 			Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
 			masterTextArea = new JTextArea();
@@ -65,6 +66,12 @@ public class mastertextarea {
 			password.setFont(new Font("Arial", Font.PLAIN, 25));
 			password.setBorder(bordertextarea);
 		}
+		if (briefExplanation == null) {
+			Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
+			briefExplanation = new JTextArea();
+			briefExplanation.setFont(new Font("Arial", Font.PLAIN, 25));
+			briefExplanation.setBorder(bordertextarea);
+		}
 	}
 
 
@@ -88,4 +95,9 @@ public class mastertextarea {
 	public JTextArea gettextoutputR() {
 		return outputR;
 	}
+
+	public JTextArea getBriefExplanation() {
+		return briefExplanation;
+	}
+
 }

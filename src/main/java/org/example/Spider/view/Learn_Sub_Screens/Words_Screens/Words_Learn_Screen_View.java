@@ -1,13 +1,14 @@
-package org.example.Spider.view.Screen_Learn_Hado.Sub_Screens.Assignments;
+package org.example.Spider.view.Learn_Sub_Screens.Words_Screens;
 
 import org.example.Spider.Controllers.Font_Resizer;
 import org.example.Spider.Controllers.Screen_controller;
+import org.example.Spider.Img.Img_Paths;
 import org.example.Spider.models.Components.Components_Everywhere;
-import org.example.Spider.models.Components.Screens.Words_Learn_Screen_Components;
+import org.example.Spider.models.Components.Sub_Screens.Components_Words_Screens.Words_Learn_Components;
 import org.example.Spider.models.Learn.Check_Word;
 import org.example.Spider.models.Learn.List_Maker;
 import org.example.Spider.models.Learn.Screen_Reset_Worlds;
-import org.example.Spider.models.Models_Everywhere.MasterPanel;
+import org.example.Spider.models.Models_Everywhere.masterpanel;
 import org.example.Spider.models.hado_language.HadoLanguageMvc;
 import org.example.Spider.models.hado_language.Hado_Translater;
 
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.awt.Color.gray;
-import static org.example.Spider.models.Components.Screens.Words_Explanation_Screen_Components.GuessList;
+import static org.example.Spider.models.Components.Sub_Screens.Components_Words_Screens.Words_Explanation_Components.GuessList;
 
 
 public class Words_Learn_Screen_View {
@@ -38,16 +39,14 @@ public class Words_Learn_Screen_View {
 
 		// Create sub-panels for layout structure
 		// Center panel
-		MasterPanel panelMainCenter = new MasterPanel
-				("src/main/java/org/example/Spider/img/background_hado.jpeg");
+		masterpanel panelMainCenter = new masterpanel(Img_Paths.background_Spider_2);
 		panelMainCenter.setLayout(new BorderLayout());
 		panelMainCenter.setPreferredSize(new Dimension(1920, 500));
 		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 		panelMainCenter.setBackground(new Color(95, 102, 107));
 
 		// North panel (top area)
-		MasterPanel panelMainNorth = new MasterPanel
-				("src/main/java/org/example/Spider/img/strip_background.jpeg");
+		masterpanel panelMainNorth = new masterpanel(Img_Paths.Background_Strip);
 		panelMainNorth.setLayout(new GridLayout(0, 10, 5, 0));
 		panelMainNorth.setPreferredSize(new Dimension(1920, 50));
 		panelMainNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
@@ -99,7 +98,7 @@ public class Words_Learn_Screen_View {
 		JLabel title = Components_Everywhere.Title("Words");
 
 		//op1 label
-		JLabel op1Titel = Words_Learn_Screen_Components.op1Titel();
+		JLabel op1Titel = Words_Learn_Components.op1Titel();
 
 		// words label
 		// words in een lijst
@@ -108,7 +107,7 @@ public class Words_Learn_Screen_View {
 		List<JLabel> wordList = new ArrayList<>();
 
 		for (String words : woorden) {
-			JLabel word = Words_Learn_Screen_Components.word(words);
+			JLabel word = Words_Learn_Components.word(words);
 
 			StringBuilder wordlist = new StringBuilder();
 			for (char c : words.toCharArray()) {
@@ -143,18 +142,18 @@ public class Words_Learn_Screen_View {
 		info.setEnabled(false);
 
 		// Back button
-		JButton back = Words_Learn_Screen_Components.back();
+		JButton back = Words_Learn_Components.back();
 
 		// Reset button
-		JButton reset = Words_Learn_Screen_Components.reset();
+		JButton reset = Words_Learn_Components.reset();
 		reset.addActionListener(_ -> hadoWord.getWords(panelWords));
 
 		// submit button
-		JButton submit = Words_Learn_Screen_Components.submit();
+		JButton submit = Words_Learn_Components.submit();
 		submit.addActionListener(_ -> check.checkWord(GuessList));
 
 		//done button
-		JButton done = Words_Learn_Screen_Components.done();
+		JButton done = Words_Learn_Components.done();
 		done.addActionListener(_ ->
 				Screen_Reset_Worlds.resetScreen(
 						panelWords,
@@ -175,7 +174,7 @@ public class Words_Learn_Screen_View {
 		//textfield
 		//Quess field
 		for (int i = 0; i  < 60; i++) {
-			JTextPane guess = Words_Learn_Screen_Components.textPane();
+			JTextPane guess = Words_Learn_Components.textPane();
 			GuessList.add(guess);
 			panelInvoer.add(guess);
 			guess.setEditable(false);

@@ -7,8 +7,10 @@ import org.example.Spider.view.Screen_Hado.Hado_Screen_View;
 import org.example.Spider.view.Screen_HadoR.HadoR_Screen_View;
 import org.example.Spider.view.Screen_Info.Info_Screen_View;
 import org.example.Spider.view.Screen_Learn_Hado.Learn_Hado_Screen_View;
-import org.example.Spider.view.Screen_Learn_Hado.Sub_Screens.Assignments.Words_Learn_Screen_View;
-import org.example.Spider.view.Screen_Learn_Hado.Sub_Screens.Explaining_The_Assignment.Words_Explanation_View;
+import org.example.Spider.view.Learn_Sub_Screens.Sentences_Screens.Sentences_Learn_Screen_view;
+import org.example.Spider.view.Learn_Sub_Screens.Words_Screens.Words_Learn_Screen_View;
+import org.example.Spider.view.Learn_Sub_Screens.Sentences_Screens.Sentences_Explanantion_Screen_view;
+import org.example.Spider.view.Learn_Sub_Screens.Words_Screens.Words_Explanation_Screen_View;
 import org.example.Spider.view.Screen_Login.Login_Screen_View;
 import org.example.Spider.view.Screen_Main.Main_Screen_View;
 
@@ -39,26 +41,30 @@ public class Screen_controller {
 
 		// Create instances of different views (screens)
 		Login_Screen_View login_screen = new Login_Screen_View();
-		Main_Screen_View view_main = new Main_Screen_View();
+		Main_Screen_View main_screen = new Main_Screen_View();
 		Hado_Screen_View hado_screen = new Hado_Screen_View();
 		HadoR_Screen_View video_screen = new HadoR_Screen_View();
 		Learn_Hado_Screen_View learn_screen = new Learn_Hado_Screen_View();
-		Words_Learn_Screen_View wordsLearnScreen =  new Words_Learn_Screen_View();
-		Words_Explanation_View wordsExplanationScreen = new Words_Explanation_View();
+		Words_Learn_Screen_View words_learn_screen =  new Words_Learn_Screen_View();
+		Words_Explanation_Screen_View words_explanation_screen = new Words_Explanation_Screen_View();
 		Info_Screen_View info_screen = new Info_Screen_View();
+		Sentences_Explanantion_Screen_view sentences_explanantion_screen = new Sentences_Explanantion_Screen_view();
+		Sentences_Learn_Screen_view sentences_learn_screen = new Sentences_Learn_Screen_view();
 
 		// Add the views to the main panel with unique identifiers
 		mainPanel.add(login_screen.Login_screen(user.getUserData()), "screenLogin");
-		mainPanel.add(view_main.screenMain(), "screenMain");
+		mainPanel.add(main_screen.screenMain(), "screenMain");
 		mainPanel.add(hado_screen.screenHado(), "screenHado");
 		mainPanel.add(video_screen.screenHadoR(), "screenHadoR");
 		mainPanel.add(learn_screen.Learn_Hado_screen(), "screenLearn");
-		mainPanel.add(wordsLearnScreen.Words_Learn_screen(), "screenWordsLearn");
-		mainPanel.add(wordsExplanationScreen.screenWordsExplanation(), "screenWordsExplanation");
+		mainPanel.add(words_learn_screen.Words_Learn_screen(), "screenWordsLearn");
+		mainPanel.add(words_explanation_screen.screenWordsExplanation(), "screenWordsExplanation");
 		mainPanel.add(info_screen.screenInfo(), "screenInfo");
+		mainPanel.add(sentences_explanantion_screen.screenSentencesExplanation(), "screenSentencesExplanation");
+		mainPanel.add(sentences_learn_screen.screenSentencesLearn(), "screenSentencesLearn");
 
 		// Show the initial screen
-		cardLayout.show(mainPanel, "screenLogin");
+		cardLayout.show(mainPanel, "screenMain");
 
 		// Add the main panel to the frame
 		frame.add(mainPanel);

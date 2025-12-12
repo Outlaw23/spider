@@ -1,6 +1,6 @@
 package org.example.Spider.models.Components.Screens;
 
-import org.example.Spider.models.Models_Everywhere.masterlabel;
+import org.example.Spider.models.Models_Everywhere.MasterLabel;
 
 import javax.swing.*;
 
@@ -9,7 +9,7 @@ import static java.awt.Color.white;
 public class Info_Screen_Components {
 
 	public static JLabel infoLabel() {
-		masterlabel hadoScreen = new masterlabel("<html><font size=30>Hado</font><br/><br/>" +
+		MasterLabel hadoScreen = new MasterLabel("<html><font size=30>Hado</font><br/><br/>" +
 				"Welcome to Hado! This language replaces letters using a fixed system.<br/>" +
 				"There are no grammar rules — Hado is playful and experimental.<br/>" +
 				"Use it to explore patterns, translate words, and learn creatively.<br/><br/>" +

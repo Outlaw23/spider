@@ -1,9 +1,12 @@
 package org.example.Spider.models.Learn;
 
-import org.example.Spider.models.Components.Screens.Words_Learn_Screen_Components;
+import org.example.Spider.models.Components.Sub_Screens.Components_Words_Screens.Words_Learn_Components;
 import org.example.Spider.models.hado_language.HadoLanguageMvc;
 
 import javax.swing.*;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 import java.awt.*;
 import java.util.List;
 
@@ -38,7 +41,7 @@ public class Screen_Reset_Worlds {
 		panelWords.removeAll();
 
 		for (String wordStr : woorden) {
-			JLabel word = Words_Learn_Screen_Components.word(wordStr);
+			JLabel word = Words_Learn_Components.word(wordStr);
 
 			StringBuilder hadoWord = new StringBuilder();
 			for (char c : wordStr.toCharArray()) {
@@ -54,9 +57,27 @@ public class Screen_Reset_Worlds {
 
 		// 5. Reset all input fields
 		for (JTextPane pane : guessList) {
+
+			// tekst leegmaken
 			pane.setText("");
+
+			// pane toestaan om te typen
 			pane.setEditable(true);
+
+			// achtergrond resetten
 			pane.setBackground(new Color(55, 64, 54));
+
+			// foreground / karakterkleur resetten
+			StyledDocument doc = pane.getStyledDocument();
+			SimpleAttributeSet black = new SimpleAttributeSet();
+			StyleConstants.setForeground(black, Color.BLACK);
+
+			// hele document weer zwart
+			doc.setCharacterAttributes(0, doc.getLength(), black, true);
+
+			// nieuwe ingevoerde tekst wordt ook zwart
+			pane.setCharacterAttributes(black, true);
 		}
+
 	}
 }

@@ -1,6 +1,6 @@
 package org.example.Spider.models.Components.Screens;
 
-import org.example.Spider.models.Models_Everywhere.masterlabel;
+import org.example.Spider.models.Models_Everywhere.MasterLabel;
 
 import javax.swing.*;
 
@@ -10,7 +10,7 @@ public class Main_Screen_Components {
 
 	// labes
 	public static JLabel hadoLabel() {
-		masterlabel hadoScreen = new masterlabel(
+		MasterLabel hadoScreen = new MasterLabel(
 				"<html><font size=30>Hado</font><br/>" +
 						"At Hado I have a translator that converts your text to Hado text</html>",
 				white
@@ -19,7 +19,7 @@ public class Main_Screen_Components {
 	}
 
 	public static JLabel hadoRLabel() {
-		masterlabel hadoRScreen = new masterlabel(
+		MasterLabel hadoRScreen = new MasterLabel(
 				"<html><font size=30>HadoR</font><br/>" +
 						"at hadoR I have a translator who converts that hado text to your text</html>",
 				white

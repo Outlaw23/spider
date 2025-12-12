@@ -1,9 +1,9 @@
-package org.example.Spider.models.Components.Screens;
+package org.example.Spider.models.Components.Sub_Screens.Components_Words_Screens;
 
 import org.example.Spider.models.Components.Components_Everywhere;
-import org.example.Spider.models.Models_Everywhere.masterTextPane;
-import org.example.Spider.models.Models_Everywhere.masterbutton;
-import org.example.Spider.models.Models_Everywhere.masterlabel;
+import org.example.Spider.models.Models_Everywhere.MasterTextPane;
+import org.example.Spider.models.Models_Everywhere.MasterButton;
+import org.example.Spider.models.Models_Everywhere.MasterLabel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,7 @@ import static java.awt.Color.gray;
 
 
 
-public class Words_Learn_Screen_Components {
+public class Words_Learn_Components {
 	public static JButton backButton;
 	public static JButton resetButton;
 	public static JButton doneButton;
@@ -22,7 +22,7 @@ public class Words_Learn_Screen_Components {
 
 	public static JLabel op1Titel() {
 		if (op1TitelLabel == null) {
-			masterlabel label = new masterlabel("Guess words", Color.white);
+			MasterLabel label = new MasterLabel("Guess words", Color.white);
 			op1TitelLabel = label.getMasterLabel();
 		}
 		return op1TitelLabel;
@@ -34,7 +34,7 @@ public class Words_Learn_Screen_Components {
 
 	public static JButton back() {
 		if (backButton == null) {
-			masterbutton Back = new masterbutton("Back", "screenWordsExplanation", gray);
+			MasterButton Back = new MasterButton("Back", "screenWordsExplanation", gray);
 			backButton = Back.getMasterbutton();
 		}
 		return backButton;
@@ -42,7 +42,7 @@ public class Words_Learn_Screen_Components {
 
 	public static JButton reset() {
 		if (resetButton == null) {
-			masterbutton Reset = new masterbutton("reset", "", gray);
+			MasterButton Reset = new MasterButton("reset", "", gray);
 			resetButton = Reset.getMasterbutton();
 		}
 		return resetButton;
@@ -50,7 +50,7 @@ public class Words_Learn_Screen_Components {
 
 	public static JButton done() {
 		if (doneButton == null) {
-			masterbutton Done = new masterbutton("Done", "", gray);
+			MasterButton Done = new MasterButton("Done", "", gray);
 			doneButton = Done.getMasterbutton();
 		}
 		return doneButton;
@@ -60,7 +60,7 @@ public class Words_Learn_Screen_Components {
 
 	public static JButton submit() {
 		if (submitbutton == null) {
-			masterbutton Submit = new masterbutton("Submit", "", gray);
+			MasterButton Submit = new MasterButton("Submit", "", gray);
 			submitbutton = Submit.getMasterbutton();
 		}
 
@@ -68,7 +68,7 @@ public class Words_Learn_Screen_Components {
 	}
 
 	public static JTextPane textPane () {
-		masterTextPane pane = new masterTextPane("", black);
+		MasterTextPane pane = new MasterTextPane("", black);
 		return pane.getMasterTextPane();
 	}
 }

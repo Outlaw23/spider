@@ -1,6 +1,6 @@
 package org.example.Spider.models.Learn;
 
-import org.example.Spider.models.Components.Screens.Words_Learn_Screen_Components;
+import org.example.Spider.models.Components.Sub_Screens.Components_Words_Screens.Words_Learn_Components;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,11 +21,10 @@ public class Check_Word {
 	private static final Logger log = LoggerFactory.getLogger(Check_Word.class);
 	public void checkWord(List<JTextPane> GuessList) {
 		int wordIndex = -1;
-		Words_Learn_Screen_Components.reset().setEnabled(false);
-		Words_Learn_Screen_Components.back().setEnabled(false);
+		Words_Learn_Components.reset().setEnabled(false);
+		Words_Learn_Components.back().setEnabled(false);
 
 		for (int index = rowIndex; index <= rowEndindex; index += 6) {
-			System.out.println(index + "ind");
 			List<String> woorden = List_Maker.getWoorden();
 			wordIndex++;
 			if (wordIndex >= woorden.size()) break; // veiligheidscheck
@@ -82,9 +81,9 @@ public class Check_Word {
 
 			// Optioneel: console output voor debug
 			for (int i = 0; i < gok.length(); i++) {
-				System.out.println(gok.charAt(i) + " -> " + kleuren[i]);
+				IO.println(gok.charAt(i) + " -> " + kleuren[i]);
 			}
-			System.out.println("-------");
+			IO.println("-------");
 			GuessList.get(index).setEditable(false);
 			GuessList.get(index).setBackground(new Color(189, 189, 189));
 			if (rowEndindex <= 58) {
@@ -93,15 +92,15 @@ public class Check_Word {
 					rowEndindex++;
 				}
 			}else {
-				Words_Learn_Screen_Components.submit().setEnabled(false);
-				Words_Learn_Screen_Components.done().setEnabled(true);
+				Words_Learn_Components.submit().setEnabled(false);
+				Words_Learn_Components.done().setEnabled(true);
 				checkindex++;
-				Words_Learn_Screen_Components.op1Titel().setText("---Well done---");
+				Words_Learn_Components.op1Titel().setText("---Well done---");
 			}
 		}
-		System.out.println(rowIndex);
-		System.out.println(rowEndindex);
-		System.out.println(checkindex);
+		IO.println(rowIndex);
+		IO.println(rowEndindex);
+		IO.println(checkindex);
 		RowsTrue(GuessList);
 
 
