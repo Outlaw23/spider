@@ -45,13 +45,22 @@ here is the explanation of assignment 1
 here is assignment words 
 ![Assignment_Words.png](Img_README/Assignment_Words_Screen.png)
 
-### info Screen
+#### Sentences assignment explanation
+here is the explanation of assignment 2
+![Sentences_Explanation_Screen.png](Img_README/Sentences_Explanation_Screen.png)
+
+#### assignment Sentences (assignment 2)
+here is assignment Sentences
+![](Img_README/Assingnment_Sentences_Screen.png)
+
+#### info Screen
 here is the information about my language (hado)
 ![Info_Screen.png](Img_README/Info_Screen.png)
 
 ---
 ### what I'm still working on
-- assignments to learn hado 
+- assignments to learn hado
+- assignment 2
 - Small bugs
 ---
 ### ideas that are coming

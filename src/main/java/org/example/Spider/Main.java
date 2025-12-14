@@ -23,6 +23,5 @@ public class Main {
         // Quick dev output: print fetched words
         List<String> words = List_Maker.getWoorden();
         IO.println(words);
-        System.out.println();
     }
 }

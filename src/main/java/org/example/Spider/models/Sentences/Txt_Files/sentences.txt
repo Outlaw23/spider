@@ -1,0 +1,88 @@
+1. Tree - The tree is tall.
+2. Water - I drink water.
+3. Light - The light shines.
+4. House - The house is big.
+5. Dream - I had a dream.
+6. Time - Time passes quickly.
+7. Flame - The flame burned brightly.
+8. Cloud - A cloud floats.
+9. Stone - I found a stone.
+10. Sound - The sound is loud.
+11. Sun - The sun is hot.
+12. Moon - The moon is full.
+13. Star - A star twinkles.
+14. Sky - The sky is blue.
+15. Rain - Rain falls softly.
+16. Forest - The forest is dense.
+17. Fire - Fire is dangerous.
+18. Ice - Ice is cold.
+19. Gold - Gold is precious.
+20. Wind - The wind blows.
+21. Sea - The sea is calm.
+22. Mountain - The mountain is high.
+23. Shadow - My shadow moves.
+24. Leaf - A leaf fell.
+25. Flower - The flower blooms.
+26. Grass - Grass grows fast.
+27. Road - The road is long.
+28. Silence - Silence is golden.
+29. Power - Power is strong.
+30. Word - I read a word.
+31. Line - Draw a line.
+32. Mirror - Look in the mirror.
+33. Thread - The thread broke.
+34. Color - The color is bright.
+35. Shape - The shape is round.
+36. Scent - The scent is sweet.
+37. Path - Follow the path.
+38. Gate - The gate is closed.
+39. Tower - The tower stands tall.
+40. Room - The room is clean.
+41. Book - I read a book.
+42. Note - Write a note.
+43. Pen - The pen is blue.
+44. Map - I checked the map.
+45. Tree & Water - The tree needs water.
+46. Light & House - The light shines in the house.
+47. Dream & Time - I dream about time.
+48. Flame & Cloud - The flame scares the cloud.
+49. Stone & Sound - The stone makes a sound.
+50. Sun & Moon - The sun and moon shine.
+51. Star & Sky - The star lights the sky.
+52. Rain & Forest - Rain falls in the forest.
+53. Fire & Ice - Fire melts the ice.
+54. Gold & Wind - Gold glitters in the wind.
+55. Sea & Mountain - The sea meets the mountain.
+56. Shadow & Leaf - The shadow covers the leaf.
+57. Flower & Grass - The flower grows in the grass.
+58. Road & Silence - The road is silent.
+59. Power & Word - A word has power.
+60. Line & Mirror - Draw a line on the mirror.
+61. Thread & Color - The thread has color.
+62. Shape & Scent - The shape affects the scent.
+63. Path & Gate - The path leads to the gate.
+64. Tower & Room - The tower has a room.
+65. Book & Note - I wrote a note in the book.
+66. Pen & Map - I used a pen on the map.
+67. Tree & Flame - The tree caught flame.
+68. Water & Rain - Water mixes with rain.
+69. Light & Star - Light shines from the star.
+70. House & Roof - The house has a roof.
+71. Dream & Shadow - The dream follows the shadow.
+72. Time & Clock - Time ticks on the clock.
+73. Stone & Road - The stone lies on the road.
+74. Sun & Flower - The sun warms the flower.
+75. Moon & Night - The moon lights the night.
+76. Cloud & Wind - The cloud moves with the wind.
+77. Forest & Path - The forest hides the path.
+78. Fire & Tower - Fire burns the tower.
+79. Ice & Sea - Ice floats on the sea.
+80. Gold & Leaf - Gold sparkles on the leaf.
+81. Wind & Scent - The wind carries the scent.
+82. Tree & Water & Sun - The tree drinks water under the sun.
+83. Moon & Star & Sky - The moon and star fill the sky.
+84. Rain & Cloud & Wind - Rain falls from the cloud in the wind.
+85. Fire & Ice & Flame - Fire and ice ignite the flame.
+86. Flower & Grass & Leaf - The flower grows among the grass and leaf.
+87. Road & Path & Gate - The road leads to the path and gate.
+88. Book & Pen & Note - I wrote a note in the book with a pen.

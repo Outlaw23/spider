@@ -5,16 +5,19 @@ import org.example.Spider.Img.Img_Paths;
 import org.example.Spider.models.Components.Components_Everywhere;
 import org.example.Spider.models.Components.Sub_Screens.Components_Sentences_Screens.Sentences_Learn_Component;
 import org.example.Spider.models.Models_Everywhere.masterpanel;
+import org.example.Spider.models.Sentences.Get_Words_And_Sentences;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.awt.Color.darkGray;
 import static java.awt.Color.gray;
 
 public class Sentences_Learn_Screen_view {
+	Get_Words_And_Sentences get_words_and_sentences = new Get_Words_And_Sentences();
+
 
 	public JPanel screenSentencesLearn() {
 
@@ -28,7 +31,7 @@ public class Sentences_Learn_Screen_view {
 		// Sub-panels for layout structure
 		// Center area with two rows for short descriptions
 		masterpanel panelMainCenter = new masterpanel(Img_Paths.background_Spider_2);
-		panelMainCenter.setLayout(new GridLayout(6, 0, 5, 5));
+		panelMainCenter.setLayout(new  BorderLayout());
 		panelMainCenter.setPreferredSize(new Dimension(1920, 500));
 		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(50, 100, 50, 100));
 		panelMainCenter.setBackground(new Color(95, 102, 107));
@@ -41,11 +44,17 @@ public class Sentences_Learn_Screen_view {
 		panelMainNorth.setBackground(new Color(38, 66, 87));
 
 		JPanel panelWords = new JPanel();
-		panelWords.setLayout(new GridLayout(0, 5, 5, 0));
-		panelWords.setPreferredSize(new Dimension(1920, 500));
+		panelWords.setLayout(new GridLayout(1, 0, 5, 0));
+		panelWords.setPreferredSize(new Dimension(1920, 100));
 		panelWords.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
 		panelWords.setBackground(new Color(95, 102, 107, 0));
 		panelWords.setOpaque(false);
+
+		JPanel panelSentences = new JPanel();
+		panelSentences.setLayout(new GridLayout(5, 0, 5, 5));
+		panelSentences.setPreferredSize(new Dimension(1920, 100));
+		panelSentences.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
+		panelSentences.setBackground(new Color(38, 66, 87, 0));
 
 		// Labels
 		// Title label (screen heading)
@@ -65,7 +74,22 @@ public class Sentences_Learn_Screen_view {
 
 		//
 		JLabel words = Sentences_Learn_Component.words();
+		get_words_and_sentences.load();
+		get_words_and_sentences.readFive();
+		List<String> word = get_words_and_sentences.getCurrentWords();
+		words.setText("<html>Place these words in the sentences:<br>" + String.join(" || ", word) + "</html>");
+		IO.println(String.join(" || ", word));
 
+		List<JLabel> sentenceLabels = new ArrayList<>();
+
+		List<String> sentences = get_words_and_sentences.getCurrentSentences();
+		for (String sentence : sentences) {
+			JLabel sentenceLabel = Sentences_Learn_Component.Sentence(sentence);
+			sentenceLabel.setText(sentence);
+			panelSentences.add(sentenceLabel);
+
+			sentenceLabels.add(sentenceLabel);
+		}
 
 		// Compose layout: add subpanels to the main panel
 		panelMain.add(panelMainNorth, BorderLayout.NORTH);
@@ -81,19 +105,23 @@ public class Sentences_Learn_Screen_view {
 
 		// Center content
 		panelMainCenter.add(panelWords, BorderLayout.NORTH);
+		panelMainCenter.add(panelSentences, BorderLayout.CENTER);
 
 		//
 		panelWords.add(words);
 
 		// Components that will resize when the window is resized
-		List<JComponent> resizableComponents = Arrays.asList(
-				title,
-				home,
-				hado,
-				hadoR,
-				learn,
-				info
-		);
+		List<JComponent> resizableComponents = new ArrayList<>();
+
+		// vaste onderdelen
+		resizableComponents.add(title);
+		resizableComponents.add(home);
+		resizableComponents.add(hado);
+		resizableComponents.add(hadoR);
+		resizableComponents.add(learn);
+		resizableComponents.add(info);
+		resizableComponents.add(words);
+		resizableComponents.addAll(sentenceLabels);
 		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
 
 		// Return the assembled main panel
