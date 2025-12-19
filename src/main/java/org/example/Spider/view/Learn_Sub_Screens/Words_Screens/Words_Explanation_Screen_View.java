@@ -13,76 +13,87 @@ import java.util.List;
 
 import static java.awt.Color.gray;
 
+/**
+ * View class responsible for displaying the explanation screen
+ * for the Words learning section.
+ * <p>
+ * This screen introduces the user to how the Words exercise works
+ * before starting the actual learning activity.
+ */
 public class Words_Explanation_Screen_View {
 
-
+	/**
+	 * Creates and returns the Words Explanation screen panel.
+	 *
+	 * @return fully constructed Words Explanation JPanel
+	 */
 	public JPanel screenWordsExplanation() {
 
-		// Create the main panel with BorderLayout
+		// =========================
+		// Main container panel
+		// =========================
 		JPanel panelMain = new JPanel();
 		panelMain.setLayout(new BorderLayout());
 		panelMain.setPreferredSize(new Dimension(1920, 1080));
 		panelMain.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 20));
 		panelMain.setBackground(new Color(255, 255, 255));
 
-		// Create sub-panels for layout structure
-		// Center panel
+		// =========================
+		// Center panel with background image
+		// =========================
 		masterpanel panelMainCenter = new masterpanel(Img_Paths.Background_Spider);
 		panelMainCenter.setLayout(new BorderLayout());
 		panelMainCenter.setPreferredSize(new Dimension(1920, 500));
 		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(50, 100, 50, 100));
 		panelMainCenter.setBackground(new Color(95, 102, 107));
 
-		// North panel (top area)
+		// =========================
+		// Top navigation bar
+		// =========================
 		masterpanel panelMainNorth = new masterpanel(Img_Paths.Background_Strip);
 		panelMainNorth.setLayout(new GridLayout(0, 10, 5, 0));
 		panelMainNorth.setPreferredSize(new Dimension(1920, 50));
 		panelMainNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
 		panelMainNorth.setBackground(new Color(38, 66, 87));
 
-		//panel start button
+		// =========================
+		// Start button container
+		// =========================
 		JPanel panelStartButton = new JPanel();
 		panelStartButton.setLayout(new GridLayout(0, 10, 5, 5));
 		panelStartButton.setPreferredSize(new Dimension(1920, 60));
 		panelStartButton.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
 		panelStartButton.setBackground(new Color(95, 102, 107, 0));
 
+		// =========================
+		// UI Components
+		// =========================
 
-
-
-		// Labels
-		// Title label
+		// Screen title
 		JLabel title = Components_Everywhere.Title("Words");
 
-		// Hado description text
+		// Explanation text describing the Words exercise
 		JLabel explanation = Words_Explanation_Components.ExplanationWords();
 
-		// Buttons
-		// Home button
+		// =========================
+		// Navigation buttons
+		// =========================
 		JButton home = Components_Everywhere.homeButton(gray);
-
-		// Hado button
 		JButton hado = Components_Everywhere.hadoButton(gray);
-
-		// HadoR button
-		JButton hadoR =  Components_Everywhere.hadoRButton(gray);
-
-		// Learn button
+		JButton hadoR = Components_Everywhere.hadoRButton(gray);
 		JButton learn = Components_Everywhere.learnButton(gray);
-
-		// info button
 		JButton info = Components_Everywhere.infoButton(gray);
 
-		//start button
+		// Start exercise button
 		JButton Start = Words_Explanation_Components.startButtonWords();
 
-
-
-		// Add subpanels to the main panel
+		// =========================
+		// Layout composition
+		// =========================
 		panelMain.add(panelMainNorth, BorderLayout.NORTH);
 		panelMain.add(panelMainCenter, BorderLayout.CENTER);
 
-		// Add components to the north panel
+		// Top navigation bar components
 		panelMainNorth.add(title);
 		panelMainNorth.add(home);
 		panelMainNorth.add(hado);
@@ -90,15 +101,16 @@ public class Words_Explanation_Screen_View {
 		panelMainNorth.add(learn);
 		panelMainNorth.add(info);
 
-		// Add components to the center panel
+		// Center panel components
 		panelMainCenter.add(panelStartButton, BorderLayout.SOUTH);
 		panelMainCenter.add(explanation, BorderLayout.NORTH);
 
-		// Add components to the Start button panel
+		// Start button placement
 		panelStartButton.add(Start);
 
-
-		// Components that will resize when the window is resized
+		// =========================
+		// Responsive font resizing
+		// =========================
 		List<JComponent> resizableComponents = Arrays.asList(
 				title,
 				home,
@@ -109,10 +121,10 @@ public class Words_Explanation_Screen_View {
 				info,
 				explanation
 		);
+
 		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
 
-		// Return the main panel
+		// Return fully built explanation screen
 		return panelMain;
 	}
-
 }

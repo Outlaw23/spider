@@ -59,11 +59,10 @@ here is the information about my language (hado)
 
 ---
 ### what I'm still working on
-- assignments to learn hado
-- assignment 2
 - Small bugs
 ---
 ### ideas that are coming
+- assignments 3
 - User ID and password security
 - work with a database
 - keep a catalog for translation words

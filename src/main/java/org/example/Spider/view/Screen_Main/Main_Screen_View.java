@@ -56,7 +56,6 @@ public class Main_Screen_View {
 
   // Labels
   // Title label (screen heading)
-  //		masterlabel titel = new masterlabel("Home", white);
   JLabel title = Components_Everywhere.Title("home");
 
 		// Hado description text

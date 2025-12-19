@@ -1,7 +1,6 @@
 package org.example.Spider.models.hado_language;
 
-
-import org.example.Spider.models.Learn.List_Maker;
+import org.example.Spider.models.Words.List_Maker;
 import org.example.Spider.models.Models_Everywhere.MasterLabel;
 
 import javax.swing.*;
@@ -9,38 +8,54 @@ import java.util.List;
 
 import static java.awt.Color.white;
 
+/**
+ * Provides methods for translating text to and from the Hado language,
+ * as well as generating Hado-translated word lists for display.
+ */
 public class Hado_Translater {
 
-	// Transform input text from the "mastertextarea" into Hado language and put it in the output
+	/**
+	 * Transforms input text from a JTextArea into Hado language
+	 * and sets the result in the output JTextArea.
+	 *
+	 * @param input  the JTextArea containing the original text
+	 * @param output the JTextArea where the translated text will be displayed
+	 */
 	public void transform(JTextArea input, JTextArea output) {
-		// Get text from input
 		String text = input.getText();
 		StringBuilder translator = new StringBuilder();
 
-		// Translate each character using HadoLanguageMvc
 		for (char c : text.toCharArray()) {
 			translator.append(HadoLanguageMvc.hadoLanguagee(String.valueOf(c)));
 		}
 
-		// Set translated text in output
 		output.setText(translator.toString());
 	}
 
-	// Transform input text from the "mastertextarea" from Hado language back to normal
+	/**
+	 * Transforms input text from a JTextArea in Hado language back to normal text
+	 * and sets the result in the output JTextArea.
+	 *
+	 * @param inputR  the JTextArea containing Hado text
+	 * @param outputR the JTextArea where the reverse-translated text will be displayed
+	 */
 	public void transformR(JTextArea inputR, JTextArea outputR) {
-		// Get text from input
 		String text = inputR.getText();
 		StringBuilder translator = new StringBuilder();
 
-		// Reverse-translate each character using HadoLanguageMvc
 		for (char c : text.toCharArray()) {
 			translator.append(HadoLanguageMvc.reverseHadoLanguage(String.valueOf(c)));
 		}
 
-		// Set translated text in output
 		outputR.setText(translator.toString());
 	}
 
+	/**
+	 * Generates a list of Hado-translated words and adds them
+	 * as labels to the provided panel.
+	 *
+	 * @param panelWords the JPanel where the translated words will be displayed
+	 */
 	public void getWords(JPanel panelWords) {
 		panelWords.removeAll();
 		List<String> woorden = List_Maker.newWoords();
@@ -57,8 +72,7 @@ public class Hado_Translater {
 			panelWords.add(word.getMasterLabel());
 		}
 
-		panelWords.revalidate();	
+		panelWords.revalidate();
 		panelWords.repaint();
 	}
-
 }

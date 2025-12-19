@@ -4,8 +4,13 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
+/**
+ * A reusable class for multiple pre-configured JTextAreas used throughout the application.
+ * Provides standardized fonts, borders, and read-only settings for output areas.
+ */
 public class MasterTextArea {
-	// Static JTextArea instances to avoid multiple initializations
+
+	/** Static JTextArea instances to avoid multiple initializations */
 	private static JTextArea masterTextArea;
 	private static JTextArea input;
 	private static JTextArea output;
@@ -15,57 +20,62 @@ public class MasterTextArea {
 	private static JTextArea password;
 	private static JTextArea briefExplanation;
 
-
-	// Constructor: initializes text areas if they haven't been created yet
+	/**
+	 * Constructor initializes all text areas if they haven't been created yet.
+	 * Ensures consistent font, border, and editable settings for each type of text area.
+	 */
 	public MasterTextArea() {
-		if (masterTextArea == null) {  // Prevents reinitialization
+		if (masterTextArea == null) {
 			Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
 			masterTextArea = new JTextArea();
-			masterTextArea.setFont(new Font("Arial", Font.PLAIN, 30)); // set font
-			masterTextArea.setBorder(bordertextarea); // add border
+			masterTextArea.setFont(new Font("Arial", Font.PLAIN, 30));
+			masterTextArea.setBorder(bordertextarea);
 		}
 
-		if (input == null) { // input text area
+		if (input == null) {
 			Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
 			input = new JTextArea();
 			input.setFont(new Font("Arial", Font.PLAIN, 25));
 			input.setBorder(bordertextarea);
 		}
 
-		if (output == null) { // output text area (read-only)
+		if (output == null) {
 			Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
 			output = new JTextArea();
 			output.setFont(new Font("Arial", Font.PLAIN, 25));
 			output.setBorder(bordertextarea);
-			output.setEditable(false); // output cannot be edited
+			output.setEditable(false);
 		}
 
-		if (inputR == null) { // reverse input text area
+		if (inputR == null) {
 			Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
 			inputR = new JTextArea();
 			inputR.setFont(new Font("Arial", Font.PLAIN, 25));
 			inputR.setBorder(bordertextarea);
 		}
 
-		if (outputR == null) { // reverse output text area (read-only)
+		if (outputR == null) {
 			Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
 			outputR = new JTextArea();
 			outputR.setFont(new Font("Arial", Font.PLAIN, 25));
 			outputR.setBorder(bordertextarea);
 			outputR.setEditable(false);
 		}
+
 		if (ID == null) {
 			Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
 			ID = new JTextArea();
 			ID.setFont(new Font("Arial", Font.PLAIN, 25));
 			ID.setBorder(bordertextarea);
 		}
+
 		if (password == null) {
 			Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
 			password = new JTextArea();
 			password.setFont(new Font("Arial", Font.PLAIN, 25));
 			password.setBorder(bordertextarea);
 		}
+
 		if (briefExplanation == null) {
 			Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
 			briefExplanation = new JTextArea();
@@ -74,30 +84,48 @@ public class MasterTextArea {
 		}
 	}
 
-
-
-	// Returns the input text area
+	/**
+	 * Returns the input JTextArea.
+	 *
+	 * @return the input JTextArea
+	 */
 	public JTextArea gettextinput() {
 		return input;
 	}
 
-	// Returns the output text area
+	/**
+	 * Returns the output JTextArea (read-only).
+	 *
+	 * @return the output JTextArea
+	 */
 	public JTextArea gettextoutput() {
 		return output;
 	}
 
-	// Returns the reverse input text area
+	/**
+	 * Returns the reverse input JTextArea.
+	 *
+	 * @return the reverse input JTextArea
+	 */
 	public JTextArea gettextinputR() {
 		return inputR;
 	}
 
-	// Returns the reverse output text area
+	/**
+	 * Returns the reverse output JTextArea (read-only).
+	 *
+	 * @return the reverse output JTextArea
+	 */
 	public JTextArea gettextoutputR() {
 		return outputR;
 	}
 
+	/**
+	 * Returns the brief explanation JTextArea.
+	 *
+	 * @return the brief explanation JTextArea
+	 */
 	public JTextArea getBriefExplanation() {
 		return briefExplanation;
 	}
-
 }

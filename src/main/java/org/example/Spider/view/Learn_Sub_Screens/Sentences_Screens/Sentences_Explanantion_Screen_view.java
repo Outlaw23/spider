@@ -8,80 +8,93 @@ import org.example.Spider.models.Models_Everywhere.masterpanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static java.awt.Color.gray;
 
+/**
+ * View class for the Sentences explanation screen.
+ * <p>
+ * This screen explains how sentence exercises work
+ * and provides a start button to begin the activity.
+ */
 public class Sentences_Explanantion_Screen_view {
 
+	// Holds sentence input rows (used later during learning)
+	public static List<List<JTextPane>> rows = new ArrayList<>();
+
+	/**
+	 * Creates and returns the Sentences Explanation screen panel.
+	 *
+	 * @return fully constructed explanation JPanel
+	 */
 	public JPanel screenSentencesExplanation() {
 
-		// Create the main panel with BorderLayout
+		// =========================
+		// Main container
+		// =========================
 		JPanel panelMain = new JPanel();
 		panelMain.setLayout(new BorderLayout());
 		panelMain.setPreferredSize(new Dimension(1920, 1080));
 		panelMain.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 20));
-		panelMain.setBackground(new Color(255, 255, 255));
+		panelMain.setBackground(Color.WHITE);
 
-		// Create sub-panels for layout structure
-		// Center panel
+		// =========================
+		// Center panel with background
+		// =========================
 		masterpanel panelMainCenter = new masterpanel(Img_Paths.Background_Spider);
 		panelMainCenter.setLayout(new BorderLayout());
 		panelMainCenter.setPreferredSize(new Dimension(1920, 500));
 		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(50, 100, 50, 100));
 		panelMainCenter.setBackground(new Color(95, 102, 107));
 
-		// North panel (top area)
+		// =========================
+		// Top navigation bar
+		// =========================
 		masterpanel panelMainNorth = new masterpanel(Img_Paths.Background_Strip);
 		panelMainNorth.setLayout(new GridLayout(0, 10, 5, 0));
 		panelMainNorth.setPreferredSize(new Dimension(1920, 50));
 		panelMainNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
 		panelMainNorth.setBackground(new Color(38, 66, 87));
 
-		//panel start button
-		JPanel panelStartButton = new JPanel();
-		panelStartButton.setLayout(new GridLayout(0, 10, 5, 5));
+		// =========================
+		// Start button panel
+		// =========================
+		JPanel panelStartButton = new JPanel(new GridLayout(0, 10, 5, 5));
 		panelStartButton.setPreferredSize(new Dimension(1920, 60));
 		panelStartButton.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
 		panelStartButton.setBackground(new Color(95, 102, 107, 0));
 
-
-
-
+		// =========================
 		// Labels
-		// Title label
+		// =========================
 		JLabel title = Components_Everywhere.Title("Words");
-
-		// Hado description text
 		JLabel explanation = Sentences_Explanation_Component.ExplanationSentences();
 
-		// Buttons
-		// Home button
+		// =========================
+		// Navigation buttons
+		// =========================
 		JButton home = Components_Everywhere.homeButton(gray);
-
-		// Hado button
 		JButton hado = Components_Everywhere.hadoButton(gray);
-
-		// HadoR button
-		JButton hadoR =  Components_Everywhere.hadoRButton(gray);
-
-		// Learn button
+		JButton hadoR = Components_Everywhere.hadoRButton(gray);
 		JButton learn = Components_Everywhere.learnButton(gray);
-
-		// info button
 		JButton info = Components_Everywhere.infoButton(gray);
 
-		//start button
+		// =========================
+		// Start button
+		// =========================
+
+		// Start button activates the sentence exercise
 		JButton Start = Sentences_Explanation_Component.startButtonSentences();
 
-
-
-		// Add subpanels to the main panel
+		// =========================
+		// Layout composition
+		// =========================
 		panelMain.add(panelMainNorth, BorderLayout.NORTH);
 		panelMain.add(panelMainCenter, BorderLayout.CENTER);
 
-		// Add components to the north panel
 		panelMainNorth.add(title);
 		panelMainNorth.add(home);
 		panelMainNorth.add(hado);
@@ -89,15 +102,14 @@ public class Sentences_Explanantion_Screen_view {
 		panelMainNorth.add(learn);
 		panelMainNorth.add(info);
 
-		// Add components to the center panel
-		panelMainCenter.add(panelStartButton, BorderLayout.SOUTH);
 		panelMainCenter.add(explanation, BorderLayout.NORTH);
+		panelMainCenter.add(panelStartButton, BorderLayout.SOUTH);
 
-		// Add components to the Start button panel
 		panelStartButton.add(Start);
 
-
-		// Components that will resize when the window is resized
+		// =========================
+		// Responsive font resizing
+		// =========================
 		List<JComponent> resizableComponents = Arrays.asList(
 				title,
 				home,
@@ -108,9 +120,10 @@ public class Sentences_Explanantion_Screen_view {
 				info,
 				explanation
 		);
+
 		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
 
-		// Return the main panel
+		// Return completed panel
 		return panelMain;
 	}
 }

@@ -9,38 +9,56 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Loads sentences and words from a file and provides shuffled sets for learning exercises.
+ * Each call to {@link #readFive()} retrieves 10 new word-sentence pairs with corresponding Hado translations.
+ */
 public class Get_Words_And_Sentences {
 
+	/** All lines read from the sentences file */
 	private final List<String> lines = new ArrayList<>();
+
+	/** Current index in the list for sequential reading */
 	private int currentIndex = 0;
 
-	private final List<String> currentWords = new ArrayList<>();
+	/** Hado-translated words for the current set */
+	private final List<String> currentWordsHado = new ArrayList<>();
+
+	/** Original sentences for the current set */
 	private final List<String> currentSentences = new ArrayList<>();
 
-	//
-	public void load() {
-		try (BufferedReader reader = new BufferedReader(
-				new FileReader(Sentences_Paths.sentencesPath))) {
+	/** Original words for the current set */
+	private final List<String> currentWords = new ArrayList<>();
 
+	/**
+	 * Loads all lines from the sentences file and shuffles them.
+	 * The file path is defined in {@link Sentences_Paths#sentencesPath}.
+	 *
+	 * @throws RuntimeException if the file cannot be read
+	 */
+	public void load() {
+		try (BufferedReader reader = new BufferedReader(new FileReader(Sentences_Paths.sentencesPath))) {
 			String line;
 			while ((line = reader.readLine()) != null) {
 				lines.add(line);
 			}
-
 			Collections.shuffle(lines);
-
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	//
+	/**
+	 * Reads the next 10 word-sentence pairs from the shuffled lines.
+	 * Converts the words to Hado using {@link HadoLanguageMvc}.
+	 * If the end of the list is reached, the lines are reshuffled and reading continues from the beginning.
+	 */
 	public void readFive() {
-		currentWords.clear();
+		currentWordsHado.clear();
 		currentSentences.clear();
+		currentWords.clear();
 
-		for (int i = 0; i < 5; i++) {
-
+		for (int i = 0; i < 10; i++) {
 			if (currentIndex >= lines.size()) {
 				Collections.shuffle(lines);
 				currentIndex = 0;
@@ -56,22 +74,42 @@ public class Get_Words_And_Sentences {
 			if (sentence.endsWith(".")) {
 				sentence = sentence.substring(0, sentence.length() - 1);
 			}
-			IO.println("[" + word + " || " + sentence + "]");
+
 			StringBuilder hadoBuilder = new StringBuilder();
 			for (char c : word.toCharArray()) {
 				hadoBuilder.append(HadoLanguageMvc.hadoLanguagee(String.valueOf(c)));
 			}
 
-			currentWords.add(hadoBuilder.toString());
+			currentWordsHado.add(hadoBuilder.toString());
+			currentWords.add(word);
 			currentSentences.add(sentence);
 		}
 	}
 
-	public List<String> getCurrentWords() {
-		return currentWords;
+	/**
+	 * Returns the Hado-translated words for the current set.
+	 *
+	 * @return a list of words in Hado
+	 */
+	public List<String> getCurrentWordsHado() {
+		return currentWordsHado;
 	}
 
+	/**
+	 * Returns the original sentences for the current set.
+	 *
+	 * @return a list of sentences
+	 */
 	public List<String> getCurrentSentences() {
 		return currentSentences;
+	}
+
+	/**
+	 * Returns the original words for the current set.
+	 *
+	 * @return a list of words
+	 */
+	public List<String> getCurrentWords() {
+		return currentWords;
 	}
 }

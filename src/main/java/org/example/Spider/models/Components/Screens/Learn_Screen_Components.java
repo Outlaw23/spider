@@ -9,24 +9,47 @@ import java.util.List;
 
 import static java.awt.Color.gray;
 
-
-
+/**
+ * Provides reusable UI components for the
+ * Learn screen of the application.
+ */
 public class Learn_Screen_Components {
 
+	/**
+	 * Counter representing the current assignment number.
+	 */
 	public static int numberOpdracht = 0;
+
+	/**
+	 * List storing assignment buttons.
+	 */
 	public static List<JButton> opdrachten = new ArrayList<>();
 
+	/**
+	 * Creates a button for the current assignment number.
+	 *
+	 * @return a configured JButton representing an assignment
+	 */
 	public static JButton opdrachten() {
 		MasterButton opdracht  = new MasterButton("assignment " + numberOpdracht, "", gray);
 		return opdracht.getMasterbutton();
 	}
 
+	/**
+	 * Creates a read-only text area containing a brief explanation
+	 * of the Words learning game, including instructions and rules.
+	 *
+	 * @return a configured JTextArea with the explanation
+	 */
 	public static JTextArea briefExplanation() {
 		MasterTextArea briefExplanation = new MasterTextArea();
-		briefExplanation.getBriefExplanation().setEditable(false);
-		briefExplanation.getBriefExplanation().setLineWrap(true);
-		briefExplanation.getBriefExplanation().setWrapStyleWord(true);
-		briefExplanation.getBriefExplanation().setText("""
+
+		JTextArea textArea = briefExplanation.getBriefExplanation();
+		textArea.setEditable(false);
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
+
+		textArea.setText("""
     Words Explanation (assignment 1)
 
     In this game, you try to guess words in the Hado language.
@@ -41,8 +64,6 @@ public class Learn_Screen_Components {
     You have 6 attempts to guess all words correctly.
     """);
 
-		return briefExplanation.getBriefExplanation();
+		return textArea;
 	}
-
-
 }

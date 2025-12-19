@@ -1,4 +1,4 @@
-package org.example.Spider.models.Learn;
+package org.example.Spider.models.Words;
 
 import org.example.Spider.models.Components.Sub_Screens.Components_Words_Screens.Words_Learn_Components;
 import org.example.Spider.models.hado_language.HadoLanguageMvc;
@@ -10,8 +10,25 @@ import javax.swing.text.StyledDocument;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * Utility class to reset the Words screen to its initial state.
+ */
 public class Screen_Reset_Worlds {
 
+	/**
+	 * Resets the Words screen: clears inputs, resets titles, buttons, and displayed words.
+	 *
+	 * @param panelWords   the panel displaying the Hado words
+	 * @param woorden      the list of original words
+	 * @param guessList    the list of JTextPane input fields
+	 * @param title        main title JLabel
+	 * @param op1Titel     secondary title JLabel
+	 * @param resetBtn     reset JButton
+	 * @param submitBtn    submit JButton
+	 * @param backBtn      back JButton
+	 * @param doneBtn      done JButton
+	 * @param checkWord    Check_Word instance to reset internal state
+	 */
 	public static void resetScreen(
 			JPanel panelWords,
 			List<String> woorden,
@@ -24,7 +41,7 @@ public class Screen_Reset_Worlds {
 			JButton doneBtn,
 			Check_Word checkWord
 	) {
-		// 1. Reset internal Check_Word values
+		// 1. Reset internal state
 		checkWord.fullResetState();
 
 		// 2. Reset titles
@@ -39,10 +56,10 @@ public class Screen_Reset_Worlds {
 
 		// 4. Reset words panel
 		panelWords.removeAll();
-
 		for (String wordStr : woorden) {
 			JLabel word = Words_Learn_Components.word(wordStr);
 
+			// Convert to Hado language for display
 			StringBuilder hadoWord = new StringBuilder();
 			for (char c : wordStr.toCharArray()) {
 				hadoWord.append(HadoLanguageMvc.hadoLanguagee(String.valueOf(c)));
@@ -51,33 +68,26 @@ public class Screen_Reset_Worlds {
 			word.setText(hadoWord.toString());
 			panelWords.add(word);
 		}
-
 		panelWords.revalidate();
 		panelWords.repaint();
 
-		// 5. Reset all input fields
+		// 5. Reset input fields
 		for (JTextPane pane : guessList) {
-
-			// tekst leegmaken
+			// Clear text
 			pane.setText("");
 
-			// pane toestaan om te typen
+			// Make editable
 			pane.setEditable(true);
 
-			// achtergrond resetten
+			// Reset background color
 			pane.setBackground(new Color(55, 64, 54));
 
-			// foreground / karakterkleur resetten
+			// Reset text color to black
 			StyledDocument doc = pane.getStyledDocument();
 			SimpleAttributeSet black = new SimpleAttributeSet();
 			StyleConstants.setForeground(black, Color.BLACK);
-
-			// hele document weer zwart
 			doc.setCharacterAttributes(0, doc.getLength(), black, true);
-
-			// nieuwe ingevoerde tekst wordt ook zwart
 			pane.setCharacterAttributes(black, true);
 		}
-
 	}
 }

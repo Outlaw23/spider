@@ -1,81 +1,108 @@
 package org.example.Spider.models.hado_language;
 
+/**
+ * Enum representing the mapping between normal letters and Hado letters.
+ * Provides methods to translate letters to Hado and back.
+ */
 public enum HadoLanguageMvc {
-	// Rij 1
+
+	// Row 1
 	B("B", "H"),
 	H("H", "N"),
 	N("N", "Z"),
 	Z("Z", "B"),
 
-	// Rij 2
+	// Row 2
 	C("C", "J"),
 	J("J", "P"),
 	P("P", "T"),
 	T("T", "X"),
 	X("X", "C"),
 
-	// Rij 3
+	// Row 3
 	D("D", "K"),
 	K("K", "Q"),
 	Q("Q", "V"),
 	V("V", "D"),
 
-	// Rij 4
+	// Row 4
 	F("F", "L"),
 	L("L", "R"),
 	R("R", "W"),
 	W("W", "F"),
 
-	// Rij 5
+	// Row 5
 	G("G", "M"),
 	M("M", "S"),
 	S("S", "Y"),
 	Y("Y", "G");
 
-	// originele letter
+	/** Original letter */
 	private final String letter;
-	// corresponderende Hado letter
+
+	/** Corresponding Hado letter */
 	private final String letterHado;
 
-	// constructor om letters te koppelen
+	/**
+	 * Constructor to link a normal letter to its Hado equivalent.
+	 *
+	 * @param letter     original letter
+	 * @param letterHado corresponding Hado letter
+	 */
 	HadoLanguageMvc(String letter, String letterHado) {
 		this.letter = letter;
 		this.letterHado = letterHado;
 	}
 
-	// getter voor originele letter
+	/**
+	 * Gets the original letter.
+	 *
+	 * @return the original letter
+	 */
 	public String getLetter() {
 		return letter;
 	}
 
-	// getter voor Hado letter
+	/**
+	 * Gets the corresponding Hado letter.
+	 *
+	 * @return the Hado letter
+	 */
 	public String getLetterHado() {
 		return letterHado;
 	}
 
-	// Zet normale letter om naar Hado letter
+	/**
+	 * Converts a normal letter to its Hado equivalent.
+	 * Preserves the case (upper/lower) of the input letter.
+	 *
+	 * @param letter the letter to convert
+	 * @return the corresponding Hado letter, or the original letter if no match is found
+	 */
 	public static String hadoLanguagee(String letter) {
 		for (HadoLanguageMvc code : HadoLanguageMvc.values()) {
 			if (code.getLetter().equalsIgnoreCase(letter)) {
-				// behoud hoofdletter als input een hoofdletter is
 				return Character.isUpperCase(letter.charAt(0)) ?
 						code.getLetterHado().toUpperCase() : code.getLetterHado().toLowerCase();
 			}
 		}
-		// return originele letter als er geen match is
 		return letter;
 	}
 
-	// Zet Hado letter terug naar normale letter
+	/**
+	 * Converts a Hado letter back to its normal letter equivalent.
+	 * Preserves the case (upper/lower) of the input letter.
+	 *
+	 * @param hadoLetter the Hado letter to convert
+	 * @return the corresponding normal letter, or the original Hado letter if no match is found
+	 */
 	public static String reverseHadoLanguage(String hadoLetter) {
 		for (HadoLanguageMvc code : HadoLanguageMvc.values()) {
 			if (code.getLetterHado().equalsIgnoreCase(hadoLetter)) {
-				// behoud hoofdletter als input een hoofdletter is
 				return Character.isUpperCase(hadoLetter.charAt(0)) ?
 						code.getLetter().toUpperCase() : code.getLetter().toLowerCase();
 			}
 		}
-		// return originele Hado letter als er geen match is
 		return hadoLetter;
 	}
 }

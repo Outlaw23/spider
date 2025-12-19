@@ -10,12 +10,25 @@ import java.util.List;
 import static java.awt.Color.gray;
 import static java.awt.Color.white;
 
+/**
+ * Provides reusable UI components for the
+ * "Words Explanation" sub-screen.
+ */
 public class Words_Explanation_Components {
 
+	/**
+	 * Shared list of text panes used for word guesses
+	 * during the Words learning game.
+	 */
 	public static List<JTextPane> GuessList = new ArrayList<>();
 
-
-	public  static JLabel ExplanationWords() {
+	/**
+	 * Creates and returns the explanation label describing
+	 * the rules and flow of the Words guessing game.
+	 *
+	 * @return a formatted JLabel containing the game explanation
+	 */
+	public static JLabel ExplanationWords() {
 		MasterLabel explanation  = new MasterLabel(
 				"<html><font size=30>Words explanation</font><br/>" +
 						"<html><font size=6>" +
@@ -36,15 +49,19 @@ public class Words_Explanation_Components {
 		return explanation.getMasterLabel();
 	}
 
+	/**
+	 * Creates the start button for the Words game.
+	 * Initializes the game using the shared GuessList.
+	 *
+	 * @return a configured Start JButton
+	 */
 	public static JButton startButtonWords() {
 		MasterButton Start = new MasterButton("Start", "screenWordsLearn", gray);
-		Start.start(GuessList);
 
+		// Initialize the Words game with the current guess list
+		Start.startWords(GuessList);
 
 		return Start.getMasterbutton();
 	}
-
-
-
 
 }
