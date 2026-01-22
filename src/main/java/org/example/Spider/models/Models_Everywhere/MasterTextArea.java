@@ -19,6 +19,7 @@ public class MasterTextArea {
 	private static JTextArea ID;
 	private static JTextArea password;
 	private static JTextArea briefExplanation;
+	private static JTextArea description;
 
 	/**
 	 * Constructor initializes all text areas if they haven't been created yet.
@@ -28,7 +29,7 @@ public class MasterTextArea {
 		if (masterTextArea == null) {
 			Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
 			masterTextArea = new JTextArea();
-			masterTextArea.setFont(new Font("Arial", Font.PLAIN, 30));
+			masterTextArea.setFont(new Font("Arial", Font.PLAIN, 25));
 			masterTextArea.setBorder(bordertextarea);
 		}
 
@@ -82,6 +83,13 @@ public class MasterTextArea {
 			briefExplanation.setFont(new Font("Arial", Font.PLAIN, 25));
 			briefExplanation.setBorder(bordertextarea);
 		}
+
+		if (description == null) {
+			Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
+			description = new JTextArea();
+			description.setFont(new Font("Arial", Font.PLAIN, 25));
+			description.setBorder(bordertextarea);
+		}
 	}
 
 	/**
@@ -127,5 +135,9 @@ public class MasterTextArea {
 	 */
 	public JTextArea getBriefExplanation() {
 		return briefExplanation;
+	}
+
+	public JTextArea getDescription() {
+		return description;
 	}
 }

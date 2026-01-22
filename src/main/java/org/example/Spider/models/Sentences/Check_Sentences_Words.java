@@ -106,7 +106,7 @@ public class Check_Sentences_Words {
 		rowEndindex = rowIndex;
 		checkindex++;
 
-		// Lock processed rows and enable next row
+		// Lock processed rows and enable the next row
 		if (rowEndindex <= 9) {
 			if (checkindex == rowOff) {
 				JTextPane paneOFF = inputBoxesList.get(rowOff);

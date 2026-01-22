@@ -2,6 +2,8 @@ package org.example.Spider.Controllers;
 // MainClass.java
 
 import org.example.Spider.models.Login.User_Data_Login;
+import org.example.Spider.view.Learn_Sub_Screens.Picture_Screen.Picture_Explanantion_Screen_view;
+import org.example.Spider.view.Learn_Sub_Screens.Picture_Screen.Picture_Learn_Screen_view;
 import org.example.Spider.view.Screen_Hado.Hado_Screen_View;
 import org.example.Spider.view.Screen_HadoR.HadoR_Screen_View;
 import org.example.Spider.view.Screen_Info.Info_Screen_View;
@@ -68,6 +70,10 @@ public class Screen_controller {
 				new Sentences_Explanantion_Screen_view();
 		Sentences_Learn_Screen_view sentences_learn_screen =
 				new Sentences_Learn_Screen_view();
+		Picture_Explanantion_Screen_view picture_explanantion_screen_view =
+				new Picture_Explanantion_Screen_view();
+		Picture_Learn_Screen_view picture_learn_screen_view =
+				new Picture_Learn_Screen_view();
 
 		// Register all screens in the CardLayout with unique identifiers
 		mainPanel.add(login_screen.Login_screen(user.getUserData()), "screenLogin");
@@ -80,7 +86,8 @@ public class Screen_controller {
 		mainPanel.add(info_screen.screenInfo(), "screenInfo");
 		mainPanel.add(sentences_explanantion_screen.screenSentencesExplanation(), "screenSentencesExplanation");
 		mainPanel.add(sentences_learn_screen.screenSentencesLearn(), "screenSentencesLearn");
-
+		mainPanel.add(picture_explanantion_screen_view.screenPictureExplanation(), "screenPictureExplanation");
+		mainPanel.add(picture_learn_screen_view.picture_Learn_Screen_view(), "pictureLearnScreen");
 		// Display the initial screen
 		cardLayout.show(mainPanel, "screenMain");
 

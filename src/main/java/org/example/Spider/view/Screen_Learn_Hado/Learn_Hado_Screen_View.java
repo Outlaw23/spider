@@ -114,6 +114,9 @@ public class Learn_Hado_Screen_View {
 				_ -> Screen_controller.showPanel("screenSentencesExplanation")
 		);
 
+		opdrachten.get(2).addActionListener(
+				_ -> Screen_controller.showPanel("screenPictureExplanation"));
+
 		// =========================
 		// Tooltip descriptions for enabled assignments
 		// =========================
@@ -126,7 +129,7 @@ public class Learn_Hado_Screen_View {
 		);
 
 		// Disable all remaining assignments
-		opdrachten.subList(2, 25).forEach(mb -> mb.setEnabled(false));
+		opdrachten.subList(3, 25).forEach(mb -> mb.setEnabled(false));
 
 		// =========================
 		// Layout composition

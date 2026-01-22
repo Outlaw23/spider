@@ -108,7 +108,7 @@ public class Check_Word {
 			GuessList.get(index).setEditable(false);
 			GuessList.get(index).setBackground(new Color(189, 189, 189));
 
-			// Update indices for next row
+			// Update indices for the next row
 			if (rowEndindex <= 58) {
 				if (index == rowEndindex) {
 					rowIndex++;

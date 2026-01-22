@@ -1,9 +1,9 @@
-package org.example.Spider.view.Learn_Sub_Screens.Sentences_Screens;
+package org.example.Spider.view.Learn_Sub_Screens.Picture_Screen;
 
 import org.example.Spider.Controllers.Font_Resizer;
 import org.example.Spider.Img.Img_Paths;
 import org.example.Spider.models.Components.Components_Everywhere;
-import org.example.Spider.models.Components.Sub_Screens.Components_Sentences_Screens.Sentences_Explanation_Component;
+import org.example.Spider.models.Components.Sub_Screens.Components_Picture_Screen.Picture_Explanation_Component;
 import org.example.Spider.models.Models_Everywhere.masterpanel;
 
 import javax.swing.*;
@@ -20,7 +20,7 @@ import static java.awt.Color.gray;
  * This screen explains how sentence exercises work
  * and provides a start button to begin the activity.
  */
-public class Sentences_Explanantion_Screen_view {
+public class Picture_Explanantion_Screen_view {
 
 	// Holds sentence input rows (used later during learning)
 	public static List<List<JTextPane>> rows = new ArrayList<>();
@@ -30,7 +30,7 @@ public class Sentences_Explanantion_Screen_view {
 	 *
 	 * @return fully constructed explanation JPanel
 	 */
-	public JPanel screenSentencesExplanation() {
+	public JPanel screenPictureExplanation() {
 
 		// =========================
 		// Main container
@@ -70,8 +70,8 @@ public class Sentences_Explanantion_Screen_view {
 		// =========================
 		// Labels
 		// =========================
-		JLabel title = Components_Everywhere.Title("Sentences");
-		JLabel explanation = Sentences_Explanation_Component.ExplanationSentences();
+		JLabel title = Components_Everywhere.Title("Picture");
+		JLabel explanation = Picture_Explanation_Component.ExplanationPicture();
 
 		// =========================
 		// Navigation buttons
@@ -87,7 +87,7 @@ public class Sentences_Explanantion_Screen_view {
 		// =========================
 
 		// Start button activates the sentence exercise
-		JButton Start = Sentences_Explanation_Component.startButtonSentences();
+		JButton Start = Picture_Explanation_Component.startButtonPicture();
 
 		// =========================
 		// Layout composition
