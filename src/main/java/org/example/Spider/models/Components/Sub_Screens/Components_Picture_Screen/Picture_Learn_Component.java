@@ -16,6 +16,7 @@ public class Picture_Learn_Component {
 	private static JTextPane answer;
 	private static JButton submit;
 	private static JTextArea description;
+	private static JTextArea example;
 
 	public static JTextArea	description() {
 		if (description == null) {
@@ -26,6 +27,18 @@ public class Picture_Learn_Component {
 		}
 		return description;
 	}
+
+	public static JTextArea	example() {
+		if (example == null) {
+			MasterTextArea examples = new MasterTextArea();
+			examples.getDescription().setText("");
+			example = examples.getExample();
+
+		}
+		return example;
+	}
+
+
 
 	public static JTextPane answer() {
 		if (answer == null) {

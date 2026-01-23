@@ -7,6 +7,7 @@ import java.io.*;
 public class Descriptions_and_answers {
 	private int num = 0;
 	private static final int Max = 9;
+	Check_Descriptoins checkDescriptoins = new Check_Descriptoins();
 
 	public void descriptions() {
 		questionsaver();
