@@ -6,6 +6,7 @@ import org.example.Spider.Img.Img_Paths;
 import org.example.Spider.models.Components.Components_Everywhere;
 import org.example.Spider.models.Components.Sub_Screens.Components_Picture_Screen.Picture_Learn_Component;
 import org.example.Spider.models.Models_Everywhere.masterpanel;
+import org.example.Spider.models.Picture.Check_Descriptoins;
 import org.example.Spider.models.Picture.Descriptions_and_answers;
 
 import javax.swing.*;
@@ -14,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.awt.Color.gray;
+import static org.example.Spider.models.Picture.Check_Descriptoins.example;
+import static org.example.Spider.models.Picture.Check_Descriptoins.fout;
 
 /**
  * View class from the Sentences learning screen.
@@ -25,8 +28,12 @@ public class Picture_Learn_Screen_view {
 	/**
 	 * Creates and returns the Sentences Learn screen panel.
 	 *
-	 * @return fully constructed Sentences Learn JPanel
 	 */
+
+	public static JPanel panelPicture = new JPanel();
+	public static JPanel panelbutton = new JPanel();
+	public static JPanel Panelsumbit = new JPanel();
+	public static JPanel PanelAnswerExample = new JPanel();
 	public JPanel picture_Learn_Screen_view() {
 
 		// =========================
@@ -57,10 +64,9 @@ public class Picture_Learn_Screen_view {
 		panelMainNorth.setBackground(new Color(38, 66, 87));
 
 		//
-		JPanel panelPicture = new JPanel();
 		panelPicture.setLayout(new BorderLayout());
 		panelPicture.setPreferredSize(new Dimension(1920, 500));
-		panelPicture.setBorder(BorderFactory.createEmptyBorder(20, 5, 20, 5));
+		panelPicture.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		panelPicture.setBackground(new Color(99, 100, 103, 0));
 		panelPicture.setOpaque(false);
 
@@ -69,6 +75,7 @@ public class Picture_Learn_Screen_view {
 		PanelTextSumbit.setPreferredSize(new Dimension(1920, 500));
 		PanelTextSumbit.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		PanelTextSumbit.setBackground(new Color(99, 100, 103, 0));
+		PanelTextSumbit.setOpaque(false);
 
 		JPanel PanelAnswer = new JPanel();
 		PanelAnswer.setLayout(new BorderLayout());
@@ -76,11 +83,25 @@ public class Picture_Learn_Screen_view {
 		PanelAnswer.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0));
 		PanelAnswer.setBackground(new Color(255, 0, 0, 0));
 
-		JPanel Panelsumbit = new JPanel();
+
 		Panelsumbit.setLayout(new BorderLayout());
 		Panelsumbit.setPreferredSize(new Dimension(1920, 50));
 		Panelsumbit.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		Panelsumbit.setBackground(new Color(142, 16, 60, 0));
+		Panelsumbit.setOpaque(false);
+
+		panelbutton.setLayout(new BorderLayout());
+		panelbutton.setPreferredSize(new Dimension(1920, 50));
+		panelbutton.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+		panelbutton.setBackground(new Color(142, 16, 60, 0));
+		panelbutton.setOpaque(false);
+
+		PanelAnswerExample.setLayout(new BorderLayout());
+		PanelAnswerExample.setPreferredSize(new Dimension(1920, 50));
+		PanelAnswerExample.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0));
+		PanelAnswerExample.setBackground(new Color(142, 16, 60, 0));
+		PanelAnswerExample.setOpaque(false);
+
 
 
 
@@ -97,6 +118,12 @@ public class Picture_Learn_Screen_view {
 		JButton hadoR = Components_Everywhere.hadoRButton(gray);
 		JButton learn = Components_Everywhere.learnButton(gray);
 		JButton info = Components_Everywhere.infoButton(gray);
+
+		JButton goed = Picture_Learn_Component.goed();
+		JTextPane answerExample = Picture_Learn_Component.answerExample();
+		Check_Descriptoins check_descriptoins = new Check_Descriptoins();
+		goed.addActionListener(_ -> check_descriptoins.descriptionCheck());
+		fout.addActionListener(_ ->  check_descriptoins.descriptionCheck());
 
 		Descriptions_and_answers descriptions_and_answers = new Descriptions_and_answers();
 		JButton sumbit = Picture_Learn_Component.submit();
@@ -132,7 +159,7 @@ public class Picture_Learn_Screen_view {
 
 		panelPicture.add(picture, BorderLayout.CENTER);
 
-		PanelTextSumbit.add(description, BorderLayout.CENTER);
+		PanelTextSumbit.add(new JScrollPane(description), BorderLayout.CENTER);
 		PanelTextSumbit.add(PanelAnswer, BorderLayout.NORTH);
 		PanelTextSumbit.add(Panelsumbit, BorderLayout.SOUTH);
 
@@ -140,6 +167,9 @@ public class Picture_Learn_Screen_view {
 
 		Panelsumbit.add(sumbit, BorderLayout.CENTER);
 
+		panelbutton.add(goed, BorderLayout.CENTER);
+
+		PanelAnswerExample.add(answerExample, BorderLayout.CENTER);
 
 		// =========================
 		// Responsive font resizing
@@ -155,6 +185,10 @@ public class Picture_Learn_Screen_view {
 		resizableComponents.add(description);
 		resizableComponents.add(answer);
 		resizableComponents.add(sumbit);
+		resizableComponents.add(goed);
+		resizableComponents.add(fout);
+		resizableComponents.add(example);
+		resizableComponents.add(answerExample);
 
 		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
 

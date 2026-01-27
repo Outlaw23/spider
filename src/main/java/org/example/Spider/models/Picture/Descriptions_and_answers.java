@@ -5,53 +5,60 @@ import org.example.Spider.models.Components.Sub_Screens.Components_Picture_Scree
 import java.io.*;
 
 public class Descriptions_and_answers {
-	private int num = 0;
-	private static final int Max = 9;
+	private int  numberDescriptons = 0;
 	Check_Descriptoins checkDescriptoins = new Check_Descriptoins();
 
 	public void descriptions() {
 		questionsaver();
 
-		if (num < Max) {
-			num++;
+
+		int max = 9;
+		if (numberDescriptons < max) {
+			numberDescriptons++;
+		} else {
+			checkDescriptoins.descriptionCheckLayout();
+			checkDescriptoins.questionReaderExample();
+			checkDescriptoins.getHadoList();
+
+			return;
 		}
 
 		questionReader();
-		System.out.println("Now at question " + num);
+		System.out.println("Now at question " + numberDescriptons);
 	}
 
 	public void questionReader() {
 		String save_text_file_path_reader =
-				"src/main/java/org/example/Spider/models/Picture/TxtFiles/PictureQuestion" + num +".txt";
+				"src/main/java/org/example/Spider/models/Picture/TxtFiles/PictureQuestion.txt";
 		try (BufferedReader reader = new BufferedReader(new FileReader(save_text_file_path_reader))) {
 
-			// Hele file inlezen
+			//
 			StringBuilder sb = new StringBuilder();
 			String line;
 			while ((line = reader.readLine()) != null) {
 				sb.append(line).append("\n");
 			}
 
-			// Split op ---
+			//
 			String[] parts = sb.toString().split("---");
 
-			// Eerste deel in Oriënteer1
+			//
 			if (parts.length > 0) {
 				Picture_Learn_Component.answer().setText(parts[0].trim());
 			}
 
-			// Tweede deel in Oriënteer2
+			//
 			if (parts.length > 1) {
 				Picture_Learn_Component.description().setText(parts[1].trim());
 			}
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-		System.out.println(num);
+		System.out.println(numberDescriptons);
 	}
 
 	public void questionsaver() {
-		String path = "src/main/java/org/example/Spider/models/Picture/TxtFiles/PictureQuestion" + num + ".txt";
+		String path = "src/main/java/org/example/Spider/models/Picture/TxtFiles/PictureQuestion" + numberDescriptons + ".txt";
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
 
 			writer.write(Picture_Learn_Component.answer().getText());
@@ -62,4 +69,5 @@ public class Descriptions_and_answers {
 			throw new RuntimeException(e);
 		}
 	}
+
 }

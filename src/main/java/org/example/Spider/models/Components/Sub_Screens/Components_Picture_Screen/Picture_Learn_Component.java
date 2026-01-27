@@ -17,6 +17,9 @@ public class Picture_Learn_Component {
 	private static JButton submit;
 	private static JTextArea description;
 	private static JTextArea example;
+	private static JButton goed;
+	private static JButton fout;
+	private static JTextPane answerExample;
 
 	public static JTextArea	description() {
 		if (description == null) {
@@ -50,12 +53,38 @@ public class Picture_Learn_Component {
 		return answer;
 	}
 
+	public static JTextPane answerExample() {
+		if (answerExample == null) {
+			MasterTextPane Answer = new MasterTextPane("answerExample", Color.black);
+			Border bordertextarea = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
+			answerExample = Answer.getMasterTextPane();
+			answerExample.setBorder(bordertextarea);
+		}
+		return answerExample;
+	}
+
 	public static JButton submit() {
 		if (submit == null) {
 			MasterButton submitbutton = new MasterButton("Submit", "", Color.gray);
 			submit = submitbutton.getMasterbutton();
 		}
 		return submit;
+	}
+
+	public static JButton goed() {
+		if (goed == null) {
+			MasterButton goedbutton = new MasterButton("correct", "", Color.gray);
+			goed = goedbutton.getMasterbutton();
+		}
+		return goed;
+	}
+
+	public static JButton fout() {
+		if (fout == null) {
+			MasterButton foutbutton = new MasterButton("incorrect", "", Color.gray);
+			fout = foutbutton.getMasterbutton();
+		}
+		return fout;
 	}
 
 	public static JLabel picture() {
