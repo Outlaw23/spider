@@ -20,7 +20,6 @@ public class Screen_Reset_Sentences {
 	/**
 	 * Resets the Sentences screen components to their initial state.
 	 *
-	 * @param title                The title label of the screen.
 	 * @param wordsLabel           The label showing the words to place in sentences.
 	 * @param submitBtn            The submit button for sentence checking.
 	 * @param backBtn              The back button.
@@ -32,7 +31,6 @@ public class Screen_Reset_Sentences {
 	 * @param sentences             The original sentences to display.
 	 */
 	public static void resetScreen(
-			JLabel title,
 			JLabel wordsLabel,
 			JButton submitBtn,
 			JButton backBtn,
@@ -47,8 +45,6 @@ public class Screen_Reset_Sentences {
 		// 1. Reset internal checker state
 		checker.fullResetState();
 
-		// 2. Reset screen title
-		title.setText("Sentences");
 
 		// 3. Reset buttons state
 		submitBtn.setEnabled(true);

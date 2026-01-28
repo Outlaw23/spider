@@ -27,6 +27,7 @@ public class Check_Descriptoins {
 	List<String> hadoList = new ArrayList<>();
 	int checkCounter = 0;
 	int numberExample = 0;
+	int correctCount = 0;
 
 	public void exampleText() {
 
@@ -49,14 +50,9 @@ public class Check_Descriptoins {
 					exampleList.add(entry.getValue().asText())
 			);
 
-			System.out.println(exampleList);
-
 		} catch (IOException e) {
 			LOGGER.log(Level.SEVERE, "Failed to load Examples.json", e);
 		}
-		System.out.println(
-				"exampleList size AFTER load = " + exampleList.size()
-		);
 	}
 
 	public void descriptionCheckLayout() {
@@ -76,21 +72,25 @@ public class Check_Descriptoins {
 		Panelsumbit.revalidate();
 		panelPicture.repaint();
 		Panelsumbit.repaint();
-
 	}
 
-	public void descriptionCheck() {
+	public void descriptionCheck(boolean isCorrect) {
 		getHadoList();
 		exampleText();
 		checkCounter++;
 		numberExample++;
-		System.out.println(exampleList);
-		example.setText(exampleList.get(checkCounter));
-		Picture_Learn_Component.answerExample().setText(hadoList.get(checkCounter));
+		if (isCorrect) {
+			correctCount++;
+		}
 
-
-		questionReaderExample();
-
+		if (checkCounter < exampleList.size()) {
+			example.setText(exampleList.get(checkCounter));
+			Picture_Learn_Component.answerExample().setText(hadoList.get(checkCounter));
+			questionReaderExample();
+		} else {
+			System.out.println("test");
+			//showScore();
+		}
 	}
 
 	public void questionReaderExample() {
@@ -158,7 +158,5 @@ public class Check_Descriptoins {
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE, "Failed to load Hado word list", e);
 		}
-
 	}
-
 }

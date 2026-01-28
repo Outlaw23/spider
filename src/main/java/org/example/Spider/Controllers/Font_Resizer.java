@@ -38,10 +38,10 @@ public class Font_Resizer {
 				// Loop through all provided components
 				for (JComponent comp : components) {
 					int size = baseSize;
-
+					System.out.println();
 					// If the component is marked as a title, increase its font size
 					if (comp.getName() != null && comp.getName().equals("title")) {
-						size = baseSize * 2;
+						size = Math.round(baseSize * 0.2f);
 					}
 
 					// Apply the calculated font to the component

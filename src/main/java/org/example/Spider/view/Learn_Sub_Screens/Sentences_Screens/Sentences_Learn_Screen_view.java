@@ -2,9 +2,9 @@ package org.example.Spider.view.Learn_Sub_Screens.Sentences_Screens;
 
 import org.example.Spider.Controllers.Font_Resizer;
 import org.example.Spider.Img.Img_Paths;
-import org.example.Spider.models.Components.Components_Everywhere;
 import org.example.Spider.models.Components.Sub_Screens.Components_Sentences_Screens.Sentences_Learn_Component;
-import org.example.Spider.models.Models_Everywhere.masterpanel;
+import org.example.Spider.models.Models_Everywhere.MasterImagePanel;
+import org.example.Spider.models.Models_Everywhere.MasterPanel;
 import org.example.Spider.models.Sentences.Check_Sentences_Words;
 import org.example.Spider.models.Sentences.Get_Words_And_Sentences;
 import org.example.Spider.models.Sentences.Screen_Reset_Sentences;
@@ -14,11 +14,10 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.awt.Color.gray;
 import static org.example.Spider.models.Components.Sub_Screens.Components_Sentences_Screens.Sentences_Explanation_Component.inputBoxesList;
 
 /**
- * View class for the Sentences learning screen.
+ * View class from the Sentences learning screen.
  * <p>
  * This screen allows the user to place given Hado words
  * into sentence structures and validate their answers.
@@ -38,29 +37,18 @@ public class Sentences_Learn_Screen_view {
 		// =========================
 		// Main container
 		// =========================
-		JPanel panelMain = new JPanel();
-		panelMain.setLayout(new BorderLayout());
-		panelMain.setPreferredSize(new Dimension(1920, 1080));
-		panelMain.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 20));
-		panelMain.setBackground(Color.WHITE);
+		MasterPanel panelMain = new MasterPanel("Sentences");
+
 
 		// =========================
 		// Center panel with background
 		// =========================
-		masterpanel panelMainCenter = new masterpanel(Img_Paths.background_Spider_2);
+		MasterImagePanel panelMainCenter = new MasterImagePanel(Img_Paths.background_Spider_2);
 		panelMainCenter.setLayout(new BorderLayout());
 		panelMainCenter.setPreferredSize(new Dimension(1920, 500));
 		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(50, 100, 50, 100));
 		panelMainCenter.setBackground(new Color(95, 102, 107));
 
-		// =========================
-		// Top navigation bar
-		// =========================
-		masterpanel panelMainNorth = new masterpanel(Img_Paths.Background_Strip);
-		panelMainNorth.setLayout(new GridLayout(0, 10, 5, 0));
-		panelMainNorth.setPreferredSize(new Dimension(1920, 50));
-		panelMainNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
-		panelMainNorth.setBackground(new Color(38, 66, 87));
 
 		// =========================
 		// Instruction text panel
@@ -95,23 +83,6 @@ public class Sentences_Learn_Screen_view {
 		panelButtons.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
 		panelButtons.setBackground(new Color(38, 66, 87, 0));
 
-		// =========================
-		// Title and navigation buttons
-		// =========================
-		JLabel title = Components_Everywhere.Title("Sentences");
-
-		JButton home = Components_Everywhere.homeButton(gray);
-		JButton hado = Components_Everywhere.hadoButton(gray);
-		JButton hadoR = Components_Everywhere.hadoRButton(gray);
-		JButton learn = Components_Everywhere.learnButton(gray);
-		JButton info = Components_Everywhere.infoButton(gray);
-
-		// Disable navigation during exercise
-		home.setEnabled(false);
-		hado.setEnabled(false);
-		hadoR.setEnabled(false);
-		learn.setEnabled(false);
-		info.setEnabled(false);
 
 		// =========================
 		// Instruction label
@@ -174,7 +145,6 @@ public class Sentences_Learn_Screen_view {
 		done.setEnabled(false);
 		done.addActionListener(_ ->
 				Screen_Reset_Sentences.resetScreen(
-						title,
 						words,
 						submit,
 						back,
@@ -189,15 +159,10 @@ public class Sentences_Learn_Screen_view {
 		// =========================
 		// Layout composition
 		// =========================
-		panelMain.add(panelMainNorth, BorderLayout.NORTH);
+
 		panelMain.add(panelMainCenter, BorderLayout.CENTER);
 
-		panelMainNorth.add(title);
-		panelMainNorth.add(home);
-		panelMainNorth.add(hado);
-		panelMainNorth.add(hadoR);
-		panelMainNorth.add(learn);
-		panelMainNorth.add(info);
+
 
 		panelMainCenter.add(panelText, BorderLayout.NORTH);
 		panelMainCenter.add(panelSentenceAndWords, BorderLayout.CENTER);
@@ -213,12 +178,6 @@ public class Sentences_Learn_Screen_view {
 		// Responsive font resizing
 		// =========================
 		List<JComponent> resizableComponents = new ArrayList<>();
-		resizableComponents.add(title);
-		resizableComponents.add(home);
-		resizableComponents.add(hado);
-		resizableComponents.add(hadoR);
-		resizableComponents.add(learn);
-		resizableComponents.add(info);
 		resizableComponents.add(words);
 		resizableComponents.addAll(sentenceLabels);
 		resizableComponents.addAll(inputBoxesList);

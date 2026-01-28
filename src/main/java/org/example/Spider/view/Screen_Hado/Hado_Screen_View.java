@@ -2,17 +2,14 @@ package org.example.Spider.view.Screen_Hado;
 
 import org.example.Spider.Controllers.Font_Resizer;
 import org.example.Spider.Img.Img_Paths;
-import org.example.Spider.models.Components.Components_Everywhere;
 import org.example.Spider.models.Components.Screens.Hado_Screen_Components;
-import org.example.Spider.models.Models_Everywhere.masterpanel;
+import org.example.Spider.models.Models_Everywhere.MasterImagePanel;
+import org.example.Spider.models.Models_Everywhere.MasterPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
-
-import static java.awt.Color.darkGray;
-import static java.awt.Color.gray;
 
 /**
  * View class responsible for building the Hado screen UI.
@@ -30,30 +27,19 @@ public class Hado_Screen_View {
 		// =========================
 		// Main container panel
 		// =========================
-		JPanel panelHado = new JPanel();
-		panelHado.setLayout(new BorderLayout());
-		panelHado.setPreferredSize(new Dimension(1920, 1080));
-		panelHado.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 20));
-		panelHado.setBackground(new Color(255, 255, 255));
+		MasterPanel panelMain = new MasterPanel("Hado");
 
 		// =========================
 		// Center panel with background image
 		// Contains buttons and text areas
 		// =========================
-		masterpanel panelHadoCenter = new masterpanel(Img_Paths.background_Spider_2);
+		MasterImagePanel panelHadoCenter = new MasterImagePanel(Img_Paths.background_Spider_2);
 		panelHadoCenter.setLayout(new BorderLayout());
 		panelHadoCenter.setPreferredSize(new Dimension(1920, 500));
 		panelHadoCenter.setBorder(BorderFactory.createEmptyBorder(5, 50, 50, 50));
 		panelHadoCenter.setBackground(new Color(95, 102, 107));
 
-		// =========================
-		// Top navigation bar
-		// =========================
-		masterpanel panelHadoNorth = new masterpanel(Img_Paths.Background_Strip);
-		panelHadoNorth.setLayout(new GridLayout(0, 10, 5, 0));
-		panelHadoNorth.setPreferredSize(new Dimension(1920, 50));
-		panelHadoNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
-		panelHadoNorth.setBackground(new Color(38, 66, 87));
+
 
 		// =========================
 		// Buttons panel (inside center panel)
@@ -78,14 +64,7 @@ public class Hado_Screen_View {
 		// =========================
 
 		// Screen title
-		JLabel title = Components_Everywhere.Title("Hado");
 
-		// Navigation buttons
-		JButton home = Components_Everywhere.homeButton(gray);
-		JButton hado = Components_Everywhere.hadoButton(darkGray);
-		JButton hadoR = Components_Everywhere.hadoRButton(gray);
-		JButton learn = Components_Everywhere.learnButton(gray);
-		JButton info = Components_Everywhere.infoButton(gray);
 
 		// Text input area
 		JTextArea input = Hado_Screen_Components.input();
@@ -101,16 +80,11 @@ public class Hado_Screen_View {
 		// =========================
 
 		// Add main subpanels
-		panelHado.add(panelHadoNorth, BorderLayout.NORTH);
-		panelHado.add(panelHadoCenter, BorderLayout.CENTER);
+
+		panelMain.add(panelHadoCenter, BorderLayout.CENTER);
 
 		// Add navigation components
-		panelHadoNorth.add(title);
-		panelHadoNorth.add(home);
-		panelHadoNorth.add(hado);
-		panelHadoNorth.add(hadoR);
-		panelHadoNorth.add(learn);
-		panelHadoNorth.add(info);
+
 
 		// Add center subpanels
 		panelHadoCenter.add(panelHadoButtons, BorderLayout.NORTH);
@@ -127,21 +101,15 @@ public class Hado_Screen_View {
 		// Responsive font resizing
 		// =========================
 		List<JComponent> resizableComponents = Arrays.asList(
-				title,
-				home,
-				hado,
-				hadoR,
-				learn,
 				translate,
 				input,
-				output,
-				info
+				output
 		);
 
 		// Apply automatic font resize logic
-		Font_Resizer.applyResizeLogic(panelHado, resizableComponents);
+		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
 
 		// Return fully built Hado screen
-		return panelHado;
+		return panelMain;
 	}
 }

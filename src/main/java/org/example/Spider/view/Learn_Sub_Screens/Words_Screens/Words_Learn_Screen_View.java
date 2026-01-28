@@ -3,12 +3,12 @@ package org.example.Spider.view.Learn_Sub_Screens.Words_Screens;
 import org.example.Spider.Controllers.Font_Resizer;
 import org.example.Spider.Controllers.Screen_controller;
 import org.example.Spider.Img.Img_Paths;
-import org.example.Spider.models.Components.Components_Everywhere;
 import org.example.Spider.models.Components.Sub_Screens.Components_Words_Screens.Words_Learn_Components;
+import org.example.Spider.models.Models_Everywhere.MasterImagePanel;
+import org.example.Spider.models.Models_Everywhere.MasterPanel;
 import org.example.Spider.models.Words.Check_Word;
 import org.example.Spider.models.Words.List_Maker;
 import org.example.Spider.models.Words.Screen_Reset_Worlds;
-import org.example.Spider.models.Models_Everywhere.masterpanel;
 import org.example.Spider.models.hado_language.HadoLanguageMvc;
 import org.example.Spider.models.hado_language.Hado_Translater;
 
@@ -17,7 +17,6 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.awt.Color.gray;
 import static org.example.Spider.models.Components.Sub_Screens.Components_Words_Screens.Words_Explanation_Components.GuessList;
 
 /**
@@ -42,29 +41,16 @@ public class Words_Learn_Screen_View {
 		// =========================
 		// Main container panel
 		// =========================
-		JPanel panelMain = new JPanel();
-		panelMain.setLayout(new BorderLayout());
-		panelMain.setPreferredSize(new Dimension(1920, 1080));
-		panelMain.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 20));
-		panelMain.setBackground(new Color(255, 255, 255));
+		MasterPanel panelMain = new MasterPanel("Words");
 
 		// =========================
 		// Center panel with background image
 		// =========================
-		masterpanel panelMainCenter = new masterpanel(Img_Paths.background_Spider_2);
+		MasterImagePanel panelMainCenter = new MasterImagePanel(Img_Paths.background_Spider_2);
 		panelMainCenter.setLayout(new BorderLayout());
 		panelMainCenter.setPreferredSize(new Dimension(1920, 500));
 		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 		panelMainCenter.setBackground(new Color(95, 102, 107));
-
-		// =========================
-		// Top navigation bar
-		// =========================
-		masterpanel panelMainNorth = new masterpanel(Img_Paths.Background_Strip);
-		panelMainNorth.setLayout(new GridLayout(0, 10, 5, 0));
-		panelMainNorth.setPreferredSize(new Dimension(1920, 50));
-		panelMainNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
-		panelMainNorth.setBackground(new Color(38, 66, 87));
 
 		// =========================
 		// Top content panel (buttons + label)
@@ -114,8 +100,7 @@ public class Words_Learn_Screen_View {
 		// UI Components
 		// =========================
 
-		// Screen title
-		JLabel title = Components_Everywhere.Title("Words");
+
 
 		// Assignment title
 		JLabel op1Titel = Words_Learn_Components.op1Titel();
@@ -138,23 +123,7 @@ public class Words_Learn_Screen_View {
 			panelWords.add(word);
 		}
 
-		// =========================
-		// Navigation buttons (disabled during exercise)
-		// =========================
-		JButton home = Components_Everywhere.homeButton(gray);
-		home.setEnabled(false);
 
-		JButton hado = Components_Everywhere.hadoButton(gray);
-		hado.setEnabled(false);
-
-		JButton hadoR = Components_Everywhere.hadoRButton(gray);
-		hadoR.setEnabled(false);
-
-		JButton learn = Components_Everywhere.learnButton(gray);
-		learn.setEnabled(false);
-
-		JButton info = Components_Everywhere.infoButton(gray);
-		info.setEnabled(false);
 
 		// =========================
 		// Exercise control buttons
@@ -173,7 +142,6 @@ public class Words_Learn_Screen_View {
 						panelWords,
 						woorden,
 						GuessList,
-						title,
 						op1Titel,
 						reset,
 						submit,
@@ -199,15 +167,10 @@ public class Words_Learn_Screen_View {
 		// =========================
 		// Layout composition
 		// =========================
-		panelMain.add(panelMainNorth, BorderLayout.NORTH);
+
 		panelMain.add(panelMainCenter, BorderLayout.CENTER);
 
-		panelMainNorth.add(title);
-		panelMainNorth.add(home);
-		panelMainNorth.add(hado);
-		panelMainNorth.add(hadoR);
-		panelMainNorth.add(learn);
-		panelMainNorth.add(info);
+
 
 		panelMainCenter.add(paneltop, BorderLayout.NORTH);
 		panelMainCenter.add(panelWords, BorderLayout.WEST);
@@ -227,18 +190,11 @@ public class Words_Learn_Screen_View {
 		// Responsive font resizing
 		// =========================
 		List<JComponent> resizableComponents = new ArrayList<>();
-
-		resizableComponents.add(title);
-		resizableComponents.add(home);
-		resizableComponents.add(hado);
-		resizableComponents.add(hadoR);
-		resizableComponents.add(learn);
 		resizableComponents.add(back);
 		resizableComponents.add(reset);
 		resizableComponents.add(op1Titel);
 		resizableComponents.add(submit);
 		resizableComponents.add(done);
-		resizableComponents.add(info);
 		resizableComponents.addAll(GuessList);
 		resizableComponents.addAll(wordList);
 

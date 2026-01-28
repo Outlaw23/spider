@@ -3,17 +3,15 @@ package org.example.Spider.view.Screen_Learn_Hado;
 import org.example.Spider.Controllers.Font_Resizer;
 import org.example.Spider.Controllers.Screen_controller;
 import org.example.Spider.Img.Img_Paths;
-import org.example.Spider.models.Components.Components_Everywhere;
 import org.example.Spider.models.Components.Screens.Learn_Screen_Components;
-import org.example.Spider.models.Models_Everywhere.masterpanel;
+import org.example.Spider.models.Models_Everywhere.MasterImagePanel;
+import org.example.Spider.models.Models_Everywhere.MasterPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.awt.Color.darkGray;
-import static java.awt.Color.gray;
 import static org.example.Spider.models.Components.Screens.Learn_Screen_Components.numberOpdracht;
 import static org.example.Spider.models.Components.Screens.Learn_Screen_Components.opdrachten;
 
@@ -33,30 +31,19 @@ public class Learn_Hado_Screen_View {
 		// =========================
 		// Main container panel
 		// =========================
-		JPanel panelMain = new JPanel();
-		panelMain.setLayout(new BorderLayout());
-		panelMain.setPreferredSize(new Dimension(1920, 1080));
-		panelMain.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 20));
-		panelMain.setBackground(new Color(255, 255, 255));
+		MasterPanel panelMain = new MasterPanel("Learn");
+
 
 		// =========================
 		// Center panel with background image
 		// Holds buttons and explanation area
 		// =========================
-		masterpanel panelMainCenter = new masterpanel(Img_Paths.Background_Spider);
+		MasterImagePanel panelMainCenter = new MasterImagePanel(Img_Paths.Background_Spider);
 		panelMainCenter.setLayout(new GridLayout(2, 0, 5, 5));
 		panelMainCenter.setPreferredSize(new Dimension(1920, 500));
 		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(50, 100, 50, 100));
 		panelMainCenter.setBackground(new Color(95, 102, 107));
 
-		// =========================
-		// Top navigation bar
-		// =========================
-		masterpanel panelMainNorth = new masterpanel(Img_Paths.Background_Strip);
-		panelMainNorth.setLayout(new GridLayout(0, 10, 5, 0));
-		panelMainNorth.setPreferredSize(new Dimension(1920, 50));
-		panelMainNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
-		panelMainNorth.setBackground(new Color(38, 66, 87));
 
 		// =========================
 		// Panel containing assignment buttons
@@ -80,15 +67,6 @@ public class Learn_Hado_Screen_View {
 		// UI Components
 		// =========================
 
-		// Screen title
-		JLabel title = Components_Everywhere.Title("Learn");
-
-		// Navigation buttons
-		JButton home = Components_Everywhere.homeButton(gray);
-		JButton hado = Components_Everywhere.hadoButton(gray);
-		JButton hadoR = Components_Everywhere.hadoRButton(gray);
-		JButton learn = Components_Everywhere.learnButton(darkGray);
-		JButton info = Components_Everywhere.infoButton(gray);
 
 		// Text area with a brief explanation of the selected assignment
 		JTextArea BriefExplanationArea = Learn_Screen_Components.briefExplanation();
@@ -136,16 +114,11 @@ public class Learn_Hado_Screen_View {
 		// =========================
 
 		// Add main subpanels
-		panelMain.add(panelMainNorth, BorderLayout.NORTH);
+
 		panelMain.add(panelMainCenter, BorderLayout.CENTER);
 
 		// Add components to the top navigation bar
-		panelMainNorth.add(title);
-		panelMainNorth.add(home);
-		panelMainNorth.add(hado);
-		panelMainNorth.add(hadoR);
-		panelMainNorth.add(learn);
-		panelMainNorth.add(info);
+
 
 		// Add components to the center panel
 		panelMainCenter.add(panelButtons);
@@ -157,18 +130,12 @@ public class Learn_Hado_Screen_View {
 		// =========================
 		// Responsive font resizing
 		// =========================
-		List<JComponent> resizableComponents = new ArrayList<>();
 
-		// Fixed UI elements
-		resizableComponents.add(title);
-		resizableComponents.add(home);
-		resizableComponents.add(hado);
-		resizableComponents.add(hadoR);
-		resizableComponents.add(learn);
-		resizableComponents.add(info);
 
 		// Dynamic assignment buttons
-		resizableComponents.addAll(opdrachten);
+		List<JComponent> resizableComponents = new ArrayList<>(opdrachten);
+		resizableComponents.add(BriefExplanationArea);
+
 
 		// Apply resize logic
 		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);

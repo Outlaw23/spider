@@ -4,7 +4,7 @@ import org.example.Spider.Controllers.Font_Resizer;
 import org.example.Spider.Img.Img_Paths;
 import org.example.Spider.models.Components.Components_Everywhere;
 import org.example.Spider.models.Components.Screens.Login_Screen_Components;
-import org.example.Spider.models.Models_Everywhere.masterpanel;
+import org.example.Spider.models.Models_Everywhere.MasterImagePanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,7 +39,7 @@ public class Login_Screen_View extends javax.swing.JPanel {
 		// Center panel with background image
 		// Holds the login form content
 		// =========================
-		masterpanel panelMainCenter = new masterpanel(Img_Paths.Background_Spider);
+		MasterImagePanel panelMainCenter = new MasterImagePanel(Img_Paths.Background_Spider);
 		panelMainCenter.setLayout(new GridLayout(0, 4, 0, 0));
 		panelMainCenter.setPreferredSize(new Dimension(1920, 1080));
 		panelMainCenter.setBorder(BorderFactory.createEmptyBorder(50, 100, 50, 100));
@@ -48,7 +48,7 @@ public class Login_Screen_View extends javax.swing.JPanel {
 		// =========================
 		// Top navigation / title bar
 		// =========================
-		masterpanel panelMainNorth = new masterpanel(Img_Paths.Background_Strip);
+		MasterImagePanel panelMainNorth = new MasterImagePanel(Img_Paths.Background_Strip);
 		panelMainNorth.setLayout(new GridLayout(0, 10, 5, 0));
 		panelMainNorth.setPreferredSize(new Dimension(1920, 50));
 		panelMainNorth.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));

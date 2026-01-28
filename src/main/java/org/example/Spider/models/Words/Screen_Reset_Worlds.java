@@ -21,7 +21,6 @@ public class Screen_Reset_Worlds {
 	 * @param panelWords   the panel displaying the Hado words
 	 * @param woorden      the list of original words
 	 * @param guessList    the list of JTextPane input fields
-	 * @param title        main title JLabel
 	 * @param op1Titel     secondary title JLabel
 	 * @param resetBtn     reset JButton
 	 * @param submitBtn    submit JButton
@@ -33,7 +32,6 @@ public class Screen_Reset_Worlds {
 			JPanel panelWords,
 			List<String> woorden,
 			List<JTextPane> guessList,
-			JLabel title,
 			JLabel op1Titel,
 			JButton resetBtn,
 			JButton submitBtn,
@@ -46,7 +44,6 @@ public class Screen_Reset_Worlds {
 
 		// 2. Reset titles
 		op1Titel.setText("Guess words");
-		title.setText("Words");
 
 		// 3. Reset buttons
 		resetBtn.setEnabled(true);

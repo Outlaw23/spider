@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  * A custom JPanel that displays a background image stretched to fit the panel size.
  */
-public class masterpanel extends JPanel {
+public class MasterImagePanel extends JPanel {
 
 	/** The background image to display */
 	private final Image image;
@@ -14,9 +14,9 @@ public class masterpanel extends JPanel {
 	/**
 	 * Constructs a masterpanel with the specified image path.
 	 *
-	 * @param imagePath the path to the image file to be used as background
+	 * @param imagePath the path to the image file to be used as a background
 	 */
-	public masterpanel(String imagePath) {
+	public MasterImagePanel(String imagePath) {
 		this.image = new ImageIcon(imagePath).getImage();
 	}
 
