@@ -6,8 +6,14 @@ import org.example.Spider.models.Components.Sub_Screens.Components_Picture_Scree
 import org.example.Spider.models.hado_language.HadoLanguageMvc;
 
 import javax.swing.*;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 import java.awt.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -22,6 +28,8 @@ public class Check_Descriptoins {
 	public static JTextPane answer = Picture_Learn_Component.answer();
 	private static final Logger LOGGER =
 			Logger.getLogger(Check_Descriptoins.class.getName());
+	private static boolean wordloop = false;
+	private boolean alreadyCounted = false;
 
 	List<String> exampleList = new ArrayList<>();
 	List<String> hadoList = new ArrayList<>();
@@ -74,23 +82,23 @@ public class Check_Descriptoins {
 		Panelsumbit.repaint();
 	}
 
-	public void descriptionCheck(boolean isCorrect) {
+	public void descriptionCheck() {
 		getHadoList();
 		exampleText();
 		checkCounter++;
 		numberExample++;
-		if (isCorrect) {
-			correctCount++;
-		}
+
 
 		if (checkCounter < exampleList.size()) {
 			example.setText(exampleList.get(checkCounter));
-			Picture_Learn_Component.answerExample().setText(hadoList.get(checkCounter));
+			Picture_Learn_Component.answerExample().setText(hadoList.get(numberExample));
 			questionReaderExample();
+			checkerWord();
 		} else {
 			System.out.println("test");
-			//showScore();
+			wordloop = false;
 		}
+		System.out.println(correctCount + " correct");
 	}
 
 	public void questionReaderExample() {
@@ -154,9 +162,55 @@ public class Check_Descriptoins {
 
 				hadoList.add(hado.toString());
 			});
-			Picture_Learn_Component.answerExample().setText(hadoList.getFirst());
+			Picture_Learn_Component.answerExample().setText(hadoList.get(checkCounter));
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE, "Failed to load Hado word list", e);
 		}
 	}
+
+	public void checkAnswer() {
+
+		StyledDocument doc = answer.getStyledDocument();
+		Style style = answer.addStyle("kleur", null);
+
+		if (answer.getText().equals(hadoList.get(checkCounter))) {
+
+			StyleConstants.setForeground(style, Color.GREEN);
+
+			if (!alreadyCounted) {
+				correctCount++;
+				alreadyCounted = true;
+			}
+
+		} else {
+			StyleConstants.setForeground(style, Color.RED);
+			alreadyCounted = false; // reset als het fout is
+		}
+
+		doc.setCharacterAttributes(
+				0,
+				doc.getLength(),
+				style,
+				false
+		);
+	}
+
+	public void answerCorrect() {
+		correctCount++;
+	}
+
+	public void checkerWord() {
+		wordloop = true;
+
+		Timer timer = new Timer(300, e -> {
+			if (!wordloop) {
+				((Timer) e.getSource()).stop();
+				return;
+			}
+			checkAnswer();
+		});
+
+		timer.start();
+	}
+
 }

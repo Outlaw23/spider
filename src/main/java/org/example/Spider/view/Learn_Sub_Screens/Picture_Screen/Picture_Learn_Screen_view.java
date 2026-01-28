@@ -102,8 +102,9 @@ public class Picture_Learn_Screen_view {
 		JButton goed = Picture_Learn_Component.goed();
 		JTextPane answerExample = Picture_Learn_Component.answerExample();
 		Check_Descriptoins check_descriptoins = new Check_Descriptoins();
-		goed.addActionListener(_ -> check_descriptoins.descriptionCheck(true));
-		fout.addActionListener(_ ->  check_descriptoins.descriptionCheck(false));
+		goed.addActionListener(_ -> check_descriptoins.descriptionCheck());
+		goed.addActionListener(_ -> check_descriptoins.answerCorrect());
+		fout.addActionListener(_ ->  check_descriptoins.descriptionCheck());
 
 		Descriptions_and_answers descriptions_and_answers = new Descriptions_and_answers();
 		JButton sumbit = Picture_Learn_Component.submit();

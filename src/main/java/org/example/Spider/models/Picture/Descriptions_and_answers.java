@@ -19,6 +19,8 @@ public class Descriptions_and_answers {
 			checkDescriptoins.descriptionCheckLayout();
 			checkDescriptoins.questionReaderExample();
 			checkDescriptoins.getHadoList();
+			checkDescriptoins.checkAnswer();
+
 
 			return;
 		}
@@ -69,5 +71,6 @@ public class Descriptions_and_answers {
 			throw new RuntimeException(e);
 		}
 	}
+
 
 }
