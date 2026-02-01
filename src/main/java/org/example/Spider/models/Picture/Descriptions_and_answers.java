@@ -2,7 +2,13 @@ package org.example.Spider.models.Picture;
 
 import org.example.Spider.models.Components.Sub_Screens.Components_Picture_Screen.Picture_Learn_Component;
 
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
+import java.awt.*;
 import java.io.*;
+
+import static org.example.Spider.models.Picture.Check_Descriptoins.answer;
 
 public class Descriptions_and_answers {
 	private int  numberDescriptons = 0;
@@ -70,6 +76,18 @@ public class Descriptions_and_answers {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	public void reset() {
+		numberDescriptons = 0;
+
+
+		StyledDocument doc = answer.getStyledDocument();
+		SimpleAttributeSet black = new SimpleAttributeSet();
+		StyleConstants.setForeground(black, Color.BLACK);
+		doc.setCharacterAttributes(0, doc.getLength(), black, true);
+		answer.setCharacterAttributes(black, true);
+		answer.setText("Enter the answer here");
 	}
 
 

@@ -78,6 +78,7 @@ public class Picture_Explanantion_Screen_view {
 
 		panelStartButton.add(Start);
 
+
 		// =========================
 		// Responsive font resizing
 		// =========================

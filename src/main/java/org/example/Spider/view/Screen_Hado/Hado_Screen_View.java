@@ -5,6 +5,7 @@ import org.example.Spider.Img.Img_Paths;
 import org.example.Spider.models.Components.Screens.Hado_Screen_Components;
 import org.example.Spider.models.Models_Everywhere.MasterImagePanel;
 import org.example.Spider.models.Models_Everywhere.MasterPanel;
+import org.example.Spider.models.Models_Everywhere.MasterScrollPane;
 
 import javax.swing.*;
 import java.awt.*;
@@ -94,8 +95,10 @@ public class Hado_Screen_View {
 		panelHadoButtons.add(translate);
 
 		// Add scrollable text areas
-		panelHadoText.add(new JScrollPane(input));
-		panelHadoText.add(new JScrollPane(output));
+		MasterScrollPane masterScroll = new MasterScrollPane(input);
+		MasterScrollPane masterScroll1 = new MasterScrollPane(output);
+		panelHadoText.add(masterScroll.getScrollPane());
+		panelHadoText.add(masterScroll1.getScrollPane());
 
 		// =========================
 		// Responsive font resizing

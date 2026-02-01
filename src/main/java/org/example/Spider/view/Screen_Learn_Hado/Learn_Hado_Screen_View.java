@@ -6,6 +6,7 @@ import org.example.Spider.Img.Img_Paths;
 import org.example.Spider.models.Components.Screens.Learn_Screen_Components;
 import org.example.Spider.models.Models_Everywhere.MasterImagePanel;
 import org.example.Spider.models.Models_Everywhere.MasterPanel;
+import org.example.Spider.models.Models_Everywhere.MasterScrollPane;
 
 import javax.swing.*;
 import java.awt.*;
@@ -124,8 +125,9 @@ public class Learn_Hado_Screen_View {
 		panelMainCenter.add(panelButtons);
 		panelMainCenter.add(panelBriefExplanation);
 
+		MasterScrollPane masterScroll = new MasterScrollPane(BriefExplanationArea);
 		// Add scrollable explanation text
-		panelBriefExplanation.add(new JScrollPane(BriefExplanationArea), BorderLayout.CENTER);
+		panelBriefExplanation.add(masterScroll.getScrollPane(), BorderLayout.CENTER);
 
 		// =========================
 		// Responsive font resizing

@@ -2,7 +2,9 @@ package org.example.Spider.models.Picture;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.example.Spider.Controllers.Score_Controller;
 import org.example.Spider.models.Components.Sub_Screens.Components_Picture_Screen.Picture_Learn_Component;
+import org.example.Spider.models.Models_Everywhere.MasterScrollPane;
 import org.example.Spider.models.hado_language.HadoLanguageMvc;
 
 import javax.swing.*;
@@ -33,9 +35,9 @@ public class Check_Descriptoins {
 
 	List<String> exampleList = new ArrayList<>();
 	List<String> hadoList = new ArrayList<>();
-	int checkCounter = 0;
-	int numberExample = 0;
-	int correctCount = 0;
+	public int checkCounter = 0;
+	public int numberExample = 0;
+	public static int correctCount = 0;
 
 	public void exampleText() {
 
@@ -70,7 +72,8 @@ public class Check_Descriptoins {
 		Panelsumbit.removeAll();
 
 		example.setText(exampleList.getFirst());
-		panelPicture.add(new JScrollPane(example), BorderLayout.CENTER);
+		MasterScrollPane masterScroll = new MasterScrollPane(example);
+		panelPicture.add(masterScroll.getScrollPane(), BorderLayout.CENTER);
 		panelPicture.add(PanelAnswerExample, BorderLayout.NORTH);
 		panelPicture.add(panelbutton, BorderLayout.SOUTH);
 
@@ -83,6 +86,7 @@ public class Check_Descriptoins {
 	}
 
 	public void descriptionCheck() {
+		Score_Controller scoreController = new Score_Controller();
 		getHadoList();
 		exampleText();
 		checkCounter++;
@@ -95,10 +99,13 @@ public class Check_Descriptoins {
 			questionReaderExample();
 			checkerWord();
 		} else {
-			System.out.println("test");
+			System.out.println("end");
 			wordloop = false;
+			scoreController.showScorepicture(panel);
 		}
 		System.out.println(correctCount + " correct");
+		System.out.println(checkCounter + " checked");
+		System.out.println(numberExample + " example");
 	}
 
 	public void questionReaderExample() {
@@ -213,4 +220,13 @@ public class Check_Descriptoins {
 		timer.start();
 	}
 
+	public void reset() {
+		correctCount = 0;
+		checkCounter = 0;
+		numberExample = 0;
+		exampleList.clear();
+		hadoList.clear();
+
+
+	}
 }

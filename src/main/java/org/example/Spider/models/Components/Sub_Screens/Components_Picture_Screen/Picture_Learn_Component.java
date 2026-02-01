@@ -5,6 +5,7 @@ import org.example.Spider.models.Models_Everywhere.MasterLabel;
 import org.example.Spider.models.Models_Everywhere.MasterTextArea;
 import org.example.Spider.models.Models_Everywhere.MasterTextPane;
 import org.example.Spider.models.Picture.Img_Paths_Pictures;
+import org.example.Spider.view.Learn_Sub_Screens.Picture_Screen.Picture_Learn_Screen_view;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -20,6 +21,8 @@ public class Picture_Learn_Component {
 	private static JButton goed;
 	private static JButton fout;
 	private static JTextPane answerExample;
+	private static JLabel scoreLabel;
+	private static JButton donePicture;
 
 	public static JTextArea	description() {
 		if (description == null) {
@@ -98,5 +101,22 @@ public class Picture_Learn_Component {
 
 	public static void setImage(String path) {
 		pictureLabel.setIcon(new ImageIcon(path));
+	}
+
+	public static JLabel scorelabel() {
+		if (scoreLabel == null) {
+			MasterLabel score = new MasterLabel("", Color.white);
+			scoreLabel = score.getMasterLabel();
+		}
+		return scoreLabel;
+	}
+
+	public static JButton donePicture(Picture_Learn_Screen_view view) {
+		if ( donePicture == null) {
+			MasterButton donebutton = new MasterButton("Done", "screenLearn", Color.gray);
+			donePicture = donebutton.getMasterbutton();
+			donebutton.getMasterbutton().addActionListener(_ -> view.initialize());
+		}
+		return donePicture;
 	}
 }
