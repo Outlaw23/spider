@@ -148,20 +148,25 @@ public class Sentences_Learn_Screen_view {
 
 		JButton done = Sentences_Learn_Component.done();
 		done.setEnabled(false);
-		done.addActionListener(_ ->
-				Screen_Reset_Sentences.resetScreen(
-						words,
-						score,
-						submit,
-						back,
-						done,
-						panelSentenceAndWords,
-						panelInputBoxes,
-						checker,
-						wordHado,
-						sentences
+		done.addActionListener(_ -> {
+			get_words_and_sentences.readFive();
 
-				));
+			List<String> newWordHado = get_words_and_sentences.getCurrentWordsHado();
+			List<String> newSentences = get_words_and_sentences.getCurrentSentences();
+
+			Screen_Reset_Sentences.resetScreen(
+					words,
+					score,
+					submit,
+					back,
+					done,
+					panelSentenceAndWords,
+					panelInputBoxes,
+					checker,
+					newWordHado,
+					newSentences
+			);
+		});
 
 		// =========================
 		// Layout composition

@@ -21,7 +21,7 @@ public class Screen_Reset_Sentences {
 	 * Resets the Sentences screen components to their initial state.
 	 *
 	 * @param wordsLabel           The label showing the words to place in sentences.
-	 * @param submitBtn            The submit button for sentence checking.
+	 * @param submitBtn            The Submit button for sentence checking.
 	 * @param backBtn              The back button.
 	 * @param doneBtn              The done button.
 	 * @param panelSentenceAndWords The panel containing sentence labels.
@@ -74,8 +74,8 @@ public class Screen_Reset_Sentences {
 
 		// 6. Reset input boxes
 		panelInputBoxes.removeAll();
-		inputBoxesList.clear();
 
+		inputBoxesList.clear();
 		for (int i = 0; i < 10; i++) {
 			JTextPane pane = Sentences_Learn_Component.InputBoxes();
 
