@@ -2,6 +2,7 @@ package org.example.Spider.view.Learn_Sub_Screens.Picture_Screen;
 
 import org.example.Spider.Controllers.Font_Resizer;
 import org.example.Spider.Img.Img_Paths;
+import org.example.Spider.models.Components.Components_Everywhere;
 import org.example.Spider.models.Components.Sub_Screens.Components_Picture_Screen.Picture_Explanation_Component;
 import org.example.Spider.models.Models_Everywhere.MasterImagePanel;
 import org.example.Spider.models.Models_Everywhere.MasterPanel;
@@ -65,6 +66,7 @@ public class Picture_Explanantion_Screen_view {
 
 		// The start button activates the sentence exercise
 		JButton Start = Picture_Explanation_Component.startButtonPicture();
+		JButton Back = Components_Everywhere.backButton(Color.gray);
 
 		// =========================
 		// Layout composition
@@ -76,6 +78,7 @@ public class Picture_Explanantion_Screen_view {
 		panelMainCenter.add(explanation, BorderLayout.NORTH);
 		panelMainCenter.add(panelStartButton, BorderLayout.SOUTH);
 
+		panelStartButton.add(Back);
 		panelStartButton.add(Start);
 
 
@@ -83,6 +86,7 @@ public class Picture_Explanantion_Screen_view {
 		// Responsive font resizing
 		// =========================
 		List<JComponent> resizableComponents = Arrays.asList(
+				Back,
 				Start,
 				explanation
 		);

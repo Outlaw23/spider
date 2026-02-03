@@ -26,7 +26,7 @@ import static org.example.Spider.view.Learn_Sub_Screens.Picture_Screen.Picture_L
 public class Check_Descriptoins {
 
 	public static JTextArea example = Picture_Learn_Component.example();
-	public static JButton fout = Picture_Learn_Component.fout();
+	public static JButton fout = Picture_Learn_Component.incorrect();
 	public static JTextPane answer = Picture_Learn_Component.answer();
 	private static final Logger LOGGER =
 			Logger.getLogger(Check_Descriptoins.class.getName());
@@ -86,6 +86,8 @@ public class Check_Descriptoins {
 	}
 
 	public void descriptionCheck() {
+		Picture_Learn_Component.incorrect().setBackground(Color.gray);
+		Picture_Learn_Component.correct().setBackground(Color.gray);
 		Score_Controller scoreController = new Score_Controller();
 		getHadoList();
 		exampleText();

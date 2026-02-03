@@ -22,6 +22,7 @@ public class Sentences_Learn_Component {
 	public static JButton doneButton;
 	public static JButton submitbutton;
 	public static JButton backButton;
+	public static JLabel scoreLabel;
 
 	/**
 	 * Creates a label used to display words or feedback text.
@@ -93,6 +94,14 @@ public class Sentences_Learn_Component {
 			doneButton = Done.getMasterbutton();
 		}
 		return doneButton;
+	}
+
+	public static JLabel scoreLabel() {
+		if (scoreLabel == null) {
+			MasterLabel score = new MasterLabel("", Color.white);
+			scoreLabel = score.getMasterLabel();
+		}
+		return scoreLabel;
 	}
 
 }

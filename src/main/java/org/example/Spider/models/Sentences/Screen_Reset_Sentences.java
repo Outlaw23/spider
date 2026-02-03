@@ -32,6 +32,7 @@ public class Screen_Reset_Sentences {
 	 */
 	public static void resetScreen(
 			JLabel wordsLabel,
+			JLabel scoreLabel,
 			JButton submitBtn,
 			JButton backBtn,
 			JButton doneBtn,
@@ -44,6 +45,9 @@ public class Screen_Reset_Sentences {
 
 		// 1. Reset internal checker state
 		checker.fullResetState();
+
+		scoreLabel.setText("");
+		scoreLabel.setVisible(false);
 
 
 		// 3. Reset buttons state

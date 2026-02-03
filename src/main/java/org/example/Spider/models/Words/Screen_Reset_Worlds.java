@@ -19,18 +19,16 @@ public class Screen_Reset_Worlds {
 	 * Resets the Words screen: clears inputs, resets titles, buttons, and displayed words.
 	 *
 	 * @param panelWords   the panel displaying the Hado words
-	 * @param woorden      the list of original words
 	 * @param guessList    the list of JTextPane input fields
 	 * @param op1Titel     secondary title JLabel
 	 * @param resetBtn     reset JButton
 	 * @param submitBtn    submit JButton
 	 * @param backBtn      back JButton
 	 * @param doneBtn      done JButton
-	 * @param checkWord    Check_Word instance to reset internal state
+	 * @param checkWord    Check_Word instance to reset the internal state
 	 */
 	public static void resetScreen(
 			JPanel panelWords,
-			List<String> woorden,
 			List<JTextPane> guessList,
 			JLabel op1Titel,
 			JButton resetBtn,
@@ -39,6 +37,9 @@ public class Screen_Reset_Worlds {
 			JButton doneBtn,
 			Check_Word checkWord
 	) {
+		// 🎲 NIEUWE woorden automatisch
+		List<String> woorden = List_Maker.newWoords();
+
 		// 1. Reset internal state
 		checkWord.fullResetState();
 
@@ -56,7 +57,6 @@ public class Screen_Reset_Worlds {
 		for (String wordStr : woorden) {
 			JLabel word = Words_Learn_Components.word(wordStr);
 
-			// Convert to Hado language for display
 			StringBuilder hadoWord = new StringBuilder();
 			for (char c : wordStr.toCharArray()) {
 				hadoWord.append(HadoLanguageMvc.hadoLanguagee(String.valueOf(c)));
@@ -65,21 +65,16 @@ public class Screen_Reset_Worlds {
 			word.setText(hadoWord.toString());
 			panelWords.add(word);
 		}
+
 		panelWords.revalidate();
 		panelWords.repaint();
 
 		// 5. Reset input fields
 		for (JTextPane pane : guessList) {
-			// Clear text
 			pane.setText("");
-
-			// Make editable
 			pane.setEditable(true);
-
-			// Reset background color
 			pane.setBackground(new Color(55, 64, 54));
 
-			// Reset text color to black
 			StyledDocument doc = pane.getStyledDocument();
 			SimpleAttributeSet black = new SimpleAttributeSet();
 			StyleConstants.setForeground(black, Color.BLACK);
@@ -87,4 +82,5 @@ public class Screen_Reset_Worlds {
 			pane.setCharacterAttributes(black, true);
 		}
 	}
+
 }

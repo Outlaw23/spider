@@ -20,6 +20,11 @@ public class MasterPanel extends JPanel {
 	 *
 	 *
 	 */
+	private final JButton home;
+	private final JButton hado;
+	private final JButton hadoR;
+	private final JButton learn;
+	private final JButton info;
 	public MasterPanel(String titleDesc) {
 		this.setLayout(new BorderLayout());
 		this.setPreferredSize(new Dimension(1920, 1080));
@@ -43,16 +48,13 @@ public class MasterPanel extends JPanel {
 
 		// Buttons (top navigation)
 		JLabel title = Components_Everywhere.Title(titleDesc);
-		// Home button
-		JButton home = Components_Everywhere.homeButton(gray);
-		// Hado button
-		JButton hado = Components_Everywhere.hadoButton(gray);
-		// HadoR button
-		JButton hadoR = Components_Everywhere.hadoRButton(gray);
-		//Learn button
-		JButton learn = Components_Everywhere.learnButton(gray);
-		//Info button
-		JButton info = Components_Everywhere.infoButton(gray);
+
+		home  = Components_Everywhere.homeButton(gray);
+		hado  = Components_Everywhere.hadoButton(gray);
+		hadoR = Components_Everywhere.hadoRButton(gray);
+		learn = Components_Everywhere.learnButton(gray);
+		info  = Components_Everywhere.infoButton(gray);
+
 
 		// Compose layout: add subpanels to the main panel
 		this.add(panelMainNorth, BorderLayout.NORTH);
@@ -75,5 +77,13 @@ public class MasterPanel extends JPanel {
 		);
 		Font_Resizer.applyResizeLogic(this, resizableComponents);
 
+	}
+
+	public void buttondisable() {
+		home.setEnabled(false);
+		hado.setEnabled(false);
+		hadoR.setEnabled(false);
+		learn.setEnabled(false);
+		info.setEnabled(false);
 	}
 }

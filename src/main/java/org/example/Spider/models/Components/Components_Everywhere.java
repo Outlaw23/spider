@@ -64,6 +64,7 @@ public class Components_Everywhere {
 	 * @param color the background color of the button
 	 * @return a configured Learn JButton
 	 */
+
 	public static JButton learnButton(Color color) {
 		MasterButton learn = new MasterButton("Learn", "screenLearn", color);
 		return learn.getMasterbutton();
@@ -78,6 +79,11 @@ public class Components_Everywhere {
 	public static JButton infoButton(Color color) {
 		MasterButton info = new MasterButton("Info", "screenInfo", color);
 		return info.getMasterbutton();
+	}
+
+	public static JButton backButton(Color color) {
+		MasterButton back = new MasterButton("back", "screenLearn", color);
+		return back.getMasterbutton();
 	}
 
 }

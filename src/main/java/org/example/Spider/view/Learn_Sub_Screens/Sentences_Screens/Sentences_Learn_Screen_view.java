@@ -38,6 +38,7 @@ public class Sentences_Learn_Screen_view {
 		// Main container
 		// =========================
 		MasterPanel panelMain = new MasterPanel("Sentences");
+		panelMain.buttondisable();
 
 
 		// =========================
@@ -70,24 +71,28 @@ public class Sentences_Learn_Screen_view {
 		// =========================
 		// Input boxes panel
 		// =========================
-		JPanel panelInputBoxes = new JPanel(new GridLayout(10, 0, 5, 5));
+		JPanel panelInputBoxes = new JPanel(new GridLayout(11, 0, 5, 5));
 		panelInputBoxes.setPreferredSize(new Dimension(400, 100));
 		panelInputBoxes.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
 		panelInputBoxes.setBackground(new Color(95, 102, 107, 0));
+		panelInputBoxes.setOpaque(false);
 
 		// =========================
 		// Bottom buttons panel
 		// =========================
-		JPanel panelButtons = new JPanel(new GridLayout(0, 10, 5, 0));
-		panelButtons.setPreferredSize(new Dimension(100, 50));
-		panelButtons.setBorder(BorderFactory.createEmptyBorder(5, 30, 5, 30));
-		panelButtons.setBackground(new Color(38, 66, 87, 0));
+		JPanel panelButtons = new JPanel(new GridLayout(0, 10, 10, 0));
+		panelButtons.setOpaque(false);
+
+		JPanel panelButtonsWrapper = new JPanel(new BorderLayout());
+		panelButtonsWrapper.setOpaque(false);
+
 
 
 		// =========================
 		// Instruction label
 		// =========================
 		JLabel words = Sentences_Learn_Component.words();
+		JLabel score = Sentences_Learn_Component.scoreLabel();
 
 		get_words_and_sentences.load();
 		get_words_and_sentences.readFive();
@@ -146,6 +151,7 @@ public class Sentences_Learn_Screen_view {
 		done.addActionListener(_ ->
 				Screen_Reset_Sentences.resetScreen(
 						words,
+						score,
 						submit,
 						back,
 						done,
@@ -154,6 +160,7 @@ public class Sentences_Learn_Screen_view {
 						checker,
 						wordHado,
 						sentences
+
 				));
 
 		// =========================
@@ -167,12 +174,17 @@ public class Sentences_Learn_Screen_view {
 		panelMainCenter.add(panelText, BorderLayout.NORTH);
 		panelMainCenter.add(panelSentenceAndWords, BorderLayout.CENTER);
 		panelMainCenter.add(panelInputBoxes, BorderLayout.EAST);
-		panelMainCenter.add(panelButtons, BorderLayout.SOUTH);
+		panelMainCenter.add(panelButtonsWrapper, BorderLayout.SOUTH);
 
 		panelText.add(words);
 		panelButtons.add(back);
 		panelButtons.add(submit);
 		panelButtons.add(done);
+
+		panelButtonsWrapper.add(panelButtons, BorderLayout.CENTER);
+		panelButtonsWrapper.add(score, BorderLayout.SOUTH);
+
+
 
 		// =========================
 		// Responsive font resizing
@@ -184,6 +196,7 @@ public class Sentences_Learn_Screen_view {
 		resizableComponents.add(submit);
 		resizableComponents.add(back);
 		resizableComponents.add(done);
+		resizableComponents.add(score);
 
 		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
 

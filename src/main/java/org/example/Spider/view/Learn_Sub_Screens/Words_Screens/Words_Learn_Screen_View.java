@@ -20,7 +20,7 @@ import java.util.List;
 import static org.example.Spider.models.Components.Sub_Screens.Components_Words_Screens.Words_Explanation_Components.GuessList;
 
 /**
- * View class responsible for building the Word Learning screen.
+ * View the class responsible for building the Word Learning screen.
  * This screen allows users to guess and learn words in the Hado language.
  */
 public class Words_Learn_Screen_View {
@@ -42,6 +42,7 @@ public class Words_Learn_Screen_View {
 		// Main container panel
 		// =========================
 		MasterPanel panelMain = new MasterPanel("Words");
+		panelMain.buttondisable();
 
 		// =========================
 		// Center panel with background image
@@ -136,11 +137,12 @@ public class Words_Learn_Screen_View {
 		JButton submit = Words_Learn_Components.submit();
 		submit.addActionListener(_ -> check.checkWord(GuessList));
 
+
+
 		JButton done = Words_Learn_Components.done();
 		done.addActionListener(_ ->
 				Screen_Reset_Worlds.resetScreen(
 						panelWords,
-						woorden,
 						GuessList,
 						op1Titel,
 						reset,
@@ -200,7 +202,7 @@ public class Words_Learn_Screen_View {
 
 		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
 
-		// Return fully built Words Learn screen
+		// Return the fully built Words Learn screen
 		return panelMain;
 	}
 }

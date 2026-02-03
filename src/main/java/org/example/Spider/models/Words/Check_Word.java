@@ -1,5 +1,6 @@
 package org.example.Spider.models.Words;
 
+import org.example.Spider.Controllers.Score_Controller;
 import org.example.Spider.models.Components.Sub_Screens.Components_Words_Screens.Words_Learn_Components;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,7 @@ import java.util.Map;
  * Highlights letters in green, yellow, or red depending on correctness.
  */
 public class Check_Word {
+	public static int scoreWords = 0;
 
 	/** Index of the current row being checked. */
 	int rowIndex = 0;
@@ -40,28 +42,30 @@ public class Check_Word {
 	 */
 	public void checkWord(List<JTextPane> GuessList) {
 		int wordIndex = -1;
+
 		Words_Learn_Components.reset().setEnabled(false);
 		Words_Learn_Components.back().setEnabled(false);
 
-		// Iterate over rows in increments of 6 (assumes 6 words per row)
+		// Iterate over rows (1 woord per rij)
 		for (int index = rowIndex; index <= rowEndindex; index += 6) {
 			List<String> woorden = List_Maker.getWoorden();
 			wordIndex++;
-			if (wordIndex >= woorden.size()) break; // safety check
-			String woord = woorden.get(wordIndex);
 
+			if (wordIndex >= woorden.size()) break;
+
+			String woord = woorden.get(wordIndex);
 			JTextPane pane = GuessList.get(index);
 			String gok = pane.getText();
 
 			String[] kleuren = new String[gok.length()];
 			Map<Character, Integer> letterCount = new HashMap<>();
 
-			// Count occurrences of each letter in the correct word
+			// Letterfrequentie van het juiste woord
 			for (char c : woord.toCharArray()) {
 				letterCount.put(c, letterCount.getOrDefault(c, 0) + 1);
 			}
 
-			// Step 1: mark correct letters in correct positions (green)
+			// 🟩 Stap 1: groen (juiste letter + positie)
 			for (int i = 0; i < gok.length(); i++) {
 				if (i < woord.length() && gok.charAt(i) == woord.charAt(i)) {
 					kleuren[i] = "Groen";
@@ -69,9 +73,10 @@ public class Check_Word {
 				}
 			}
 
-			// Step 2: mark letters in wrong position (yellow) or incorrect (red)
+			// 🟨🟥 Stap 2: geel of rood
 			for (int i = 0; i < gok.length(); i++) {
-				if (kleuren[i] != null) continue; // already green
+				if (kleuren[i] != null) continue;
+
 				char c = gok.charAt(i);
 				if (letterCount.getOrDefault(c, 0) > 0) {
 					kleuren[i] = "Geel";
@@ -81,9 +86,15 @@ public class Check_Word {
 				}
 			}
 
-			// Display results in JTextPane
+			// ✅ SCORE: alleen als het hele woord klopt
+			if (gok.equals(woord)) {
+				scoreWords++;
+			}
+
+			// Resultaat tonen in JTextPane
 			StyledDocument doc = pane.getStyledDocument();
-			pane.setText(""); // reset existing text
+			pane.setText("");
+
 			for (int i = 0; i < gok.length(); i++) {
 				SimpleAttributeSet attr = new SimpleAttributeSet();
 				switch (kleuren[i]) {
@@ -91,45 +102,42 @@ public class Check_Word {
 					case "Geel" -> StyleConstants.setForeground(attr, Color.YELLOW.darker());
 					case "Rood" -> StyleConstants.setForeground(attr, Color.RED);
 				}
+
 				try {
-					doc.insertString(doc.getLength(), String.valueOf(gok.charAt(i)), attr);
+					doc.insertString(doc.getLength(),
+							String.valueOf(gok.charAt(i)), attr);
 				} catch (BadLocationException e) {
 					log.error("Error inserting text in JTextPane", e);
 				}
 			}
 
-			// Optional: console output for debugging
+			// Debug output
 			for (int i = 0; i < gok.length(); i++) {
 				IO.println(gok.charAt(i) + " -> " + kleuren[i]);
 			}
 			IO.println("-------");
 
-			// Lock the pane after checking
-			GuessList.get(index).setEditable(false);
-			GuessList.get(index).setBackground(new Color(189, 189, 189));
+			// Lock deze rij
+			pane.setEditable(false);
+			pane.setBackground(new Color(189, 189, 189));
 
-			// Update indices for the next row
+			// Volgende rij activeren of spel beëindigen
 			if (rowEndindex <= 58) {
 				if (index == rowEndindex) {
 					rowIndex++;
 					rowEndindex++;
 				}
 			} else {
+				Score_Controller score_controller = new Score_Controller();
+				score_controller.showScoreWords();
 				Words_Learn_Components.submit().setEnabled(false);
 				Words_Learn_Components.done().setEnabled(true);
 				checkindex++;
-				Words_Learn_Components.op1Titel().setText("---Well done---");
 			}
 		}
 
-		IO.println(rowIndex);
-		IO.println(rowEndindex);
-		IO.println(checkindex);
-
-		// Enable next rows for input
 		RowsTrue(GuessList);
 	}
-
 	/**
 	 * Enables the next row of JTextPane for input.
 	 *
@@ -147,7 +155,7 @@ public class Check_Word {
 	}
 
 	/**
-	 * Resets all internal counters and indices to initial state.
+	 * Resets all internal counters and indices to the initial state.
 	 */
 	public void fullResetState() {
 		rowIndex = 0;

@@ -2,6 +2,7 @@ package org.example.Spider.view.Learn_Sub_Screens.Words_Screens;
 
 import org.example.Spider.Controllers.Font_Resizer;
 import org.example.Spider.Img.Img_Paths;
+import org.example.Spider.models.Components.Components_Everywhere;
 import org.example.Spider.models.Components.Sub_Screens.Components_Words_Screens.Words_Explanation_Components;
 import org.example.Spider.models.Models_Everywhere.MasterImagePanel;
 import org.example.Spider.models.Models_Everywhere.MasterPanel;
@@ -64,7 +65,9 @@ public class Words_Explanation_Screen_View {
 
 
 		// Start exercise button
+
 		JButton Start = Words_Explanation_Components.startButtonWords();
+		JButton Back = Components_Everywhere.backButton(Color.gray);
 
 		// =========================
 		// Layout composition
@@ -79,6 +82,7 @@ public class Words_Explanation_Screen_View {
 		panelMainCenter.add(explanation, BorderLayout.NORTH);
 
 		// Start button placement
+		panelStartButton.add(Back);
 		panelStartButton.add(Start);
 
 		// =========================
@@ -86,6 +90,7 @@ public class Words_Explanation_Screen_View {
 		// =========================
 		List<JComponent> resizableComponents = Arrays.asList(
 				Start,
+				Back,
 				explanation
 		);
 

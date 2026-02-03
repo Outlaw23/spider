@@ -15,6 +15,7 @@ public class Descriptions_and_answers {
 	Check_Descriptoins checkDescriptoins = new Check_Descriptoins();
 
 	public void descriptions() {
+		Picture_Learn_Component.submit().setBackground(Color.gray);
 		questionsaver();
 
 

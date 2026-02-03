@@ -74,18 +74,18 @@ public class Picture_Learn_Component {
 		return submit;
 	}
 
-	public static JButton goed() {
+	public static JButton correct() {
 		if (goed == null) {
-			MasterButton goedbutton = new MasterButton("correct", "", Color.gray);
-			goed = goedbutton.getMasterbutton();
+			MasterButton correctbutton = new MasterButton("correct", "", Color.gray);
+			goed = correctbutton.getMasterbutton();
 		}
 		return goed;
 	}
 
-	public static JButton fout() {
+	public static JButton incorrect() {
 		if (fout == null) {
-			MasterButton foutbutton = new MasterButton("incorrect", "", Color.gray);
-			fout = foutbutton.getMasterbutton();
+			MasterButton incorrectbutton = new MasterButton("incorrect", "", Color.gray);
+			fout = incorrectbutton.getMasterbutton();
 		}
 		return fout;
 	}

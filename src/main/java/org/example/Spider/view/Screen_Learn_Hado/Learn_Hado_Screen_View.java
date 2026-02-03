@@ -6,7 +6,6 @@ import org.example.Spider.Img.Img_Paths;
 import org.example.Spider.models.Components.Screens.Learn_Screen_Components;
 import org.example.Spider.models.Models_Everywhere.MasterImagePanel;
 import org.example.Spider.models.Models_Everywhere.MasterPanel;
-import org.example.Spider.models.Models_Everywhere.MasterScrollPane;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +16,7 @@ import static org.example.Spider.models.Components.Screens.Learn_Screen_Componen
 import static org.example.Spider.models.Components.Screens.Learn_Screen_Components.opdrachten;
 
 /**
- * View class responsible for building the Learn (Hado) screen UI.
+ * View the class responsible for building the Learn (Hado) screen UI.
  * This class only handles layout and component creation.
  */
 public class Learn_Hado_Screen_View {
@@ -62,7 +61,7 @@ public class Learn_Hado_Screen_View {
 		panelBriefExplanation.setLayout(new BorderLayout());
 		panelBriefExplanation.setPreferredSize(new Dimension(100, 50));
 		panelBriefExplanation.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		panelBriefExplanation.setBackground(new Color(44, 55, 25, 89));
+		panelBriefExplanation.setBackground(new Color(44, 55, 25, 0));
 
 		// =========================
 		// UI Components
@@ -70,7 +69,6 @@ public class Learn_Hado_Screen_View {
 
 
 		// Text area with a brief explanation of the selected assignment
-		JTextArea BriefExplanationArea = Learn_Screen_Components.briefExplanation();
 
 		// =========================
 		// Create assignment buttons dynamically
@@ -125,9 +123,8 @@ public class Learn_Hado_Screen_View {
 		panelMainCenter.add(panelButtons);
 		panelMainCenter.add(panelBriefExplanation);
 
-		MasterScrollPane masterScroll = new MasterScrollPane(BriefExplanationArea);
 		// Add scrollable explanation text
-		panelBriefExplanation.add(masterScroll.getScrollPane(), BorderLayout.CENTER);
+
 
 		// =========================
 		// Responsive font resizing
@@ -136,13 +133,12 @@ public class Learn_Hado_Screen_View {
 
 		// Dynamic assignment buttons
 		List<JComponent> resizableComponents = new ArrayList<>(opdrachten);
-		resizableComponents.add(BriefExplanationArea);
 
 
 		// Apply resize logic
 		Font_Resizer.applyResizeLogic(panelMain, resizableComponents);
 
-		// Return fully built Learn screen
+		// Return a fully built Learn screen
 		return panelMain;
 	}
 }

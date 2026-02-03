@@ -16,7 +16,7 @@
 	import java.util.List;
 
 	import static org.example.Spider.models.Components.Sub_Screens.Components_Picture_Screen.Picture_Learn_Component.answerExample;
-	import static org.example.Spider.models.Components.Sub_Screens.Components_Picture_Screen.Picture_Learn_Component.goed;
+	import static org.example.Spider.models.Components.Sub_Screens.Components_Picture_Screen.Picture_Learn_Component.correct;
 	import static org.example.Spider.models.Picture.Check_Descriptoins.example;
 	import static org.example.Spider.models.Picture.Check_Descriptoins.fout;
 
@@ -38,7 +38,7 @@
 		public static JPanel PanelAnswerExample = new JPanel();
 		public static MasterImagePanel panelMainCenterPicture = new MasterImagePanel(Img_Paths.background_Spider_2);
 		public static JPanel PanelTextSumbit = new JPanel();
-		public JPanel panelMain;
+		public MasterPanel panelMain;
 		public JPanel PanelAnswer;
 		public JLabel picture;
 		public JTextPane answer;
@@ -55,6 +55,8 @@
 			// Main container
 			// =========================
 			panelMain = new MasterPanel("Picture");
+			panelMain.buttondisable();
+
 
 			// =========================
 			// Center panel with background
@@ -113,7 +115,7 @@
 
 
 
-			goed = goed();
+			goed = correct();
 			answerExample = answerExample();
 			goed.addActionListener(_ -> check_descriptoins.descriptionCheck());
 			goed.addActionListener(_ -> check_descriptoins.answerCorrect());

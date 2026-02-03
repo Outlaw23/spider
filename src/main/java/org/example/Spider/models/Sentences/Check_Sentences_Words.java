@@ -1,5 +1,6 @@
 package org.example.Spider.models.Sentences;
 
+import org.example.Spider.Controllers.Score_Controller;
 import org.example.Spider.models.Components.Sub_Screens.Components_Sentences_Screens.Sentences_Learn_Component;
 
 import javax.swing.*;
@@ -37,10 +38,11 @@ public class Check_Sentences_Words {
 	 * Checks user-entered sentences in the JTextPanes against the correct sentence variants.
 	 * Colors words green if correct and red if incorrect. Advances rows as needed.
 	 *
-	 * @param inputBoxesList    the list of JTextPanes representing sentence input rows
-	 * @param correcteWoordenLijsten the correct sentences for each row
 	 */
-	public void checkSentenceWords(List<JTextPane> inputBoxesList, List<List<String>> correcteWoordenLijsten) {
+	public static int scoreSentences = 0;
+	public void checkSentenceWords(List<JTextPane> inputBoxesList,
+								   List<List<String>> correcteWoordenLijsten) {
+
 		int start = rowIndex;
 		int end = rowEndindex;
 
@@ -48,14 +50,18 @@ public class Check_Sentences_Words {
 			end = start;
 		}
 
-		// Force processing only one row at a time
+		// Forceer 1 rij tegelijk
 		if (end > start) {
 			end = start;
 		}
 
 		for (int index = start; index <= end; index++) {
+
 			JTextPane pane = inputBoxesList.get(index);
-			List<String> correcteWoorden = index < correcteWoordenLijsten.size() ? correcteWoordenLijsten.get(index) : new ArrayList<>();
+			List<String> correcteWoorden =
+					index < correcteWoordenLijsten.size()
+							? correcteWoordenLijsten.get(index)
+							: new ArrayList<>();
 
 			String input = pane.getText().trim();
 			StyledDocument doc = pane.getStyledDocument();
@@ -63,51 +69,85 @@ public class Check_Sentences_Words {
 			try {
 				doc.remove(0, doc.getLength());
 			} catch (BadLocationException e) {
-				LOGGER.log(Level.SEVERE, "Error while modifying document", e);
+				LOGGER.log(Level.SEVERE, "Error clearing document", e);
 			}
 
-			// Split input by "&" to handle multiple words
+			// Split invoer
 			String[] ingevoerdeWoorden = input.split("&");
 
-			// Collect all correct words in a set for fast lookup
+			// Verzamel ALLE correcte woorden
 			Set<String> alleCorrecteWoorden = new HashSet<>();
 			for (String variant : correcteWoorden) {
 				if (variant == null) continue;
-				String[] woordenVariant = variant.split("&");
-				for (String w : woordenVariant) {
+
+				for (String w : variant.split("&")) {
 					String cleaned = w.trim().toLowerCase();
-					if (!cleaned.isEmpty()) alleCorrecteWoorden.add(cleaned);
+					if (!cleaned.isEmpty()) {
+						alleCorrecteWoorden.add(cleaned);
+					}
 				}
 			}
 
-			// Validate each entered word
+			// ===== SCORECHECK (per zin) =====
+			boolean heleZinJuist = true;
+
+
+			if (input.isEmpty()) {
+				heleZinJuist = false;
+			} else {
+				for (String ingevoerd : ingevoerdeWoorden) {
+					String woord = ingevoerd.trim().toLowerCase();
+
+					if (woord.isEmpty()) {
+						heleZinJuist = false; // <-- ook "& &" telt als fout
+						break;
+					}
+
+					if (!alleCorrecteWoorden.contains(woord)) {
+						heleZinJuist = false;
+						break;
+					}
+				}
+			}
+
+
+			if (heleZinJuist) {
+				scoreSentences++;
+			}
+
+			// ===== KLEUREN =====
 			for (int j = 0; j < ingevoerdeWoorden.length; j++) {
+
 				String ingevoerd = ingevoerdeWoorden[j].trim();
 				if (ingevoerd.isEmpty()) continue;
 
-				boolean juist = alleCorrecteWoorden.contains(ingevoerd.toLowerCase());
+				boolean juist =
+						alleCorrecteWoorden.contains(ingevoerd.toLowerCase());
 
 				SimpleAttributeSet attr = new SimpleAttributeSet();
-				StyleConstants.setForeground(attr, juist ? Color.GREEN : Color.RED);
+				StyleConstants.setForeground(attr,
+						juist ? Color.GREEN : Color.RED);
 
 				try {
 					doc.insertString(doc.getLength(), ingevoerd, attr);
+
 					if (j < ingevoerdeWoorden.length - 1) {
 						doc.insertString(doc.getLength(), " & ", null);
 					}
+
 				} catch (BadLocationException e) {
-					LOGGER.log(Level.SEVERE, "Error while modifying document", e);
+					LOGGER.log(Level.SEVERE, "Error writing document", e);
 				}
 			}
 		}
 
-		// Advance row indices
+		// ===== RIJ LOGICA =====
 		rowIndex++;
 		rowEndindex = rowIndex;
 		checkindex++;
 
-		// Lock processed rows and enable the next row
 		if (rowEndindex <= 9) {
+
 			if (checkindex == rowOff) {
 				JTextPane paneOFF = inputBoxesList.get(rowOff);
 				paneOFF.setEditable(false);
@@ -122,13 +162,18 @@ public class Check_Sentences_Words {
 
 		} else {
 			JTextPane paneOFF = inputBoxesList.get(rowOff);
+			paneOFF.setEditable(false);
+			paneOFF.setBackground(new Color(189, 189, 189));
+
+			Score_Controller controller = new Score_Controller();
+			controller.showScoreSentence();
+
 			Sentences_Learn_Component.submit().setEnabled(false);
 			Sentences_Learn_Component.done().setEnabled(true);
-			checkindex++;
-			paneOFF.setBackground(new Color(189, 189, 189));
-			paneOFF.setEditable(false);
+			System.out.println(scoreSentences);
 		}
 	}
+
 
 	/**
 	 * Makes the specified range of JTextPanes editable and focused for user input.
@@ -156,6 +201,8 @@ public class Check_Sentences_Words {
 		rowOff = 0;
 		rowIndex = 0;
 		rowEndindex = 0;
+
+		scoreSentences = 0; // 🔥 BELANGRIJK
 
 		Sentences_Learn_Component.submit().setEnabled(true);
 		Sentences_Learn_Component.done().setEnabled(false);
